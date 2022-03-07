@@ -42,8 +42,8 @@
       <span class="title">{{ $t('trx_deposit_quantity') }}:</span>
       <div class="content">
         <div class="info">
-          <span class="value">20.00</span>
-          <span class="value">0.00</span>
+          <span class="value">{{data.money}}</span>
+          <span class="value">{{data.promotion}}</span>
           <span class="tip">
             {{ $t('recharge_text') }}
           </span>
@@ -109,7 +109,10 @@ export default {
   data() {
     return {
       www: [],
-      data: {},
+      data: {
+		  money:0,
+		  promotion:0,
+	  },
       /* 待删除 */
       bg: '',
       footerType: 'n1',
