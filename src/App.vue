@@ -2,17 +2,10 @@
   <div id="app">
     <keep-alive>
       <div class="header" v-if="currentPath && title">
-        <div class="head">
-          <van-icon
-            name="arrow-left"
-            size="23"
-            color="#000"
-            @click="handleBack"
-          />
-          <!--<router-link :to="path" class="back"></router-link>-->
-          <div>{{ title }}</div>
-          <div></div>
+        <div class="box">
+          <img src="@/assets/tron/返回(2)@2x.png" alt="" @click="handleBack">
         </div>
+        <span>{{ title }}</span>
       </div>
     </keep-alive>
     <div>
@@ -80,39 +73,6 @@
         <span :class="{ active: show_type == 'info' }">{{ $t('mine') }}</span>
       </router-link>
     </div>
-    <!-- <div id="footer" v-if="show_footer && footer_type === 'n1'">
-      <div class="indexnav">
-        <div class="nav_top btn-group" style="justify-content: center">
-          <router-link class="footer_item" to="/home"
-            ><img
-              :src="
-                show_type == 'tree'
-                  ? require('@/assets/xinguang/画板 1_slices/首页 拷贝 2@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/首页 拷贝 3@2x.png')
-              "
-            /><span>首页</span></router-link
-          >
-          <router-link class="footer_item" to="/index"
-            ><img
-              :src="
-                show_type == 'mission'
-                  ? require('@/assets/xinguang/画板 1_slices/任务1 拷贝@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/任务1 拷贝 2@2x.png')
-              "
-            /><span>任务</span></router-link
-          >
-          <router-link class="footer_item" to="/user"
-            ><img
-              :src="
-                show_type == 'info'
-                  ? require('@/assets/xinguang/画板 1_slices/我 的 拷贝@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/我 的 拷贝 2@2x.png')
-              "
-            /><span>我的</span></router-link
-          >
-        </div>
-      </div>
-    </div> -->
     <kefu></kefu>
   </div>
 </template>
@@ -131,7 +91,7 @@ router.beforeEach((to, from, next) => {
   setTimeout(() => {
     window.$('body').scrollTop(0)
   })
-  
+
   next()
 })
 export default {
@@ -152,13 +112,15 @@ export default {
       idfa: '',
     }
   },
-  
+
   beforeUpdate() {
     this.path = path
     this.title = title
     this.currentPath = currentPath
-    console.log('this.$route :>> ', this.$route);
-    const lang = this.$route.meta ? this.$route.meta.lang || undefined : undefined
+    console.log('this.$route :>> ', this.$route)
+    const lang = this.$route.meta
+      ? this.$route.meta.lang || undefined
+      : undefined
     if (lang) {
       this.title = this.$t(lang)
     }
@@ -226,15 +188,48 @@ export default {
   },
 }
 </script>
-<style lang="less" scoped>
-.paddingTop {
-  padding-top: 50px;
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
+</style>
 
+<style lang="less" scoped>
 #app {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  .header {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding: 0 22px 14px;
+
+    .box {
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 18px;
+        height: 16px;
+      }
+    }
+
+    span {
+      width: 100%;
+      font-size: 28px;
+      font-family: PingFang SC;
+      font-weight: 600;
+      color: #000000;
+      margin-top: 8px;
+    }
+  }
 
   .footer_nav {
     position: fixed;
@@ -279,42 +274,8 @@ export default {
   }
 }
 
-.btn-group img {
-  // background-color: #4CAF50; /* Green background */
-  // border: 1px solid green; /* Green border */
-  // color: white; /* White text */
-  // padding: 10px 24px; /* Some padding */
-  // cursor: pointer; /* Pointer/hand icon */
-  // float: left; /* Float the buttons side by side */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: '';
-  clear: both;
-  display: table;
-}
-
-.btn-group img:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group img:hover {
-  // opacity: 10px;
-  // border-radius: 50px;
-  //    background-color: #3e8e41;
-}
-
 #app ::-webkit-scrollbar {
   width: 0;
   height: 0;
-}
-</style>
-
-<style lang="less">
-* {
-  flex-shrink: 0;
-  box-sizing: border-box;
 }
 </style>
