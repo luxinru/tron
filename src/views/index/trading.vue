@@ -30,10 +30,10 @@
 						<span>{{item.money}}</span>
 						<span>{{ $t('quantifying_transaction_revenue') }}</span>
 					</div>
-					<div v-if="item.type == 2" class="btn" @click="receive(item.id)">
+					<div v-if="item.type == 2 && Number(item.money) > 0" class="btn" @click="receive(item.id)">
 						{{ $t('receive') }}
 					</div>
-					<div  v-if="item.type == 1" class="btn active">
+					<div  v-else class="btn active">
 						{{ $t('receive') }}
 					</div>
 				</div>
