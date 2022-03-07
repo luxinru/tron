@@ -8,7 +8,7 @@
           color="#000"
           @click="$router.back()"
         />
-        Notifcation
+        {{ $t('notifcation') }}
       </div>
     </div>
     <div class="main">
