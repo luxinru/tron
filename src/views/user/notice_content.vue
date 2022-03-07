@@ -23,7 +23,7 @@
         />
       </div>
       <div class="content">
-        <span class="title">www.trx.cab</span>
+        <span class="title">www.trxbbg.com</span>
         <div class="box" v-html="data.content"></div>
 
         <img src="@/assets/tron/Notifcation2_slices/024ec4ef7ffa4e2fbc2ffc6fa56804acda1189461c7dd-tXq24N_fw1200.png" alt="">
