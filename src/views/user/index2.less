@@ -1,0 +1,435 @@
+.my-index-container {
+    min-height: 100%;
+    background-color: #F7F7F8;
+    padding-bottom: 30px;
+    font-family: PingFang SC;
+    .my-index-header {
+        background: linear-gradient(39deg, #1D3AF6 0%, #2B77FC 100%);
+        padding: 60px 20px 45px;
+        &-info {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 30px;
+            &-left {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                .user-icon {
+                    width: 65px;
+                    height: 65px;
+                    background-image: url("../index/image/home8.png");
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                }
+                .info-left-right {
+                    flex: 1;
+                    padding-left: 20px;
+                    // display: flex;
+                    .cheng{
+                        height: 20px;
+                        font-size: 12px;
+                        font-weight: 500;
+                        flex: 1;
+                        border-radius: 10px;
+                        color: #ffd700;
+                        display: flex;
+                        align-items: flex-end;
+                        i{
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            background-image: url("./../../assets/images/shufeng/my/my-9.png");
+                            background-size: 100% 100%;
+                            background-repeat: no-repeat;
+                            vertical-align: middle;
+                            margin:0px 10px;
+                        }
+                    }
+                    .user-name {
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: rgb(228, 161, 161);
+                        padding-bottom: 8px;
+                    }
+                    .user-vip{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .vip-icon {
+                        display: inline-block;
+                        width: 22px;
+                        height: 15px;
+                        background-image: url("./../../assets/images/shufeng/my/my-2.png");
+                        background-size: 100% 100%;
+                        background-repeat: no-repeat;
+                        vertical-align: middle;
+                    }
+                    .vip-name {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: #F5C164;
+                        vertical-align: middle;
+                        padding-left: 5px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+            &-right {
+                .line-service-icon {
+                    width: 21px;
+                    height: 20px;
+                    background-image: url("./../../assets/images/shufeng/my/my-1.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    margin-right: 7px;
+                }
+            }
+        }
+        .my-user-info-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 6px;
+            &-item {
+                text-align: center;
+                .item-num {
+                    font-size: 17px;
+                    font-family: DIN Alternate;
+                    font-weight: bold;
+                    color: #FFFFFF;
+                    padding-bottom: 10px;
+                }
+                .item-name {
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    .my-assets-content {
+        padding: 0 13px 30px;
+        margin-top: -23px;
+        .my-user-info-box {
+            display: flex;
+            justify-content: space-between;
+            min-height: 104px;
+            padding: 15px 20px;
+            //background-image: url("./../../assets/images/shufeng/my/my-2.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            .my-user-info-left {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                // justify-content: space-between;
+                // padding-right: 10px;
+            }
+            .my-user-info-right {
+                width: auto;
+                padding-left: 20px;
+                padding-right: 10px;
+                text-align: center;
+                border-left: 1px solid #6D79A3;
+                .user-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    //background-image: url("../index/image/home8.png");
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                }
+                .user-name {
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: #1E3181;
+                    padding: 10px 0 0;
+                }
+                .vip-icon {
+                    display: inline-block;
+                    width: 11px;
+                    height: 13px;
+                    background-image: url("./../../assets/images/shufeng/my/my-3.png");
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    vertical-align: bottom;
+                }
+                .vip-name {
+                    font-size: 9px;
+                    font-weight: 400;
+                    color: #1E3181;
+                    padding-left: 9px;
+                    vertical-align: middle;
+                }
+            }
+            .my-user-info-top {
+                &-item {
+                    text-align: center;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    &-title {
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #1E3181;
+                        // padding-top: 10px;
+                    }
+                    &-number {
+                        font-size: 28px;
+                        font-family: DIN Alternate;
+                        font-weight: bold;
+                        color: #1E3181;
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+        .my-user-info-bottom {
+            display: flex;
+            justify-content: space-between;
+            background: linear-gradient(-90deg, #FED4A4 0%, #FFF6D8 100%);
+            border-radius: 7px;
+            padding: 13px 15px 15px;
+            margin-bottom: 11px;
+            &-btn {
+                width: 50%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 2px;
+                padding-right: 25px;
+                &.two-btn {
+                    padding-left: 13px;
+                    border-left: 1px solid #AC7957;
+                    padding-right: 10px;
+                    .bottom-btn-icon {
+                        background-image: url("./../../assets/images/shufeng/my/my-4.png");
+                    }
+                }
+                .bottom-btn-text {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #9E6644;
+                    padding-right: 14px;
+                    .van-icon {
+                        vertical-align: middle;
+                    }
+                    > span {
+                        vertical-align: middle;
+                    }
+                }
+                .bottom-btn-icon {
+                    width: 27px;
+                    height: 27px;
+                    background-image: url("./../../assets/images/shufeng/my/my-3.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+        .my-user-record-list {
+            background: #FFFFFF;
+            border-radius: 7px;
+            padding: 19px 16px 22px;
+            margin-bottom: 13px;
+            &-title {
+                font-size: 13px;
+                font-weight: bold;
+                color: #333333;
+                padding-bottom: 25px;
+            }
+            &-info {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 9px;
+                .list-info-item {
+                    text-align: center;
+                    &-icon {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        &.one-icon {
+                            background-image: url("./../../assets/images/shufeng/my/my-5.png");
+                        }
+                        &.two-icon {
+                            width: 21px;
+                            height: 19px;
+                            background-image: url("./../../assets/images/shufeng/my/my-6.png");
+                        }
+                        &.three-icon {
+                            width: 18px;
+                            background-image: url("./../../assets/images/shufeng/my/my-7.png");
+                        }
+                        &.four-icon {
+                            width: 19px;
+                            height: 18px;
+                            background-image: url("./../../assets/images/shufeng/my/my-8.png");
+                        }
+                    }
+                    &-text {
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: #333333;
+                        padding-top: 12px;
+                    }
+                }
+            }
+        }
+        .my-fruit-goods-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            background: #FFFFFF;
+            border-radius: 7px;
+            margin-bottom: 13px;
+            .my-fruit-goods-left {
+                display: flex;
+                align-items: center;
+                &-icon {
+                    width: 26px;
+                    height: 23px;
+                    background-image: url('./../../assets/images/huaguoyuan/my/my-4.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+                &-text {
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: #333333;
+                    padding-left: 11px;
+                }
+                &-sub-text {
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: #CCCCCC;
+                    padding-left: 17px;
+                }
+            }
+        }
+        .my-menu-list-box {
+            background: #FFFFFF;
+            border-radius: 7px;
+            padding: 19px 16px;
+            margin-bottom: 13px;
+            .my-menu-list-title {
+                font-size: 13px;
+                font-weight: bold;
+                color: #333333;
+                padding-bottom: 25px;
+            }
+            .my-menu-list-item-box {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 10px;
+                & + .my-menu-list-item-box {
+                    padding-top: 20px;
+                }
+            }
+            .my-menu-list-item {
+                //display: flex;
+                //align-items: center;
+                //justify-content: space-between;
+                //padding-left: 11px;
+                text-align: center;
+                width: 55px;
+                &-icon {
+                    display: inline-block;
+                    width: 39px;
+                    height: 39px;
+                    > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &-text {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #484848;
+                    padding-top: 9px;
+                }
+                //& + .my-menu-list-item {
+                //    padding-top: 40px;
+                //}
+                //&-left {
+                //    display: flex;
+                //    align-items: center;
+                //    &-icon {
+                //        > img {
+                //            display: block;
+                //            width: 100%;
+                //            height: 100%;
+                //        }
+                //    }
+                //    &-text {
+                //        font-size: 16px;
+                //        font-weight: 500;
+                //        color: #333333;
+                //        // padding-left: 21px;
+                //    }
+                //}
+                //&-right {
+                //    display: flex;
+                //    align-items: center;
+                //    .right-text {
+                //        font-size: 14px;
+                //        font-weight: 500;
+                //        color: #999999;
+                //        padding-right: 10px;
+                //    }
+                //}
+            }
+        }
+        .my-assets-list-item {
+            padding: 15px 0;
+            text-align: center;
+            .item-num {
+                color: #292929;
+                font-size: 24px;
+                font-weight: bold;
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .item-text {
+                font-size: 14px;
+                color: #8a5c19;
+                margin-top: 10px;
+            }
+        }
+
+        .my-assets-footer {
+            // margin-top: 80px;
+            padding: 20px 16px;
+            justify-content: space-around;
+            .my-assets-footer-btn {
+                width: 140px;
+                height: 40px;
+                background: linear-gradient(-90deg, #ff6621, #fd8606);
+                border-radius: 7px;
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+    }
+
+    .log-out {
+        width: 349px;
+        height: 56px;
+        background: linear-gradient(-90deg, #212c67, #212c67);
+        border-radius: 7px;
+        margin: 10px 13px 0;
+        font-size: 15px;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        line-height: 56px;
+    }
+}

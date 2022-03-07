@@ -1,0 +1,286 @@
+.apply-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  background: rgba(247, 246, 246, 1);
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      color: rgba(255, 255, 255, 1);
+
+      i {
+        position: absolute;
+        left: 16px;
+      }
+    }
+  }
+
+  .apply-header {
+    width: 100%;
+    height: 220px;
+    background: url('~@/assets/xinguang/立即投标_slices/图层 2@2x.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .user_money {
+    width: 348px;
+    height: 147px;
+    background: #FFFFFF;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -117px;
+
+    div {
+      font-size: 15px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #3A3D46;
+    }
+
+    .available-money {
+      font-size: 43px;
+      font-family: DIN Alternate;
+      font-weight: bold;
+      color: #3A3D46;
+      margin-top: 20px;
+    }
+  }
+
+  .apply-form-container {
+    padding: 0 8px;
+    margin-top: 20px;
+    border-radius: 7px;
+
+    .apply-form-top {
+      height: 12px;
+      background: #102691;
+      border-radius: 6px;
+    }
+
+    .apply-form-box {
+      width: 348px;
+      background: #FFFFFF;
+      border-radius: 7px;
+      padding: 24px 20px 14px;
+      background: #FFFFFF;
+
+      .apply-form-money {
+        text-align: center;
+
+        &-title {
+          font-size: 13px;
+          font-weight: 500;
+          color: #414141;
+          padding-bottom: 13px;
+        }
+
+        &-sub-title {
+          font-size: 13px;
+          font-weight: 400;
+          color: #8897A6;
+          padding-bottom: 15px;
+        }
+
+        &-input {
+          padding: 0 59px 23px;
+          border-bottom: 1px solid #E9EAEC;
+          display: flex;
+          position: relative;
+
+          p {
+            width: 43px;
+            height: 43px;
+            background: #cccccc;
+            line-height: 43px;
+            border-radius: 5px;
+          }
+
+          .add {
+            position: absolute;
+            right: 12%;
+            z-index: 999;
+          }
+
+          .jian {
+            position: absolute;
+            left: 12%;
+            z-index: 999;
+          }
+
+          /deep/.van-field {
+            padding: 0;
+            height: 43px;
+            background: #F9F9FC;
+            border-radius: 7px;
+
+            .van-field__body {
+              height: 100%;
+
+              input {
+                height: 100%;
+                padding: 10px 10px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 20px;
+              }
+
+            }
+          }
+        }
+
+      }
+
+      .apply-form-item {
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 1px solid #E9EAEC;
+        font-size: 15px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &-title {
+          width: 60px;
+          color: #414141;
+          margin-right: 60px;
+        }
+
+        &-info {
+          flex: 1;
+          text-align: right;
+          color: #000000;
+
+          .item-info {
+            /deep/.van-stepper__input {
+              min-width: 80px;
+            }
+
+            /deep/.van-stepper__minus {
+              color: #000000;
+              margin-right: 9px;
+              background-color: transparent;
+              border: 1px solid transparent;
+            }
+
+            /deep/.van-stepper__plus {
+              color: #000000;
+              margin-left: 9px;
+              background-color: transparent;
+              border: 1px solid transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .apply-form-prompt {
+      font-size: 12px;
+      font-weight: 500;
+      margin: 13px 0;
+      text-align: right;
+      color: #e12e2e;
+    }
+
+
+
+    .transaction-forget-password {
+      padding: 20px 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: #676D73;
+      text-align: right;
+    }
+
+    .transaction-btn {
+      width: 299px;
+      height: 45px;
+      background: #E9C58C;
+      border-radius: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #FFFFFF;
+      margin: 20px auto;
+    }
+  }
+
+  .transaction-box {
+    width: 348px;
+    height: 151px;
+    background: #FFFFFF;
+    border-radius: 7px;
+    overflow: hidden;
+    padding: 20px;
+    margin-top: 20px;
+
+    .transaction-title {
+      width: 100%;
+      font-size: 13px;
+      font-weight: bold;
+      color: #414141;
+      padding-bottom: 17px;
+    }
+
+    .transaction-sub-title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(233, 197, 140, 1);
+      padding-top: 17px;
+    }
+
+    .transaction-prompt {
+      width: 100%;
+      height: 40px;
+      background: #FFFFFF;
+      border: 1px solid #DEDDE0;
+      /deep/.van-cell {
+        padding: 0;
+        height: 100%;
+        background: #F9F9FC;
+        border-radius: 7px;
+
+        .van-field__body {
+          height: 100%;
+
+          input {
+            height: 100%;
+            padding: 10px 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #414141;
+          }
+        }
+
+        //.transaction-input {
+        //    font-size: 15px;
+        //    color: #414141;
+        //}
+      }
+    }
+  }
+}

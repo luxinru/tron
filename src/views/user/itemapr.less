@@ -1,0 +1,353 @@
+.investment-record-detail-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  background: rgba(247, 246, 246, 1);
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 99;
+
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      color: rgba(255, 255, 255, 1);
+
+      i {
+        position: absolute;
+        left: 16px;
+      }
+    }
+  }
+
+  .record-detail-header-box {
+    width: 100%;
+    height: 220px;
+    background: url('~@/assets/xinguang/立即投标_slices/图层 2@2x.png') no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .info_box {
+    width: 348px;
+    height: 139px;
+    background: #FFFFFF;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -105px;
+    padding: 24px;
+
+    .header-top {
+      width: 100%;
+      display: flex;
+
+      &-item {
+        flex: 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .header-title {
+          font-size: 27px;
+          font-family: DIN Alternate;
+          font-weight: bold;
+          color: #2A292F;
+        }
+
+        .header-time {
+          font-size: 13px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #2A292F;
+          margin-top: 14px;
+        }
+      }
+    }
+
+    .header-bottom {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+
+      div {
+        flex: 1 0;
+        font-size: 13px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #2A292F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .record-detail-list {
+    width: 100%;
+    padding: 0 13px;
+
+    .record-detail-list-box {
+      .investment-list-box {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        margin-top: 16px;
+
+        .investment-list-line {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-right: 10px;
+          text-align: center;
+
+          &-top {
+            width: 8px;
+            height: 8px;
+            border: 2px solid #B7B7B7;
+            border-radius: 50%;
+            margin-bottom: 4px;
+          }
+
+          &-bottom {
+            height: calc(~'100% - 8px');
+            border-left: 2px dashed #B7B7B7;
+          }
+        }
+
+        .investment-list-info-box {
+          flex: 1;
+
+          .list-info-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 19px;
+            background: rgba(255, 244, 230, 1);
+
+            .project-tag {
+              padding: 6px 12px;
+              background: rgba(233, 197, 140, 1);
+              border-radius: 11px;
+              font-size: 12px;
+              font-weight: 500;
+              color: #fff;
+              transform: scale(11 / 12);
+            }
+
+            &-left {
+              flex: 1;
+              font-size: 15px;
+              font-weight: 500;
+              color: #FF8C00;
+            }
+
+            &-right {
+              width: auto;
+              font-size: 13px;
+              font-weight: 500;
+              color: #023EFE;
+            }
+          }
+        }
+
+        .investment-list-info {
+          flex: 1;
+          background: #FFFFFF;
+          border-radius: 7px;
+          padding: 15px 15px 16px 17px;
+          display: flex;
+
+          .project-name-box {
+            display: flex;
+
+            .project-name {
+              flex: 1;
+              padding-right: 10px;
+              font-size: 15px;
+              line-height: 18px;
+              font-weight: bold;
+              color: #323232;
+              padding-bottom: 10px;
+            }
+
+            .status-icon {
+              width: 21px;
+              height: 21px;
+              background-image: url("./../../assets/images/shufeng/project/project-1.png");
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+          }
+
+          .project-money {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &:last-child {
+              margin-left: 16px;
+            }
+
+            &.one {
+              padding-bottom: 12px;
+            }
+
+            &-left {
+              font-size: 13px;
+              font-weight: 500;
+              color: #2D2D2D;
+              display: flex;
+              flex-direction: column;
+
+              span {
+                font-size: 11px;
+                font-weight: 500;
+                color: #6F6D70;
+                transform: scale(11 / 12);
+
+                &:last-child {
+                  font-size: 21px;
+                  font-weight: bold;
+                  color: #0E0E0E;
+                  margin-top: 10px;
+                  transform: scale(1);
+                }
+              }
+            }
+
+            &-right {
+              font-size: 13px;
+              font-weight: 500;
+              text-decoration: underline;
+              color: #023EFE;
+            }
+          }
+        }
+
+        .footer {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 19px;
+
+          div {
+            font-size: 13px;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #6F6D70;
+          }
+
+          .status {
+            font-size: 13px;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #E9C58C;
+          }
+        }
+      }
+    }
+  }
+
+  .record-detail-list-item {
+    background-color: #FFFFFF;
+    border-radius: 13px;
+    margin-top: 15px;
+    padding: 15px 67px 19px 18px;
+    position: relative;
+    overflow: hidden;
+
+    .top {
+      display: flex;
+      align-items: center;
+
+      .top-num {
+        background-color: #D6E9FE;
+        border: 1px solid #0F79FF;
+        border-radius: 3px;
+        line-height: 20px;
+        padding: 0 8px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #0F79FF;
+        flex-shrink: 0;
+      }
+
+      .top-title {
+        font-size: 15px;
+        font-weight: bold;
+        color: #000000;
+        margin-left: 9px;
+      }
+    }
+
+    .middle {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 13px;
+
+      .middle-time {
+        color: #6F6D70;
+      }
+
+      .middle-status {
+        color: #0F79FF;
+        margin-left: 8px;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 17px;
+
+      .bottom-left,
+      .bottom-right {
+        text-align: center;
+
+        .bottom-money {
+          font-size: 21px;
+          font-family: DIN Alternate;
+          font-weight: bold;
+          color: #0F79FF;
+        }
+
+        .bottom-title {
+          font-size: 12px;
+          font-weight: 500;
+          color: #6F6D70;
+          margin-top: 7px;
+        }
+      }
+    }
+
+    .list-item-right {
+      position: absolute;
+      width: 100px;
+      line-height: 20px;
+      background-color: #0F79FF;
+      text-align: center;
+      top: 10px;
+      right: -30px;
+      transform: rotate(45deg);
+      font-size: 12px;
+      font-weight: 500;
+      color: #FFFFFF;
+    }
+  }
+}

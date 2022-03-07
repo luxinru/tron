@@ -1,0 +1,178 @@
+.item-container {
+  width: 100%;
+  height: 100%;
+  background: rgba(242, 245, 251, 1);
+  overflow: scroll;
+
+  .video-player {
+    margin-top: 10px;
+  }
+
+  .item-header {
+    background: linear-gradient(0deg, #E0BB7C 0%, #EFCC96 100%);
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+
+    .tree-notice-box {
+
+      .tree-notice {
+        background-color: #fff;
+        border-radius: 16px;
+        margin: 16px 0;
+        padding: 0 15px;
+
+        /deep/.van-notice-bar {
+          padding: 0;
+          height: 31px;
+          background-color: transparent !important;
+          font-size: 13px;
+          font-weight: 500;
+          color: #949494;
+
+
+
+          >img {
+            width: 14px;
+            height: 14px;
+            margin-right: 10px;
+          }
+
+
+
+        }
+      }
+    }
+
+    .tree-header-swipe {
+      height: 167px;
+      border-radius: 7px;
+      margin-top: 16px;
+
+      .bannerSwp {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+
+        /deep/.van-swipe {
+          width: 100%;
+          height: 100%;
+          border-radius: 0px;
+        }
+      }
+    }
+
+    .item-list-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      border-radius: 7px;
+      overflow: hidden;
+  
+      .top {
+        width: 100%;
+        height: 88px;
+      }
+  
+      .imgs {
+        display: flex;
+  
+        img {
+          flex: 1 0;
+          height: 73px;
+        }
+      }
+    }
+
+
+  }
+
+  .item-content-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    margin-top: 90px;
+    .title {
+      font-size: 17px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #000000;
+    }
+  }
+
+  // .item-menu-list-box {
+  //     background: #FFFFFF;
+  //     border-radius: 7px;
+  //     padding: 29px 12px 17px;
+  //     display: flex;
+  //     justify-content: space-between;
+  //     align-items: center;
+  //     .list-item-box {
+  //         position: relative;
+  //         .list-item-hint {
+  //             position: absolute;
+  //             top: -20px;
+  //             right: -18px;
+  //             background: #FC6F15;
+  //             border-radius: 7px;
+  //             padding: 3px 6px;
+  //             text-align: center;
+  //             font-size: 9px;
+  //             font-weight: bold;
+  //             color: #FFFFFF;
+  //         }
+  //     }
+  //     .list-item {
+  //         display: flex;
+  //         flex-direction: column;
+  //         align-items: center;
+  //         justify-content: center;
+  //         &-icon {
+  //             width: 27px;
+  //             height: 25px;
+  //             background-size: cover;
+  //             background-repeat: no-repeat;
+  //             &.one-icon {
+  //                 background-image: url("./../../assets/images/shufeng/project/project-3.png");
+  //             }
+  //             &.two-icon {
+  //                 height: 27px;
+  //                 background-image: url("./../../assets/images/shufeng/project/project-4.png");
+  //             }
+  //             &.three-icon {
+  //                 width: 30px;
+  //                 height: 27px;
+  //                 background-image: url("./../../assets/images/shufeng/project/project-5.png");
+  //             }
+  //             &.four-icon {
+  //                 height: 26px;
+  //                 background-image: url("./../../assets/images/shufeng/project/project-6.png");
+  //             }
+  //             &.five-icon {
+  //                 width: 25px;
+  //                 height: 25px;
+  //                 background-image: url("./../../assets/images/shufeng/project/project-7.png");
+  //             }
+  //         }
+  //         &-text {
+  //             font-size: 13px;
+  //             font-weight: 500;
+  //             color: #13334D;
+  //             padding-top: 8px;
+  //         }
+  //     }
+  // }
+  .item-advertise-box {
+    margin-top: 13px;
+
+    .item-advertise-back {
+      height: 109px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: url("./../../assets/images/shufeng/project/project-2.png");
+    }
+  }
+}

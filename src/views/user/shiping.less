@@ -1,0 +1,47 @@
+.vjs-custom-skin {
+  width: 100%;
+  height: 100%;
+  /deep/ .vjs-progress-control {
+    display: none;
+  }
+  /deep/ .vjs-fullscreen-control {
+    display: none;
+  }
+  /deep/ .video-js {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft YaHei","微软雅黑",sans-serif;
+    .vjs-progress-control {
+      display: none;
+    }
+    .vjs-big-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -1.5em;
+      margin-top: -1em;
+    }
+    .vjs-play-progress {
+      background-color: #00CF7D;
+    }
+    .vjs-playback-rate {
+      display: none;
+    }
+    .vjs-time-control {
+      min-width: 1em;
+      padding: 0;
+      margin: 0 .1em;
+      margin-right: .5em;
+      text-align: center;
+      display: block;
+      order: 0;
+    }
+  }
+  /deep/ .vjs-paused, /deep/ .vjs-ended {
+    .vjs-big-play-button {
+      display: block;
+    }
+  }
+
+}

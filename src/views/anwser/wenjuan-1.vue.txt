@@ -1,0 +1,223 @@
+<template>
+    <div class="main">
+		<div style="text-align: center;" ><img class="logo" src="./image/wenjuan.png" alt=""></div>        
+        <div class="rule_box">
+            <div class="rule_title">{{data.title}}</div>
+            <div style="text-align: center;" >	
+            <div class="rule_info_box">
+                <div ref="anwser" class="anwser_item" v-for="(v, k) in data.values" :key="k"
+                     @click="apply(v.id, $event)">{{v.value}}
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</template>
+
+<script>
+    import Vue from 'vue';
+    import Fetch from '../../utils/fetch'
+    import {CountDown} from 'vant';
+    import {Dialog} from 'vant';
+
+    Vue.use(CountDown);
+
+    export default {
+        name: "index",
+        data() {
+            return {
+                data: {
+                    title: '',
+                    values: [],
+                    m: 10 * 1000,
+					type: 1,
+					images: '',
+					cid : '',
+                }
+            }
+        },
+        created() {
+            this.$parent.footer(false);
+        },
+        mounted() {
+            this.$refs.countDown.pause();
+            this.start();
+        },
+        methods: {
+            start() {
+                Fetch('/index/getWenjuan', {type: this.data.type}).then(res => {
+                    if(res.data.coss == 1){
+                    			Dialog.alert({
+                    			    title: '提示',
+                    			    message: res.info,
+                    			    showCancelButton: true,
+                    			    confirmButtonText: "去认证",
+                    			}).then(() => {
+                    			    this.$router.push('/auth');
+                    			}).catch(() => {
+                    			    
+                    			})
+                    }else{
+                    	//this.data = res.data;
+                    	this.data.title = res.data.title;
+                    	this.data.values = res.data.values;
+                    	this.data.m = res.data.m * 1000 + 1000;
+                    	this.data.images = res.data.image;
+                		
+                    	this.$refs.countDown.reset();
+                    	this.data.lid = res.data.lid;
+                    	this.data.type = 3;
+                    	this.data.cid = res.data.key;
+                    	Dialog.alert({
+                    	    message: res.data.status = res.info,
+                    	   // message: res.data.status === 'Y' ? '点击'
+                    	}).then(() => {
+                    	    /* if (res.code > 1) {
+                    	        this.setStyle();
+                    	        this.start();
+                    	    } else {
+                    	        this.$router.replace('/anwser/stop');
+                    	    } */
+                    	});
+                    }
+                });
+            },
+            apply(id, event) {
+                this.setStyle();
+                event.target.style.background = '';
+                this.stop(id)
+            },
+            setStyle(){
+                this.$refs.anwser.forEach((v) => {
+                    v.style.background = ''
+                });
+            },
+            stop(id = 0) {
+				if(id != this.data.cid){
+					this.data.type = 2;
+				}
+                this.$refs.countDown.pause();
+                Fetch('/index/getWenjuan', {type: this.data.type}).then(res => {
+					//this.data = res.data;
+					this.data.title = res.data.title;
+					this.data.values = res.data.values;
+					this.data.m = res.data.m * 1000 + 1000;
+					this.data.images = res.data.image;
+					this.$refs.countDown.reset();
+					this.data.lid = res.data.lid;
+					this.data.type = 3;
+					this.data.cid = res.data.key;
+					
+                    Dialog.alert({
+                        message: res.data.status = res.info,
+                       // message: res.data.status === 'Y' ? '点击'
+                    }).then(() => {
+                        /* if (res.code > 1) {
+                            this.setStyle();
+                            this.start();
+                        } else {
+                            this.$router.replace('/anwser/stop');
+                        } */
+                    });
+                });
+            }
+        }
+    };
+</script>
+
+<style lang="less" scoped>
+    .main {
+        height: 100%;
+        // background-image: url(./image/bg.png);
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        // background-position: top center;
+        background-color: #ffcb03;
+        padding-bottom: 40px;
+    }
+
+    .main .rule_box .rule_info_box .answer_item.answer_item_active {
+        background: #FDF9F0;
+    }
+
+    .main .logo {
+        display: block;
+        width: 100%;
+        margin: 0 auto 14px auto;
+    }
+
+    .main .rule_box {
+        width: 92.78%;
+        margin: 0 auto;
+        border-radius: 12px;
+        background-color: #434863;
+        padding: 14px 0 60px 0;
+    }
+
+    .main .rule_box .rule_title {
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        line-height: 1.7;
+        padding: 0 14px;
+    }
+
+    .main .rule_box .rule_info_box {
+        text-align: left;
+        font-size: 14px;
+        color: #fff;
+        line-height: 1.7;
+        padding-top: 34px;
+    }
+
+    .main .rule_box .rule_info_box .anwser_item {
+        width: 98%;
+		margin: 0 auto;
+        min-height: 43;
+        line-height: 43px;
+        background: #FDF9F0;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #e12e2e;
+        text-align: center;    
+        margin-bottom: 15px;
+
+    }
+
+    .main .rule_box .rule_info_box .anwser_item.anwser_item_active {
+        background: linear-gradient(-90deg, #EBD18F 0%, #F4E5BD 100%);
+        color: #6A532C;
+    }
+
+    .main .mt3 {
+        width: 100%;
+        height: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: 26px auto 0 auto;
+        font-size: 16px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #C98C56;
+    }
+
+    .main .mt3 .mm {
+        font-size: 16px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #f4d295;
+        padding: 0 10px;
+    }
+
+    @media (max-width: 960px) {
+    }
+</style>

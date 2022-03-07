@@ -1,0 +1,128 @@
+.index-container {
+  position: relative;
+  width: 100%;
+  height: 812px;
+  font-family: PingFang SC;
+  background-image: url("~@/assets/xinguang/任务中心_slices/图层 2@2x.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 107px;
+
+    .header-cont-text {
+      font-size: 16px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #FFFFFF;
+      margin-top: 12px;
+    }
+
+    .header-cont-number {
+      font-size: 33px;
+      font-family: DIN Alternate;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+  }
+
+  .task-list-box {
+    width: 100%;
+    background: #FFFFFF;
+    margin-top: 66px;
+
+    .task-list-item {
+      width: 100%;
+      margin-top: 12px;
+      display: flex;
+      height: 90px;
+      align-items: center;
+      padding: 0 27px;
+
+      &-left {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .item-icon {
+          width: 40px;
+          height: 40px;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+          &.icon-1 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/金币 (1) 拷贝@2x.png");
+          }
+
+          &.icon-2 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/邀请好友 (1)@2x.png");
+          }
+
+          &.icon-3 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/金币 (1) 拷贝@2x.png");
+          }
+
+          &.icon-4 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/认证 (1) 拷贝@2x.png");
+          }
+
+          &.icon-5 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/投资 (1) 拷贝@2x.png");
+          }
+
+          &.icon-6 {
+            background-image: url("~@/assets/xinguang/任务中心_slices/成语大全 拷贝@2x.png");
+          }
+        }
+
+        .item-title-box {
+          padding-left: 15px;
+        }
+
+        .item-title {
+          font-size: 16px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #2A2A2B;
+        }
+
+        .item-sub-title {
+          font-size: 13px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #949396;
+          margin-top: 12px;
+        }
+
+        .item-right {
+          font-size: 13px;
+          font-weight: 400;
+          color: #A5A5A5;
+        }
+      }
+
+      &-right {
+        width: 81px;
+        height: 29px;
+        line-height: 29px;
+        background: rgba(229, 196, 149, 1);
+        border-radius: 15px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        color: #FFFFFF;
+
+        &.active-btn {
+          background-color: #CACACA;
+        }
+      }
+    }
+  }
+}

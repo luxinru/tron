@@ -1,0 +1,122 @@
+.investment-container {
+  height: 100%;
+  background-color: #F5F5F5;
+  font-family: PingFang SC;
+  padding: 20px 24px 30px 20px;
+
+  .investment-list-box {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 4px;
+
+    .investment-list-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 10px;
+      text-align: center;
+
+      &-top {
+        width: 8px;
+        height: 8px;
+        border: 2px solid #B7B7B7;
+        border-radius: 50%;
+        margin-bottom: 4px;
+      }
+
+      &-bottom {
+        height: calc(~'100% - 8px');
+        border-left: 2px dashed #B7B7B7;
+      }
+    }
+
+    .investment-list-info {
+      flex: 1;
+      background: #FFFFFF;
+      border-radius: 7px;
+      margin-bottom: 17px;
+
+      .project-name {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: bold;
+        color: rgba(255, 140, 0, 1);
+        // height: 41px;
+        background: rgba(255, 244, 230, 1);
+        padding: 12px 19px;
+
+        .project-tag-box {
+          display: flex;
+          align-items: center;
+  
+          .project-tag {
+            padding: 6px 14px;
+            text-align: center;
+            background: rgba(233, 197, 140, 1);
+            border-radius: 11px;
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 1);
+            transform: scale(11 / 12);
+          }
+        }
+      }
+
+      .project-money {
+        margin: 14px 0;
+        flex: 1 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 19px;
+
+        .item {
+          flex: 1 0;
+          height: 100%;
+          display: flex;
+
+          .item_box {
+            flex: 1 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
+            justify-content: center;
+
+            .label {
+              font-size: 11px;
+              font-family: PingFang SC;
+              font-weight: 500;
+              color: #6F6D70;
+            }
+
+            .value {
+              font-size: 21px;
+              font-family: DIN Alternate;
+              font-weight: bold;
+              color: #0E0E0E;
+              margin-top: 10px;
+            }
+          }
+        }
+
+        .btn {
+          width: 82px;
+          height: 31px;
+          background: #D39A60;
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #FFFFFF;
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,314 @@
+.recharge-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  .tipss {
+    font-size: 7px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #ffffff;
+    // background: #FFF9F4;
+    // border: 1px solid #F7633A;
+    // border-radius: 4px;
+    margin-left: 11px;
+    padding: 3px 6px;
+    background: linear-gradient(90deg, #ff8426 0%, #ff1e4a 100%);
+    border-radius: 7px 7px 7px 0px;
+    position: relative;
+    top: -8px;
+  }
+  .recharge-header-box {
+    
+    .recharge-header {
+      height: 220px;
+      padding-top: 88px;
+      padding-left: 18px;
+
+      // background-image: url("./../../assets/images/boyue/recharge/recharge-1.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      .recharge-header-title {
+        font-size: 15px;
+        font-weight: 400;
+        color: #e1b06c;
+
+        padding-bottom: 18px;
+      }
+      .recharge-header-money {
+        font-size: 31px;
+        font-family: DIN Alternate;
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(0deg, #dbc6a5 0%, #e1af6a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+  .recharge-money-input-box {
+    width: 348px;
+    height: 130px;
+    background: url('~@/assets/xinguang/充值中心_slices/矩形 5 拷贝 24@2x.png') no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 19px;
+    
+    .recharge-money-input {
+      width: 100%;
+      height: 55px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(53, 27, 0, 0.4);
+
+      .recharge-money-input-title {
+        font-size: 20px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #351B00;
+        margin-right: 16px;
+      }
+      
+      .money-input {
+        flex: 1 0;
+        height: 100%;
+        background: transparent;
+        
+        font-size: 20px;
+        font-weight: 400;
+        color: #351B00;
+      }
+      ::-moz-placeholder {
+        color: rgba(53, 27, 0, 0.3);
+        font-size: 23px;
+      }
+      ::-webkit-input-placeholder {
+        color: rgba(53, 27, 0, 0.3);;
+        font-size: 23px;
+      }
+      :-ms-input-placeholder {
+        color: rgba(53, 27, 0, 0.3);;
+        font-size: 23px;
+      }
+    }
+
+    .recharge-money-tips {
+      width: 100%;
+      font-size: 13px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #626364;
+      margin-top: 15px;
+    }
+  }
+  .recharge-title-box {
+    display: flex;
+    align-items: center;
+    padding: 15px 13px;
+    background-color: #f4f4f4;
+    font-size: 15px;
+    color: #676767;
+    .recharge-title-line {
+      width: 3px;
+      height: 10px;
+      background-color: #d9a973;
+      margin-right: 10px;
+    }
+  }
+  .recharge-manner-box {
+    width: 100%;
+    margin-top: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .recharge-manner-info-box {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 13px 13px 0px 0px;
+      margin-top: -13px;
+      display: flex;
+      flex-direction: column;
+      padding: 0 14px;
+      .recharge-manner-info-title {
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: bold;
+        color: #2e2e2e;
+        margin-top: 32px;
+      }
+    }
+    .recharge-manner-header {
+      padding: 14px 0;
+      &-item {
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        width: 348px;
+        height: 60px;
+        background: #FFFFFF;
+        border: 1px solid #E3E3E5;
+        border-radius: 7px;
+        padding: 0 20px;
+        margin-bottom: 12px;
+
+        &-left {
+          display: flex;
+          align-items: center;
+          color: #626364;
+          margin-left: 19px;
+          font-size: 15px;
+          font-weight: 500;
+          .left-icon {
+            width: 21px;
+            height: 19px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 17px;
+            &.recharge_bank {
+              background-image: url('images/recharge_online.png');
+            }
+
+            &.recharge_wx_bank {
+              background-image: url('images/recharge_online.png');
+            }
+
+            &.recharge_alipay_bank {
+              background-image: url('images/recharge_online.png');
+            }
+
+            &.recharge_gz_bank {
+              background-image: url('images/recharge_online.png');
+            }
+
+            &.recharge_alipay {
+              background-image: url('images/recharge_alipay.png');
+            }
+
+            &.recharge_wx {
+              background-image: url('images/wx.png');
+            }
+
+            &.recharge_online_wechat {
+              background-image: url('images/wx.png');
+            }
+            &.recharge_alipay_app {
+              background-image: url('images/recharge_alipay.png');
+            }
+            &.recharge_pay_service {
+              background-image: url('images/pay_service.png');
+            }
+          }
+        }
+        .left-info-active {
+          color: rgba(233, 197, 140, 1);
+        }
+        &-right {
+          .radio-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(233, 197, 140, 1);
+            border-radius: 50%;
+            &.active-radio-icon {
+              position: relative;
+              &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                content: ' ';
+                width: 8px;
+                height: 8px;
+                background-color: rgba(233, 197, 140, 1);
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+
+        &-btn {
+          position: absolute;
+          right: 19px;
+          width: 68px;
+          height: 19px;
+          background: rgba(233, 197, 140, 0.2);
+          border-radius: 3px;
+          font-size: 12px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #E9C58C;
+          transform: scale(10 / 12);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+    .recharge-protocol-box {
+      display: flex;
+      align-items: center;
+      padding: 14px 0 27px;
+      font-size: 12px;
+      color: #555763;
+      .recharge-protocol-right {
+        margin-left: 9px;
+        font-size: 12px;
+        color: #555763;
+        .protocol-link {
+          color: #50a5ff;
+          cursor: pointer;
+          margin-left: 5px;
+        }
+      }
+    }
+    .recharge-remark-box {
+      width: 100%;
+      font-size: 13px;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #888888;
+      line-height: 18px;
+      display: flex;
+      flex-direction: column;
+      padding: 0 13px;
+      .recharge-remark-title {
+        width: 100%;
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #888888;
+        display: flex;
+        justify-content: center;
+        margin: 30px 0 17px 0;
+      }
+      > p {
+        margin-bottom: 4px;
+        line-height: 20px;
+      }
+    }
+    
+  }
+
+  .recharge-btn {
+    width: 285px;
+    height: 49px;
+    background: #E9C58C;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 28px auto 0;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+}

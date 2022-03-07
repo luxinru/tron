@@ -1,0 +1,315 @@
+.project-other-info-box img {
+  width: 100%;
+}
+
+.imgBox {
+  padding: 20px 10px !important;
+}
+
+.detail-container {
+  min-height: 100%;
+  padding: 21px 13px 90px;
+  background-color: #F5F5F5;
+  font-family: PingFang SC;
+
+  .project-item-container {
+    background: #FFFFFF;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 16px;
+
+    .project-img-box {
+      height: 164px;
+      // background-color: red;
+      border: none;
+
+      >img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .project-info-warp {
+      padding: 19px 17px;
+    }
+
+    .project-item-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 13px;
+
+      .project-name {
+        font-size: 15px;
+        font-weight: bold;
+        color: #333B4C;
+        padding-right: 10px;
+        line-height: 20px;
+        width: 230px;
+      }
+
+      .project-number {
+        height: 18px;
+        line-height: 18px;
+        padding: 0 8px;
+        background: #0F79FF;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: 400;
+        color: #FFFFFF;
+      }
+    }
+
+    .project-progress-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .project-progress-wrap {
+        flex: 1;
+        height: 13px;
+        border-radius: 7px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, .1);
+
+        .project-progress {
+          position: relative;
+          height: 13px;
+          border-radius: 7px;
+          background: linear-gradient(0deg, #5990FF 0%, #3954FB 100%);
+
+          &-icon {
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 7px;
+            background-image: url("./../../assets/images/shufeng/project/project-11.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+      .project-progress-value {
+        width: auto;
+        font-size: 11px;
+        font-weight: 500;
+        color: #1B67FF;
+        padding-left: 7px;
+      }
+    }
+
+    .project-tag-box {
+      display: flex;
+      align-items: center;
+      padding-bottom: 15px;
+
+      .project-tag-item {
+        border: 1px solid #FB6501;
+        padding: 3px 7px;
+        font-size: 11px;
+        font-weight: 400;
+        color: #F98A0B;
+        margin-left: 4px;
+
+        &:first-child {
+          margin-left: 0%;
+        }
+      }
+    }
+
+    .project-info-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5px 0;
+
+      &-item {
+        &-top {
+          font-size: 13px;
+          font-weight: 500;
+          color: #7F848F;
+          padding-top: 9px;
+        }
+
+        &-bottom {
+          font-size: 25px;
+          font-weight: bold;
+          color: #333B4C;
+
+          >span {
+            font-size: 13px;
+          }
+
+          &.one-bottom {
+            color: rgba(251, 101, 1, 1);
+          }
+        }
+      }
+    }
+
+  }
+
+  .project-info-item-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #000000;
+    padding-bottom: 24px;
+  }
+
+  /*交易规则*/
+  .project-rule-box {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
+    border-radius: 7px;
+    padding: 35px 20px 25px 30px;
+    margin-bottom: 15px;
+
+    .project-rule-item {
+      display: flex;
+      align-items: center;
+
+      &+.project-rule-item {
+        margin-top: 25px;
+      }
+
+      &-left {
+        width: 56px;
+        height: 59px;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &.one-icon {
+          margin-right: 5px;
+          background-image: url("./../../assets/images/shufeng/project/project-2.png");
+        }
+
+        &.two-icon {
+          width: 48px;
+          height: 60px;
+          margin-right: 13px;
+          background-image: url("./../../assets/images/shufeng/project/project-3.png");
+        }
+
+        &.three-icon {
+          width: 61px;
+          height: 54px;
+          background-image: url("./../../assets/images/shufeng/project/project-4.png");
+        }
+      }
+
+      &-right {
+        flex: 1;
+        padding-left: 24px;
+
+        .right-title {
+          font-size: 16px;
+          font-weight: bold;
+          color: #313130;
+          padding-bottom: 10px;
+        }
+
+        .right-sub-title {
+          font-size: 13px;
+          font-weight: 500;
+          color: #5F5F5F;
+        }
+      }
+    }
+  }
+
+  /*投资详情*/
+  .project-investment-box {
+    width: 336px;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
+    border-radius: 7px;
+    margin-bottom: 28px;
+    padding: 26px 23px;
+    margin-top: 16px;
+
+    .project-investment-info-box {
+      border: 1px solid #fff;
+      border-bottom: none;
+
+      .project-investment-info-item {
+        display: flex;
+        font-size: 13px;
+        font-weight: 500;
+        color: #819EFE;
+
+        &-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100px;
+          padding: 12px 12px;
+          line-height: 20px;
+          border-right: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+          background-color: rgba(233, 197, 140, 1);
+          color: #fff;
+        }
+
+        &-right {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 20px;
+          padding: 12px 12px;
+          background-color: rgba(243, 246, 251, 1);
+          border-bottom: 1px solid #fff;
+          color: rgba(233, 197, 140, 1);
+        }
+      }
+    }
+  }
+
+  .project-other-info-box {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 13px;
+
+    .project-other-info-text {
+      font-size: 15px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #8F95AA;
+      line-height: 20px;
+    }
+
+    .project-other-info-img {
+      height: 202px;
+      border-radius: 4px;
+      margin-top: 18px;
+      background-color: red;
+
+      >img {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .investment-btn {
+    position: fixed;
+    bottom: 0;
+    left: 51.5px;
+    bottom: 24px;
+    width: 272px;
+    height: 45px;
+    background: #E9C58C;
+    border-radius: 23px;
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
