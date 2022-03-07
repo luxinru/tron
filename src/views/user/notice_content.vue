@@ -1,34 +1,18 @@
 <template>
   <div class="page">
     <div class="header">
-      <div class="head">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#000"
-          @click="$router.back()"
-        />
-        Notifcation
-      </div>
-    </div>
-    <div class="main">
-      <div class="info">
-        <div class="value">
-          <span>{{ data.title }}</span>
-          <span>{{ data.add_time }}</span>
-        </div>
+      <div class="box">
         <img
-          src="@/assets/tron/Notifcation2_slices/135c032a6d99ee8c3e7ada5c43a1ae0b6a71d50219afd-VqFSc3_fw1200.png"
+          src="@/assets/tron/返回(2)@2x.png"
           alt=""
+          @click="$router.go(-1)"
         />
       </div>
-      <div class="content">
-        <span class="title">www.trx.cab</span>
-        <div class="box" v-html="data.content"></div>
-
-        <img src="@/assets/tron/Notifcation2_slices/024ec4ef7ffa4e2fbc2ffc6fa56804acda1189461c7dd-tXq24N_fw1200.png" alt="">
-      </div>
+      <span class="title">{{ data.title }}</span>
+      <span class="time">{{ data.add_time }}</span>
     </div>
+
+    <div class="main" v-html="data.content"></div>
   </div>
 </template>
 
@@ -66,80 +50,70 @@ export default {
 
 <style lang="less" scoped>
 .page {
-  background-color: #f5f5f5;
+  background-color: #fff;
   font-family: PingFang SC;
   // font-weight: 500;
   min-height: 100%;
-  .main {
-    margin: 12px auto;
-    width: 348px;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
-    padding: 26px;
+
+  .header {
+    width: 100%;
+    height: max-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 0 22px 14px;
 
-    .info {
+    .box {
       width: 100%;
-      height: 78px;
+      height: 44px;
       display: flex;
-
-      .value {
-        flex: 1 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        span {
-          font-size: 16px;
-          font-family: Arial;
-          font-weight: bold;
-          color: #4b4d59;
-
-          &:last-child {
-            font-size: 13px;
-            font-family: PingFang SC;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
-            margin-top: 24px;
-          }
-        }
-      }
-
+      align-items: center;
       img {
-        width: 106px;
-        height: 78px;
-        margin-left: 16px;
+        width: 18px;
+        height: 16px;
       }
     }
 
-    .content {
-      .title {
-        width: 100%;
-        font-size: 18px;
-        font-family: PingFang SC;
-        font-weight: bold;
-        color: #8a07e7;
-        display: flex;
-        justify-content: center;
-        margin-top: 16px;
-      }
+    .title {
+      width: 100%;
+      font-size: 28px;
+      font-family: PingFang SC;
+      font-weight: 600;
+      color: #000000;
+      margin-top: 8px;
+    }
 
-      .box {
-        font-size: 15px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.7);
-        line-height: 27px;
-        margin-top: 19px;
+    .time {
+      font-size: 13px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.8);
+      margin-top: 25px;
+    }
+  }
+
+  .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 21px;
+
+    /deep/ p {
+      font-size: 15px;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #000000;
+      line-height: 19px;
+      &:first-child {
+        margin-top: 0;
       }
+      margin-top: 11px;
 
       img {
-        width: 147px;
-        height: 118px;
-        margin-top: 16px;
+        width: 100%;
+      }
+
+      a {
+        color: rgba(94, 99, 231, 1);
       }
     }
   }

@@ -3,7 +3,7 @@
     <keep-alive>
       <div class="header" v-if="currentPath && title">
         <div class="box">
-          <img src="@/assets/tron/返回(2)@2x.png" alt="" @click="handleBack">
+          <img src="@/assets/tron/返回(2)@2x.png" alt="" @click="handleBack" />
         </div>
         <span>{{ title }}</span>
       </div>
@@ -16,61 +16,48 @@
         <img
           :src="
             show_type == 'tree'
-              ? require('@/assets/tron/icon_slices/home 拷贝.png')
-              : require('@/assets/tron/icon_slices/home 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/主页 拷贝.png')
+              : require('@/assets/tron/icon_slices/主页 拷贝 2.png')
           "
         />
-        <span :class="{ active: show_type == 'tree' }">{{ $t('home') }}</span>
       </router-link>
 
       <router-link class="footer_item" to="/trading">
         <img
           :src="
             show_type == 'trading'
-              ? require('@/assets/tron/icon_slices/交易 拷贝.png')
-              : require('@/assets/tron/icon_slices/交易 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/trading 拷贝.png')
+              : require('@/assets/tron/icon_slices/trading 拷贝 2.png')
           "
         />
-        <span :class="{ active: show_type == 'trading' }">{{
-          $t('trading')
-        }}</span>
       </router-link>
 
       <router-link class="footer_item" to="/new_invest"
-        ><img
-          :src="
-            show_type == 'new_invest'
-              ? require('@/assets/tron/icon_slices/invest_4 拷贝.png')
-              : require('@/assets/tron/icon_slices/invest_4 拷贝 2.png')
-          "
-        />
-        <span :class="{ active: show_type == 'new_invest' }">{{
-          $t('invest')
-        }}</span>
+        >
+
+        <div class="img_box">
+          <img src="@/assets/tron/投资组合.png" alt="">
+        </div>
       </router-link>
 
       <router-link class="footer_item" to="/new_share"
         ><img
           :src="
             show_type == 'new_share'
-              ? require('@/assets/tron/icon_slices/share 拷贝.png')
-              : require('@/assets/tron/icon_slices/share 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/分享 拷贝.png')
+              : require('@/assets/tron/icon_slices/分享 拷贝 2.png')
           "
         />
-        <span :class="{ active: show_type == 'new_share' }">{{
-          $t('share')
-        }}</span>
       </router-link>
 
       <router-link class="footer_item" to="/user"
         ><img
           :src="
             show_type == 'info'
-              ? require('@/assets/tron/icon_slices/mine_fill 拷贝.png')
-              : require('@/assets/tron/icon_slices/mine_fill 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/我 拷贝.png')
+              : require('@/assets/tron/icon_slices/我 拷贝 2.png')
           "
         />
-        <span :class="{ active: show_type == 'info' }">{{ $t('mine') }}</span>
       </router-link>
     </div>
     <kefu></kefu>
@@ -236,39 +223,53 @@ export default {
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 78px;
-    box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
+    height: 100px;
     margin: 0 auto;
     z-index: 998;
-    background-color: #fff;
-    color: #7a7e83;
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
-    overflow: hidden;
+    background: url('~@/assets/tron/矢量智能对象.png') no-repeat;
+    background-size: 100% 100%;
 
     .footer_item {
       flex: 1 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
 
       img {
-        height: 22px;
+        width: 16px;
+        margin-top: 37px;
       }
 
-      span {
-        font-size: 13px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        margin-top: 11px;
-        color: rgba(116, 116, 116, 1) '';
-        text-align: center;
+      &:nth-child(2) {
+        img {
+          width: 18px;
+        }
       }
 
-      .active {
-        color: #5e63e7;
+      &:nth-child(4) {
+        img {
+          width: 18px;
+        }
+      }
+
+      .img_box {
+        width: 66px;
+        height: 66px;
+        background: url('~@/assets/tron/椭圆 535.png') no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -19px;
+
+        img {
+          width: 19px;
+          height: 21px;
+          margin-top: 0;
+        }
       }
     }
   }

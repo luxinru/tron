@@ -112,7 +112,7 @@ export default new Router({
       name: 'notice',
       meta: {
         title: '消息中心',
-        hiddenTitle: true
+        lang: 'notifcation'
       },
       component: () =>
         import( /* webpackChunkName: "home" */ './views/user/notice.vue')

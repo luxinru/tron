@@ -9,7 +9,7 @@
         @select="onChangeLanguage"
       >
         <template #reference>
-          <img src="@/assets/tron/Home_slices/组 101.png" />
+          <img src="@/assets/tron/语言.png" />
         </template>
       </van-popover>
     </div>
