@@ -41,6 +41,10 @@
     <section class="quantity">
       <span class="title">{{ $t('trx_deposit_quantity') }}:</span>
       <div class="content">
+        <img
+          src="@/assets/tron/Mine_slices/image-removebg-preview (9).png"
+          alt=""
+        />
         <div class="info">
           <span class="value">{{data.money}}</span>
           <span class="value">{{data.promotion}}</span>
@@ -48,10 +52,6 @@
             {{ $t('recharge_text') }}
           </span>
         </div>
-        <img
-          src="@/assets/tron/Mine_slices/image-removebg-preview (9).png"
-          alt=""
-        />
       </div>
     </section>
 
