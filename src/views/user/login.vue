@@ -14,6 +14,8 @@
       </van-popover>
     </div>
 
+    <span class="logo_title">{{ $t('sign_in') }}</span>
+
     <div class="login-box">
       <span class="title">{{ $t('mobile_number') }}</span>
       <div class="item">
@@ -34,15 +36,12 @@
       </div>
 
       <div class="remember">
-        <van-checkbox v-model="checked" checked-color="rgba(138, 7, 231, 1)"
+        <van-checkbox v-model="checked" checked-color="rgba(213, 10, 10, 1)"
           >{{ $t('remember_the_password') }}
         </van-checkbox>
       </div>
 
       <div class="login-btn" @click="handleSubmit">
-        <div class="kuai">
-          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-        </div>
         {{ $t('sign_in') }}
       </div>
 
