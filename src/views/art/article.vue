@@ -1,20 +1,16 @@
 <template>
   <div>
     <div class="header">
-      <div class="head">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#000"
-          @click="$router.back()"
+      <div class="box">
+        <img
+          src="@/assets/tron/返回(2)@2x.png"
+          alt=""
+          @click="$router.go(-1)"
         />
-        <!--<router-link :to="path" class="back"></router-link>-->
-        <div>{{ title }}</div>
-        <div></div>
       </div>
+      <span>{{ title }}</span>
     </div>
-    <div class="main" v-html="content">
-    </div>
+    <div class="main" v-html="content"></div>
   </div>
 </template>
 <script>
@@ -54,6 +50,34 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.header {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0 22px 14px;
+
+  .box {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 18px;
+      height: 16px;
+    }
+  }
+
+  span {
+    width: 100%;
+    font-size: 28px;
+    font-family: PingFang SC;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 8px;
+  }
+}
+
 .main {
   width: 100%;
   // min-height: 100vh;
