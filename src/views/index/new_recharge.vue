@@ -1,11 +1,11 @@
 <template>
   <div class="page_root">
     <section class="btns">
-      <div class="item" @click="$router.push('/transfer_basic')">
+      <div class="item" @click="$router.push({path: '/transfer_basic', query: { type: 1 } })">
         <img src="@/assets/tron/icon.png" alt="" />
         {{ $t('transfer_to_basicaccount') }}
       </div>
-      <div class="item" @click="$router.push('/transfer_basic')">
+      <div class="item" @click="$router.push({path: '/transfer_basic', query: { type: 2 } })">
         <img src="@/assets/tron/icon 拷贝.png" alt="" />
         {{ $t('transfer_to_promotion_account') }}
       </div>

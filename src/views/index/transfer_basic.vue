@@ -1,27 +1,14 @@
 <template>
   <div class="page_root">
-    <div class="header">
-      <div class="head" style="background: transparent; color: #fff">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#fff"
-          @click="$router.go(-1)"
-        />
-        <!--<router-link :to="path" class="back"></router-link>-->
-        <div>{{ $t('recharge') }}</div>
-        <div></div>
-      </div>
-    </div>
+    <img
+      class="back"
+      src="@/assets/tron/返回 (2).png"
+      alt=""
+      @click="$router.go(-1)"
+    />
 
     <section class="content">
-      <img
-        class="logo"
-        src="@/assets/tron/Recharge2_slices/image-removebg-preview (12).png"
-        alt=""
-      />
-
-      <!-- <span class="title">{{ $t('transfer_to_promotion_account') }}</span> -->
+      <span class="title">{{ type === '1' ? $t('transfer_to_basicaccount') : $t('transfer_to_promotion_account') }}</span>
 
       <div class="code_box" ref="codeBox">
         <div class="qrcode" ref="qrCodeUrl"></div>
@@ -52,9 +39,6 @@
       </div>
 
       <div class="submit" v-if="btn_show" @click="tgHistory">
-        <div class="kuai">
-          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-        </div>
         {{ $t('recharge_completed') }}
       </div>
     </section>
@@ -76,7 +60,11 @@ export default {
       uid: '',
     }
   },
-  computed: {},
+  computed: {
+    type () {
+      return this.$route.query.type || '1'
+    }
+  },
   created() {
     this.$parent.footer(false)
   },
@@ -163,8 +151,8 @@ export default {
       const { clientWidth, clientHeight } = this.$refs.codeBox
       new QRCode(this.$refs.qrCodeUrl, {
         text: this.address,
-        width: clientWidth - 20,
-        height: clientHeight - 20,
+        width: clientWidth - 10,
+        height: clientHeight - 10,
         colorDark: '#000000',
         colorLight: '#ffffff',
         correctLevel: QRCode.CorrectLevel.H,
@@ -174,13 +162,15 @@ export default {
     copy() {
       var clipboard = new Clipboard('.btn')
       clipboard.on('success', (e) => {
-        this.$notify({type: 'success', message: this.$t('copy_successfully')})
+        console.log('e :>> ', e);
+        this.$notify({ type: 'success', message: this.$t('copy_successfully') })
         //  释放内存
         clipboard.destroy()
       })
       clipboard.on('error', (e) => {
+        console.log('e :>> ', e);
         // 不支持复制
-        this.$notify({type: 'danger', message: this.$t('copy_failed')})
+        this.$notify({ type: 'danger', message: this.$t('copy_failed') })
         // 释放内存
         clipboard.destroy()
       })
@@ -211,7 +201,9 @@ export default {
         }
       }
 
-      this.$router.push('/home').catch((err) => {})
+      this.$router.push('/home').catch((err) => {
+        console.log('err :>> ', err);
+      })
     },
     submit(trx, txID) {
       Fetch('/user/trx_apply', {
@@ -224,7 +216,9 @@ export default {
           background: '#07c160',
           message: this.$t('submitted_successfully'),
         })
-        this.$router.push('/home').catch((err) => {})
+        this.$router.push('/home').catch((err) => {
+          console.log('err :>> ', err);
+        })
       })
     },
   },
@@ -233,71 +227,50 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: linear-gradient(40deg, #5e63e7 0%, #be92fe 100%);
+  position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 812px;
   height: max-content;
   display: flex;
   flex-direction: column;
-  padding: 0 13px;
+  background: url('~@/assets/tron/波场 2 拷贝 2.png') no-repeat;
+  background-size: 100% 100%;
 
-  .header {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 1);
-    background-color: transparent;
-
-    .arrow {
-      position: absolute;
-      left: 0;
-    }
+  .back {
+    position: absolute;
+    left: 23px;
+    top: 24px;
+    width: 18px;
+    z-index: 1;
   }
 
   .content {
     width: 100%;
-    padding: 10px 18px;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-
-    .logo {
-      width: 167px;
-      height: 125px;
-      margin: 24px 0 0 0;
-    }
 
     .title {
-      font-size: 21px;
-      font-family: Arial;
+      font-size: 34px;
+      font-family: Source Han Sans CN;
       font-weight: bold;
-      color: #394249;
-      margin-top: 24px;
+      color: #fffdfd;
+      margin-top: 150px;
+      text-align: center;
     }
 
     .code_box {
-      width: 131px;
-      height: 131px;
-      background: rgba(180, 140, 255, 0.5);
-      border-radius: 7px;
-      margin-top: 25px;
+      width: 135px;
+      height: 135px;
+      background: #fff;
+      margin-top: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
 
       .qrcode {
-        width: 112px;
-        height: 112px;
+        width: 125px;
+        height: 125px;
         background-color: #fff;
       }
     }
@@ -305,89 +278,81 @@ export default {
     .sub_title {
       font-size: 14px;
       font-family: PingFang SC;
-      font-weight: 400;
-      color: #8a07e7;
-      margin-top: 18px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-top: 20px;
     }
 
     .url {
-      margin-top: 18px;
+      margin-top: 14px;
+      background: #fafafa;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      padding: 10px 24px;
       font-size: 11px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.5);
+      color: #d50a0a;
+      word-break: break-all;
     }
 
     .btn {
       height: 35px;
       padding: 0 16px;
-      background: #5e63e7;
-      border-radius: 17px;
-      font-size: 17px;
+      background: rgba(157, 31, 35, 1);
+      border-radius: 4px;
+      font-size: 15px;
       font-family: PingFang SC;
       font-weight: 600;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 14px;
     }
 
     .info {
-      width: 100%;
-      margin-top: 18px;
+      width: 291px;
+      min-height: 146px;
+      margin-top: 26px;
       display: flex;
       flex-direction: column;
-      font-size: 13px;
+      font-size: 15px;
       font-family: PingFang SC;
-      font-weight: 600;
-      color: #323a45;
+      font-weight: 500;
+      color: #ffffff;
       line-height: 16px;
+      background: url('~@//assets/tron/组 3.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 22px 20px;
 
       span {
         width: 100%;
         text-align: center;
 
         &:last-child {
-          font-size: 11px;
+          font-size: 13px;
           font-family: PingFang SC;
           font-weight: 400;
-          color: rgba(0, 0, 0, 0.5);
-          margin-top: 11px;
+          color: rgba(255, 255, 255, 0.5);
+          margin-top: 17px;
         }
       }
     }
 
     .submit {
-      position: relative;
-      width: 282px;
-      height: 51px;
-      margin: 24px auto;
-      background-color: rgba(138, 7, 231, 1);
-      border-radius: 25px;
+      width: calc(100% - 42px);
+      height: 47px;
+      background: #ffffff;
+      border-radius: 4px;
+      font-size: 17px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: #d50a0a;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
-      font-family: PingFang SC;
-      font-weight: 600;
-      color: #ffffff;
-      padding-left: 40px;
-      box-sizing: border-box;
-
-      .kuai {
-        position: absolute;
-        width: 37px;
-        height: 37px;
-        left: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
+      margin: 30px auto 0;
     }
   }
 }
