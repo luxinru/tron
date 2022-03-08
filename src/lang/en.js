@@ -73,7 +73,7 @@ export default {
   view_notes: 'View notes',
   recharge_text3: 'Before investing , please choose a basicaccount or an promotion account to investaccording to your investment needs . Pleasebe sure to wait for the account to berecharged . This is a verv critical issue .',
 
-  basic_account_balance: 'Basic account balance ( TRX )',
+  basic_account_balance: 'Basic account balance',
   hour_withdrawal: 'hour withdrawal',
   daily_withdrawal_limit: 'Daily withdrawal limit',
   basic_account: 'Basic account',
@@ -182,8 +182,8 @@ export default {
   please_enter_the_withdrawal_address: 'Please enter the withdrawal address',
   please_enter_withdrawal_limit: 'Please enter withdrawal limit',
   please_enter_the_withdrawal_password: 'Please enter the withdrawal password',
-  commission_account_balance: 'Commission account balance ( TRX )',
-  gift_account_balance: 'Gift account balance ( BBG )',
+  commission_account_balance: 'Commission account balance',
+  gift_account_balance: 'Gift account balance',
 
   copy_failed: 'copy failed',
   copy_successfully: 'Copy successful',

@@ -2,11 +2,10 @@
   <div class="page_root">
     <section class="account">
       <span>{{ $t('promotion_account_balance') }}</span>
-      <span class="value">{{ balance }}</span>
-      <img
-        src="@/assets/tron/Invest products_slices/image-removebg-preview (11).png"
-        alt=""
-      />
+      <span class="value">
+        {{ balance }}
+        <div>TRX</div>
+      </span>
     </section>
 
     <section class="info_box">
@@ -32,27 +31,31 @@
       </div>
     </section>
 
-    <section class="info_box">
+    <section class="input_box">
       <div class="item">
-        <span class="label">{{ $t('promotion_account') }}</span>
+        <div class="label">
+          <span class="line"></span>
+          <span class="value">{{ $t('promotion_account') }}</span>
+          <span class="line"></span>
+        </div>
         <input type="number" @input="changeInput()" v-model="proAccount" />
       </div>
       <div class="item">
-        <span class="label">{{ $t('security_password') }}</span>
-      </div>
-      <div class="item sec_item">
+        <div class="label">
+          <span class="line"></span>
+          <span class="value">{{ $t('security_password') }}</span>
+          <span class="line"></span>
+        </div>
         <input class="sec_input" v-model="password" type="password" />
-      </div>
-      <div class="tip">
-        {{ proAccount }} + ( {{ proAccount }} * {{ data.rate }}% *
-        {{ data.day }} ) = {{ profit }}
       </div>
     </section>
 
+    <div class="tip">
+      {{ proAccount }} + ( {{ proAccount }} * {{ data.rate }}% *
+      {{ data.day }} ) = {{ profit }}
+    </div>
+
     <div class="btn" @click="handleSubmit">
-      <div class="kuai">
-        <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-      </div>
       {{ $t('partcipate_in_investment') }}
     </div>
   </div>
@@ -120,7 +123,7 @@ export default {
     changeInput() {
       this.profit =
         Number(this.proAccount) +
-        Number(this.proAccount * this.data.rate/100 * this.data.day)
+        Number(((this.proAccount * this.data.rate) / 100) * this.data.day)
     },
   },
 }
@@ -128,7 +131,6 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background-color: rgba(246, 245, 250, 1);
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -138,14 +140,14 @@ export default {
   .account {
     position: relative;
     width: 100%;
-    height: 127px;
+    height: 122px;
     display: flex;
     flex-direction: column;
-    background: url('~@/assets/tron/Invest products_slices/椭圆 1 拷贝 3.png')
+    background: url('~@/assets/tron/a6d8a0db03baa79955316da04c68c9f9f95966de7b6c-k6K16M_fw1200.png')
       no-repeat;
     background-size: 100% 100%;
     margin-top: 16px;
-    padding: 24px 26px;
+    padding: 28px 21px;
 
     span {
       font-size: 16px;
@@ -155,42 +157,48 @@ export default {
     }
 
     .value {
-      font-size: 31px;
+      font-size: 34px;
       font-family: Arial;
       font-weight: bold;
       color: #ffffff;
-      margin-top: 26px;
-    }
+      margin-top: 21px;
+      display: flex;
+      align-items: flex-end;
 
-    img {
-      position: absolute;
-      width: 151px;
-      height: 92px;
-      right: -12px;
-      bottom: -12px;
+      div {
+        width: 39px;
+        height: 16px;
+        background: #ffc618;
+        border-radius: 3px;
+        font-size: 11px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 5px 15px;
+      }
     }
   }
   .info_box {
     width: 100%;
-    padding: 24px;
     display: flex;
     flex-direction: column;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
-    margin-top: 16px;
+    padding: 0 7px;
 
     .item {
       width: 100%;
-      height: 50px;
+      height: 53px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 14px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: #000000;
+      color: #575757;
       overflow: hidden;
+      border-bottom: 1px solid rgba(230, 230, 230, 0.6);
 
       span {
         flex: 1 0;
@@ -201,73 +209,85 @@ export default {
         flex: 2 0;
         margin-right: 8px;
         text-align: left;
+        font-size: 14px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #000001;
       }
-
-      input {
-        margin-left: 16px;
-        flex: 1 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        text-align: right;
-        overflow: hidden;
-      }
-
-      .sec_input {
-        border: 1px solid #e5e5e8;
-        border-radius: 4px;
-        height: 80%;
-        margin-left: 0;
-        text-align: left;
-      }
-    }
-
-    .sec_item {
-      margin-top: -16px;
-    }
-
-    .tip {
-      font-size: 13px;
-      font-family: PingFang SC;
-      font-weight: 400;
-      color: #5e63e7;
-      margin-top: 24px;
     }
   }
 
+  .input_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .label {
+        display: flex;
+        align-items: center;
+
+        .line {
+          width: 24px;
+          height: 1px;
+          background-color: rgba(213, 10, 10, 1);
+        }
+
+        .value {
+          font-size: 15px;
+          font-family: Arial;
+          font-weight: bold;
+          color: #212121;
+          margin: 0 16px;
+        }
+      }
+
+      input {
+        width: 100%;
+        height: 43px;
+        border-radius: 4px;
+        text-align: center;
+        margin-top: 16px;
+        padding: 0 10px;
+      }
+
+      .sec_input {
+        background: #fafafa;
+        border: 1px solid #cccccc;
+        text-align: left;
+      }
+    }
+  }
+
+  .tip {
+    width: 100%;
+    font-size: 13px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #d50a0a;
+    margin-top: 16px;
+    text-align: center;
+  }
+
   .btn {
-    position: relative;
-    min-width: 282px;
-    padding: 0 16px;
-    height: 51px;
-    margin: 24px auto;
-    background-color: rgba(138, 7, 231, 1);
-    border-radius: 25px;
+    width: 100%;
+    min-height: 47px;
+    background: #d50a0a;
+    border-radius: 4px;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 600;
-    color: #ffffff;
-    padding-left: 50px;
-    box-sizing: border-box;
-    text-align: center;
-
-    .kuai {
-      position: absolute;
-      width: 37px;
-      height: 37px;
-      left: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+    margin: 36px auto;
   }
 }
 </style>

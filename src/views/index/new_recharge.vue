@@ -2,18 +2,12 @@
   <div class="page_root">
     <section class="btns">
       <div class="item" @click="$router.push('/transfer_basic')">
+        <img src="@/assets/tron/icon.png" alt="" />
         {{ $t('transfer_to_basicaccount') }}
-        <img
-          src="@/assets/tron/Recharge_slices/962929918b12a94bb3a821a6fee272e43b91553f55294-KVmuGU.png"
-          alt=""
-        />
       </div>
       <div class="item" @click="$router.push('/transfer_basic')">
+        <img src="@/assets/tron/icon 拷贝.png" alt="" />
         {{ $t('transfer_to_promotion_account') }}
-        <img
-          src="@/assets/tron/Recharge_slices/89c6e8f2051c2766d51883acbe8542826b23865114d9a-sFm7ce.png"
-          alt=""
-        />
       </div>
     </section>
 
@@ -53,7 +47,6 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
   min-height: 100%;
   height: max-content;
@@ -65,60 +58,43 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 190px;
     margin-top: 16px;
 
     .item {
       position: relative;
-      width: 167px;
+      flex: 1 0;
       height: 100%;
-      background: url('~@/assets/tron/Recharge_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
       display: flex;
-      padding: 30px 22px;
-      font-size: 18px;
+      flex-direction: column;
+      align-items: center;
+
+      font-size: 13px;
       font-family: Arial;
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 400;
+      color: #252525;
 
       img {
-        position: absolute;
-      }
-
-      &:first-child {
-        img {
-          width: 70px;
-          height: 88px;
-          bottom: 7px;
-          right: 30px;
-        }
-      }
-
-      &:last-child {
-        img {
-          width: 89px;
-          height: 86px;
-          bottom: 3px;
-          right: 9px;
-        }
+        width: 41px;
+        height: 41px;
+        margin-bottom: 12px;
       }
     }
   }
 
   .box {
     width: 100%;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
     margin-top: 16px;
-    padding: 25px 22px;
+    padding: 25px 13px;
 
     font-size: 15px;
     font-family: PingFang SC;
-    font-weight: 600;
-    color: #323a45;
+    font-weight: 400;
+    color: rgba(50, 58, 69, 1);
     line-height: 22px;
+
+    .title {
+      color: rgba(213, 10, 10, 1);
+    }
 
     div {
       margin-bottom: 16px;

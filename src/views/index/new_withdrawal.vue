@@ -1,47 +1,46 @@
 <template>
   <div class="page_root">
-    <section class="header">
-      <div class="logo">
-        <img
-          src="@/assets/tron/Withdrawal_slices/7101cb2ba7da2874ae11574f81f49abd992d568a2bd447-A9yRVS.png"
-          alt=""
-        />
+    <section class="tabs">
+      <div class="item" :class="{ active: active === 1 }" @click="active = 1">
+        {{ $t('basic_account') }}
+        <span class="line"></span>
       </div>
-
-      <div class="tabs">
-        <span :class="{ active: active === 1 }" @click="active = 1">
-          {{ $t('basic_account') }}
-        </span>
-        <div class="line"></div>
-        <span :class="{ active: active === 2 }" @click="active = 2">
-          {{ $t('commission_account') }}
-        </span>
-        <div class="line"></div>
-        <span :class="{ active: active === 3 }" @click="active = 3">
-          {{ $t('gift_account') }}
-        </span>
+      <div class="item" :class="{ active: active === 2 }" @click="active = 2">
+        {{ $t('commission_account') }}
+        <span class="line"></span>
       </div>
+      <div class="item" :class="{ active: active === 3 }" @click="active = 3">
+        {{ $t('gift_account') }}
+        <span class="line"></span>
+      </div>
+    </section>
 
-      <span class="title">{{ getTitle() }}</span>
-
-      <span class="tip">24 {{ $t('hour_withdrawal') }}</span>
-
+    <section class="header first" v-if="active === 1">
+      <span class="title">
+        {{ getTitle() }}
+        <span>TRX</span>
+      </span>
       <span class="price">{{ getPrice() }}</span>
+      <span class="tip">24 {{ $t('hour_withdrawal') }}</span>
+      <span class="line"></span>
+      <span class="limit">
+        {{ $t('daily_withdrawal_limit') }}: {{ daily_withdrawal_limit }}
+      </span>
+      <span class="limit">
+        {{ withdrawal_limit_remaining_today }} trx {{ $t('withdrawal_limit_remaining_today') }}
+      </span>
+      <span class="btn" @click="$router.push('recharge_promotion')">
+        {{ $t('transfer_to_commission_account') }}
+      </span>
+    </section>
 
-      <span class="limit" v-if="active === 1"
-        >{{ $t('daily_withdrawal_limit') }}: {{ daily_withdrawal_limit }}</span
-      >
-
-      <template v-if="active === 1">
-        <span class="limit">
-          <span>{{ withdrawal_limit_remaining_today }} trx</span>
-          {{ $t('withdrawal_limit_remaining_today') }}
-        </span>
-
-        <span class="btn" @click="$router.push('recharge_promotion')">
-          {{ $t('transfer_to_commission_account') }}
-        </span>
-      </template>
+    <section class="header" v-else>
+      <span class="title">
+        {{ getTitle() }}
+        <span>{{ active === 2 ? 'TRX' : 'BBG' }}</span>
+      </span>
+      <span class="price">{{ getPrice() }}</span>
+      <span class="tip">24 {{ $t('hour_withdrawal') }}</span>
     </section>
 
     <section class="tips">
@@ -58,7 +57,7 @@
 
     <section class="form_item" style="z-index: 1">
       <input
-	    v-bind:disabled="diasabledInput"
+        v-bind:disabled="diasabledInput"
         v-model="address"
         type="text"
         :placeholder="$t('please_enter_the_withdrawal_address')"
@@ -79,9 +78,6 @@
       v-if="active !== 3"
       @click="handleSubmit()"
     >
-      <div class="kuai">
-        <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-      </div>
       {{ $t('confrm') }}
     </div>
     <div
@@ -91,13 +87,6 @@
       v-if="active === 3"
       @click="giftSubmit()"
     >
-      <div class="kuai">
-        <img
-          v-if="gift_status === 1"
-          src="@/assets/tron/长箭头2@2x.png"
-          alt=""
-        />
-      </div>
       {{ $t('confrm') }}
     </div>
   </div>
@@ -105,7 +94,7 @@
 
 <script>
 import Fetch from '../../utils/fetch'
-	import {Dialog} from 'vant';
+// import { Dialog } from 'vant'
 export default {
   name: 'TradingList',
   data() {
@@ -122,7 +111,7 @@ export default {
       mobile: '',
       active: 1,
       gift_status: 0,
-	  diasabledInput:false
+      diasabledInput: false,
     }
   },
   computed: {},
@@ -144,12 +133,12 @@ export default {
           res.data.withdrawal_limit_remaining_today
         this.autoCash = res.data.autoCash
         this.gift_status = res.data.gift_status
-		this.address = res.data.address
-		if(this.address){
-		   this.diasabledInput=true;
-		}else{
-		   this.diasabledInput=false;
-		}
+        this.address = res.data.address
+        if (this.address) {
+          this.diasabledInput = true
+        } else {
+          this.diasabledInput = false
+        }
         // alert()
       })
     },
@@ -195,6 +184,7 @@ export default {
                   oid: ret.info,
                   txid: res.txid,
                 }).then((ret) => {
+                  console.log('ret :>> ', ret)
                   this.$notify({
                     background: '#07c160',
                     message: this.$t('withdrawal_application_successful'),
@@ -233,7 +223,6 @@ export default {
             this.$router.back()
           }
         })
-      } else {
       }
     },
     getTitle() {
@@ -263,7 +252,6 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
   min-height: 100%;
   height: max-content;
@@ -271,97 +259,96 @@ export default {
   flex-direction: column;
   padding: 0 13px;
 
-  .header {
-    position: relative;
-    margin-top: 60px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
+  .tabs {
     width: 100%;
-    height: max-content;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    font-size: 12px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(185, 185, 185, 1);
+    margin-top: 16px;
+    overflow: hidden;
 
-    .logo {
-      position: absolute;
-      width: 70px;
-      height: 70px;
+    .item {
+      position: relative;
+      flex: 1 0;
+      height: 100%;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      margin-top: -55px;
-      background-color: rgba(138, 7, 231, 1);
-
-      img {
-        width: 36px;
-        height: 37px;
+      .line {
+        position: absolute;
+        bottom: 0;
+        width: 26px;
+        height: 3px;
       }
     }
 
-    .tabs {
-      display: flex;
-      align-items: center;
-      height: 35px;
-      border: 1px solid rgba(138, 7, 231, 1);
-      border-radius: 4px;
-      font-size: 13px;
-      font-family: Arial;
-      font-weight: 400;
-      color: rgba(138, 7, 231, 1);
-      box-sizing: border-box;
-      margin-top: 36px;
-      overflow: hidden;
-      span {
-        flex: 1 0;
-        height: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-      }
+    .active {
+      color: rgba(213, 10, 10, 1);
 
       .line {
-        height: 100%;
-        width: 1px;
-        background-color: rgba(138, 7, 231, 1);
-      }
-
-      .active {
-        color: rgba(255, 255, 255, 1);
-        background-color: rgba(138, 7, 231, 1);
+        background-color: rgba(213, 10, 10, 1);
       }
     }
+  }
+
+  .header {
+    position: relative;
+    width: 100%;
+    height: 144px;
+    margin-top: 16px;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: url('~@/assets/tron/a6d8a0db03baa79955316da04c68c9f9f95966de7b6c-k6K16M_fw1200 (2).png')
+      no-repeat;
+    background-size: 100% 100%;
 
     .title {
+      width: 100%;
       font-size: 16px;
       font-family: Arial;
       font-weight: bold;
-      color: #4b4d59;
-      margin-top: 20px;
-      text-align: center;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+
+      span {
+        width: 39px;
+        height: 16px;
+        background: #FFC618;
+        border-radius: 3px;
+        font-size: 11px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 8px;
+      }
+    }
+
+    .price {
+      width: 100%;
+      word-break: break-word;
+      font-size: 34px;
+      font-family: Arial;
+      font-weight: bold;
+      color: #FFFFFF;
     }
 
     .tip {
       font-size: 13px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: #8a07e7;
-      margin-top: 10px;
-    }
-
-    .price {
-      font-size: 46px;
-      font-family: Arial;
-      font-weight: bold;
-      color: #4b4d59;
-      text-align: center;
-      width: 100%;
-      margin: 20px 0 10px 0;
-      word-break: break-word;
+      color: #FFFFFF;
     }
 
     input {
@@ -374,45 +361,57 @@ export default {
       margin-top: 24px;
     }
 
-    .limit {
-      margin-top: 10px;
-      font-size: 13px;
-      font-family: PingFang SC;
-      font-weight: 400;
-      color: rgba(0, 0, 0, 0.5);
-      text-align: center;
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin: 5px 0;
+    }
 
-      span {
-        color: rgba(138, 7, 231, 1);
-      }
+    .limit {
+      margin-top: 8px;
+      width: 100%;
+      min-height: 24px;
+      background: #FFFFFF;
+      border-radius: 3px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-family: Arial;
+      font-weight: bold;
+      color: #D50A0A;
     }
 
     .btn {
-      padding: 12px 16px;
-      background-color: #8a07e7;
-      border-radius: 17px;
+      width: 278px;
+      min-height: 40px;
+      background: #FFC618;
+      border-radius: 20px;
       font-size: 15px;
       font-family: PingFang SC;
-      font-weight: 400;
-      color: #ffffff;
-      margin-top: 16px;
+      font-weight: 500;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px auto 0;
     }
   }
 
-  .account {
-    font-size: 17px;
-    font-family: Arial;
-    font-weight: bold;
-    color: #1e253c;
-    margin-top: 25px;
+  .first {
+    height: 288px;
+    background: url('~@/assets/tron/a6d8a0db03baa79955316da04c68c9f9f95966de7b6c-k6K16M_fw1200 (1).png')
+      no-repeat;
+    background-size: 100% 100%;
   }
 
   .form_item {
     width: 100%;
-    height: 45px;
-    background: #ffffff;
+    height: 43px;
+    background: #FAFAFA;
     border: 1px solid #cccccc;
-    border-radius: 5px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     margin-top: 16px;
@@ -452,43 +451,29 @@ export default {
     font-size: 13px;
     font-family: PingFang SC;
     font-weight: 400;
-    color: #8a07e7;
-    margin-top: 15px;
+    color: #D50A0A;
+    margin-top: 16px;
   }
 
   .submit {
     position: relative;
-    width: 282px;
-    height: 51px;
+    width: 100%;
+    height: 47px;
     margin: 24px auto;
-    background-color: rgba(138, 7, 231, 1);
-    border-radius: 25px;
+    background-color: #D50A0A;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 17px;
     font-family: PingFang SC;
-    font-weight: 600;
-    color: #ffffff;
-    padding: 0 30px 0 40px;
+    font-weight: 500;
+    color: #FFFFFF;
     box-sizing: border-box;
-    .kuai {
-      position: absolute;
-      width: 37px;
-      height: 37px;
-      left: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
   .submit_no {
     background-color: rgba(188, 190, 192, 1);
+    // color: #000;
   }
 }
 </style>
