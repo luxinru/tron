@@ -1,51 +1,46 @@
 <template>
   <div class="page_root">
     <section class="header">
-      <div class="title">
-        <img class="logo" src="@/assets/tron/TRXBBG.png" alt="" />
-        <!-- {{ $t('home') }} -->
-        <div class="imgs">
-          <van-popover
-            v-model="showPopover"
-            trigger="click"
-            placement="bottom-start"
-            :actions="actions"
-            @select="onChangeLanguage"
-          >
-            <template #reference>
-              <img src="@/assets/tron/Home_slices/组 101.png" />
-            </template>
-          </van-popover>
-
-          <img
-            src="@/assets/tron/Home_slices/组 101 拷贝.png"
-            @click="$router.push('/kefu')"
-          />
-
-          <img
-            class="note"
-            src="@/assets/tron/Home_slices/image-removebg-preview (3).png"
-            @click="$router.push('/notice')"
-          />
-        </div>
-      </div>
-
+      <HeaderBar></HeaderBar>
       <div class="total">
-        <span class="total_title"
-          >{{ $t('total_balance') }}
+        <span class="total_title">
+          {{ $t('total_balance') }}
           <img
-            src="@/assets/tron/Home_slices/refresh2.png"
+            src="@/assets/tron/Home_slices/刷新 (3).png"
             @click="tgHistory()"
           />
         </span>
         <span class="total_value">{{ totalBalance }}<span>TRX</span></span>
-        <span class="total_ex"
-          >≈ ＄{{ (totalBalance * price_in_usd).toFixed(2) }}</span
-        >
-        <img
-          class="img"
-          src="@/assets/tron/Home_slices/image-removebg-preview (1).png"
-        />
+        <span class="total_ex">
+          ≈ ＄{{ (totalBalance * price_in_usd).toFixed(2) }}
+        </span>
+
+        <div class="line"></div>
+
+        <div class="accounts">
+          <div class="item">
+            <div class="title">
+              <span>{{ $t('wallet') }}</span>
+              <span>{{ $t('account') }}</span>
+            </div>
+            <div class="value">
+              <span>{{ dataInfo.money }}</span>
+              <span>≈ $ {{ (dataInfo.money * price_in_usd).toFixed(2) }}</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">
+              <span>{{ $t('promotion') }}</span>
+              <span>{{ $t('account') }}</span>
+            </div>
+            <div class="value">
+              <span>{{ dataInfo.promotion }}</span>
+              <span
+                >≈ $ {{ (dataInfo.promotion * price_in_usd).toFixed(2) }}</span
+              >
+            </div>
+          </div>
+        </div>
       </div>
 
       <van-notice-bar
@@ -56,131 +51,93 @@
         @click="$router.push('/new_notice')"
       >
         <template #left-icon>
-          <img
-            src="@/assets/tron/Home_slices/3a9ceb1f780ab74025d39560f31043984b66ffd52ca2d-FYWszs_fw1200.png"
-          />
+          <img src="@/assets/tron/Home_slices/212喇叭 (1).png" />
         </template>
       </van-notice-bar>
     </section>
 
     <section class="function">
       <div class="item" @click="$router.push('/new_recharge')">
-        <img src="@/assets/tron/Home_slices/小标题icon-押金icon.png" />
+        <img src="@/assets/tron/Home_slices/icon.png" />
         <span>{{ $t('deposit') }}</span>
       </div>
       <div class="item" @click="$router.push('/new_withdrawal')">
-        <img src="@/assets/tron/Home_slices/withdrawal.png" />
+        <img src="@/assets/tron/Home_slices/icon 拷贝.png" />
         <span>{{ $t('withdrawal') }}</span>
       </div>
       <div class="item" @click="$router.push('/new_share')">
-        <img src="@/assets/tron/Home_slices/文件分享.png" />
+        <img src="@/assets/tron/Home_slices/icon 拷贝 2.png" />
         <span>{{ $t('share') }}</span>
       </div>
       <div class="item" @click="$router.push('/team')">
-        <img src="@/assets/tron/Home_slices/团队管理.png" />
+        <img src="@/assets/tron/Home_slices/icon 拷贝 3.png" />
         <span>{{ $t('team') }}</span>
-      </div>
-      <div class="item">
-        <img src="@/assets/tron/Home_slices/app.png" />
-        <span>{{ $t('app') }}</span>
-      </div>
-      <div class="item" @click="$router.push('/activity')">
-        <img src="@/assets/tron/4-4活动@2x.png" />
-        <span>{{ $t('activity') }}</span>
       </div>
     </section>
 
     <section class="platform">
-      <span class="platform_title">{{ $t('platform_data_display') }}</span>
+      <div class="millionaire">
+        <span class="platform_title">
+          <span class="line"></span>
+          <span class="value">{{ $t('millionaire') }}</span>
+          <span class="line"></span>
+        </span>
+
+        <div class="tip">
+          <img src="@/assets/tron/Home_slices/波场 2 拷贝.png" alt="" />
+          {{ $t('technology') }}
+        </div>
+      </div>
+
+      <span class="platform_title">
+        <span class="line"></span>
+        <span class="value">{{ $t('platform_data_display') }}</span>
+        <span class="line"></span>
+      </span>
 
       <div class="wallet_info">
         <div class="item">
-          <img src="@/assets/tron/Home_slices/image-removebg-preview (4).png" />
-          <div class="info">
-            <div class="info_title">{{ $t('wallet') }}</div>
-            <div class="info_value">
-              <span class="value">{{ dataInfo.money }}</span>
-              <span class="value"
-                >≈ $ {{ (dataInfo.money * price_in_usd).toFixed(2) }}</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            src="@/assets/tron/Home_slices/a202ce7ef2db5e829264b3ea5e65b2e83978a150189b89-4XYfp5.png"
-          />
-          <div class="info">
-            <div class="info_title">{{ $t('promotion') }}</div>
-            <div class="info_value">
-              <span class="value">{{ dataInfo.promotion }}</span>
-              <span class="value"
-                >≈ $ {{ (dataInfo.promotion * price_in_usd).toFixed(2) }}</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="millionaire">
-        <span class="platform_title">{{ $t('millionaire') }}</span>
-
-        <div class="tip">
-          {{ $t('technology') }}
-        </div>
-
-        <img src="@/assets/tron/Home_slices/色相／饱和度 1.png" />
-
-        <div class="btn">{{ $t('details') }}</div>
-      </div>
-
-      <span class="platform_title" style="margin-top: 25px">{{
-        $t('platform_data_display')
-      }}</span>
-
-      <div class="wallet_info2">
-        <div class="item">
-          <img
-            src="@/assets/tron/Home_slices/0680e20dc9fb2e327d4f23500d013ce6ed11656c1e1bd-RBA9o2_fw1200.png"
-          />
-          <div class="info">
-            <div class="info_title">{{ $t('accumulated_profit') }}</div>
-            <div class="info_value">
-              <span class="value">{{ block * price_in_usd * 15 }}</span>
-            </div>
+          <div class="info_title">{{ $t('accumulated_profit') }}</div>
+          <div class="info_value">
+            {{ block * price_in_usd * 15 }}
           </div>
         </div>
         <div class="item">
-          <img
-            src="@/assets/tron/Home_slices/9396072ece1b7d50191d08a4a98db887088dc2e724a22-Jgqsuv_fw1200.png"
-          />
-          <div class="info">
-            <div class="info_title">{{ $t('membership') }}</div>
-            <div class="info_value">
-              <span class="value">{{ block }}</span>
-            </div>
+          <div class="info_title">{{ $t('membership') }}</div>
+          <div class="info_value">
+            {{ block }}
           </div>
         </div>
       </div>
 
       <div class="ablout">
-        <span class="platform_title">{{ $t('about_us') }}</span>
+        <span class="platform_title">
+          <span class="line"></span>
+          <span class="value">{{ $t('about_us') }}</span>
+          <span class="line"></span>
+        </span>
 
-        <div class="tip">{{ $t('we_are_at_our_best') }}</div>
-
-        <img src="@/assets/tron/Home_slices/色相／饱和度 1(1).png" />
+        <!-- <div class="tip">{{ $t('we_are_at_our_best') }}</div> -->
 
         <div class="introduce">
           {{ $t('cost_effective') }}
+
+          <div class="imgs">
+            <img src="@/assets/tron/Home_slices/返回.png" alt="" />
+            <img src="@/assets/tron/Home_slices/波场 2 拷贝 2.png" alt="" />
+          </div>
         </div>
       </div>
 
-      <span class="platform_title" style="margin-top: 38px">{{
-        $t('global_partners')
-      }}</span>
+      <span class="platform_title">
+        <span class="line"></span>
+        <span class="value">{{ $t('global_partners') }}</span>
+        <span class="line"></span>
+      </span>
 
-      <img class="brand" src="@/assets/tron/图层7@2x.png" />
+      <div class="brand">
+        <img src="@/assets/tron/图层7@2x.png" />
+      </div>
     </section>
 
     <van-dialog class="dialog" v-model="isShowModel" :showConfirmButton="false">
@@ -192,9 +149,15 @@
 
 <script>
 import Fetch from '../../utils/fetch'
+import HeaderBar from '@/components/header-bar.vue'
 
 export default {
   name: 'index',
+
+  components: {
+    HeaderBar,
+  },
+
   data() {
     return {
       isShowModel: false,

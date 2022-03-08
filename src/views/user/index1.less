@@ -1,19 +1,16 @@
 .page_root {
-  background-color: rgba(246, 245, 250, 1);
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 78px;
+  padding: 0 13px 124px;
 
   .header {
     width: 100%;
-    height: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('~@/assets/tron/Home_slices/组 102.png') no-repeat;
-    background-size: 100% 100%;
-    padding: 0 28px;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -32,42 +29,42 @@
 
     .user {
       width: 100%;
-      height: 52px;
+      height: 75px;
       display: flex;
       align-items: center;
       // margin-top: 16px;
 
       img {
-        width: 52px;
-        height: 52px;
-        margin-right: 13px;
+        width: 75px;
+        height: 75px;
+        margin-right: 17px;
       }
 
       span {
-        font-size: 18px;
-        font-family: Adobe Heiti Std;
-        font-weight: normal;
-        color: #FFFFFF;
+        font-size: 23px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #000000;
       }
     }
 
     .total {
       position: relative;
       width: 100%;
-      height: 168px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 13px;
+      min-height: 122px;
+      background: url('~@/assets/tron/Mine_slices/形状 1 拷贝.png') no-repeat;
+      background-size: 100% 100%;
       margin-top: 16px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 20px 55px 20px;
+      justify-content: space-around;
+      padding: 12px 21px;
 
       .total_title {
         width: 100%;
-        font-size: 17px;
+        font-size: 16px;
         font-family: Arial;
-        font-weight: 400;
+        font-weight: bold;
         color: #FFFFFF;
       }
 
@@ -77,79 +74,44 @@
         font-family: Arial;
         font-weight: bold;
         color: #FFFFFF;
-        text-align: center;
         word-break: break-all;
-
-        span {
-          margin-left: 12px;
-          font-size: 13px;
-          font-family: Arial;
-          font-weight: 400;
-          color: #FFFFFF;
-        }
       }
 
-      img {
-        position: absolute;
-        width: 100px;
-        height: 102px;
-        top: -58px;
-        right: -16px;
-      }
-    }
-  }
-
-  .funtion {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 12px;
-
-    .part {
-      position: relative;
-      width: 163px;
-      height: 66px;
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
+      .btns {
         width: 100%;
-        height: 100%;
-      }
-
-      span {
-        width: 100%;
-        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        padding: 10px 0 0 66px;
-        font-weight: bold;
-        color: rgba(96, 101, 231, 1);
+        justify-content: flex-end;
+
+        span {
+          font-size: 11px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #D50A0A;
+          padding: 9px 27px;
+          background: #FFFFFF;
+          border-radius: 3px;
+
+          &:first-child {
+            margin-right: 11px;
+          }
+        }
       }
     }
   }
 
   .quantity {
+    width: 100%;
     width: 348px;
+    min-height: 132px;
     background: #FFFFFF;
-    border-radius: 13px;
+    box-shadow: 0px 2px 16px 0px rgba(19, 19, 20, 0.12);
+    border-radius: 7px;
     margin-top: 16px;
-    padding: 29px 27px;
+    padding: 30px 26px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     overflow: hidden;
-
-    .title {
-      width: 100%;
-      font-size: 15px;
-      font-family: PingFang SC;
-      font-weight: 600;
-      color: #323A45;
-    }
 
     .content {
       position: relative;
@@ -166,85 +128,70 @@
         justify-content: center;
 
         .value {
-          font-size: 34px;
-          font-family: Arial;
-          font-weight: bold;
-          color: #5E63E7;
-          margin-top: 24px;
+          font-size: 18px;
+          font-family: PingFang SC;
+          font-weight: 500;
+          color: #D50A0A;
           word-break: break-all;
+
+          &:first-child {
+            margin-bottom: 16px;
+          }
 
           &::after {
             content: 'TRX';
-            font-size: 13px;
+            font-size: 10px;
             font-family: Arial;
             font-weight: 400;
-            color: #5E63E7;
-            margin-left: 9px;
+            color: #D50A0A;
+            margin: 0 0 5px 9px;
           }
         }
 
         .tip {
-          font-size: 11px;
+          font-size: 13px;
           font-family: PingFang SC;
           font-weight: 400;
-          color: rgba(0, 0, 0, 0.5);
-          margin-top: 22px;
+          color: rgba(59, 59, 59, 1);
+          line-height: 17px;
+          margin-top: 16px;
           line-height: 16px;
         }
-      }
-
-      img {
-        position: absolute;
-        width: 135px;
-        height: 143px;
-        right: 0;
       }
     }
   }
 
-  .app_title {
-    width: 100%;
-    margin-top: 23px;
-    font-size: 17px;
-    font-family: Arial;
-    font-weight: bold;
-    color: #1E253C;
-    padding: 0 19px;
-  }
-
   .services {
-    width: 348px;
+    width: 100%;
     background: #FFFFFF;
-    border-radius: 13px;
-    padding: 16px;
-    margin-top: 9px;
+    margin-top: 16px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    margin-top: 10px;
 
     .item {
-      width: 25%;
+      width: 100%;
+      height: 80px;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      border-bottom: 1px solid rgba(230, 230, 230, 0.6);
 
-      &:nth-child(n + 5) {
-        margin-top: 16px;
+      &:last-child {
+        border-bottom: none;
       }
 
       img {
-        width: 53px;
-        height: 53px;
-        margin-bottom: 12px;
+        width: 41px;
+        height: 41px;
+        margin-right: 15px;
       }
 
       span {
-        font-size: 12px;
-        font-family: Arial;
+        flex: 1 0;
+        font-size: 16px;
+        font-family: Source Han Sans CN;
         font-weight: 400;
-        color: #1E253C;
-        text-align: center;
+        color: #000000;
       }
     }
   }

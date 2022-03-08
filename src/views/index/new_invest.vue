@@ -1,19 +1,5 @@
 <template>
   <div class="page_root">
-    <!-- <section class="header">{{ $t('invest') }}</section>
-
-    <section class="bar">
-      <span :class="{ active: active === 1 }" @click="active = 1"
-        >{{ $t('product_list') }}</span
-      >
-      <span :class="{ active: active === 2 }" @click="$router.push('transfer_basic')"
-        >{{ $t('recharge') }}</span
-      >
-      <span :class="{ active: active === 3 }" @click="active = 3"
-        >{{ $t('product_list') }}</span
-      >
-    </section> -->
-
     <section class="header">
       <HeaderBar></HeaderBar>
       <span>{{ $t('invest') }}</span>
@@ -97,7 +83,7 @@ export default {
     height: max-content;
     display: flex;
     flex-direction: column;
-    padding: 0 22px 14px;
+    padding: 0 13px 14px;
 
     span {
       width: 100%;
