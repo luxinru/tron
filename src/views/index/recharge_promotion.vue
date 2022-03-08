@@ -16,9 +16,9 @@
 
     <section class="btns">
       <div class="item">
-        <span style="width: 50%" v-if="active === 1">{{
-          $t('commission_account')
-        }}</span>
+        <span style="width: 50%" v-if="active === 1">
+          {{ $t('commission_account') }}
+        </span>
         <span style="width: 50%" v-else>{{ $t('basic_income') }}</span>
         <div class="value">
           <span v-if="active === 1">{{ commission_account }}</span>
@@ -26,7 +26,7 @@
           <span>TRX</span>
         </div>
       </div>
-      <img class="transfer_img" src="@/assets/tron/返回 拷贝 5.png" alt="" />
+      <img class="transfer_img" src="@/assets/tron/返回 拷贝 4.png" alt="" />
       <div class="item">
         <span style="width: 50%" v-if="active === 1">{{
           $t('basic_income')
@@ -57,9 +57,6 @@
     </div>
 
     <div class="submit" @click="handleSubmit()">
-      <div class="kuai">
-        <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-      </div>
       {{ $t('confrm') }}
     </div>
   </div>
@@ -144,27 +141,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header {
-  position: relative;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: rgba(11, 11, 11, 1);
-  background-color: transparent;
-
-  .arrow {
-    position: absolute;
-    left: 0;
-  }
-}
-
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
   min-height: 100%;
   height: max-content;
@@ -188,7 +165,7 @@ export default {
     }
 
     .active {
-      color: #6767e8;
+      color: #d50a0a;
     }
   }
 
@@ -197,15 +174,15 @@ export default {
     height: 2px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 
     span {
-      flex: 1 0;
-      height: 2px;
-      margin: 0 20px;
+      width: 26px;
+      height: 3px;
     }
 
     .active {
-      background-color: #6767e8;
+      background-color: #d50a0a;
     }
   }
 
@@ -214,29 +191,29 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 119px;
+    height: 122px;
     margin-top: 13px;
 
     .transfer_img {
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
     }
 
     .item {
       position: relative;
-      width: 153px;
       height: 100%;
-      background: url('~@/assets/tron/Transfer to basic_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px;
-      font-size: 18px;
+      padding: 16px 14px;
+      width: 146px;
+      background: #d50a0a;
+      border-radius: 7px;
+      font-size: 13px;
       font-family: Arial;
       font-weight: bold;
       color: #ffffff;
+      line-height: 16px;
 
       .value {
         width: 100%;
@@ -258,10 +235,10 @@ export default {
 
   .tips {
     width: 100%;
-    font-size: 12px;
+    font-size: 11px;
     font-family: PingFang SC;
     font-weight: 400;
-    color: #8a07e7;
+    color: #d50a0a;
     margin-top: 16px;
   }
 
@@ -286,7 +263,7 @@ export default {
       font-size: 15px;
       font-family: PingFang SC;
       font-weight: 500;
-      color: #8a07e7;
+      color: rgba(213, 10, 10, 1);
     }
   }
 
@@ -305,34 +282,18 @@ export default {
 
   .submit {
     position: relative;
-    width: 282px;
-    height: 51px;
+    width: 100%;
     margin: 24px auto;
-    background-color: rgba(138, 7, 231, 1);
-    border-radius: 25px;
+    height: 47px;
+    background: #D50A0A;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 17px;
     font-family: PingFang SC;
-    font-weight: 600;
-    color: #ffffff;
-    padding: 0 30px 0 40px;
-    box-sizing: border-box;
-
-    .kuai {
-      position: absolute;
-      width: 37px;
-      height: 37px;
-      left: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+    font-weight: 500;
+    color: #FFFFFF;
   }
 }
 </style>

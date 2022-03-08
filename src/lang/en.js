@@ -175,7 +175,7 @@ export default {
   not_allowed_temporarily: 'Since the contract period is less than 1 year, transfer to the commission account is not allowed temporarily!',
 
   available_balance: 'Tips:Available balance of commission account: {value} TRX',
-  operable_conversion: 'Tips:Operable conversion limit: {value} TRX',
+  operable_conversion: 'Tips: Operable conversion limit: {value} TRX',
   gift_account: 'Gift account',
   withdrawal_limit_remaining_today: 'The remaining can be withdrawn today',
   withdrawal_address_cannot_be_modified: '*Prompt: the withdrawal address cannot be modified after entering!!!',
