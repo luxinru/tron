@@ -1,64 +1,86 @@
 <template>
   <div class="page_root">
-    <section class="search_bar">
-      <div class="calendar">
-        <img src="@/assets/tron/Trading list_slices/日历-内容页.png" alt="" />
-        <span class="value" @click="show = true">{{ date }}</span>
-        <div class="clear" @click="onClear">x</div>
-      </div>
-
-      <div class="icon">
-        <van-icon name="search" @click="search" color="#fff" size="16" />
-      </div>
-    </section>
-
     <section class="btns">
       <div class="item">
-        <span style="width: 50%">{{ $t('basic_income') }}</span>
+        <span>{{ $t('basic_income') }}</span>
         <div class="value">
-          <span>{{basic_income}}</span>
+          <span>{{ basic_income }}</span>
           <span>TRX</span>
         </div>
       </div>
       <div class="item">
         {{ $t('promotion_income') }}
         <div class="value">
-          <span>{{promotion_income}}</span>
+          <span>{{ promotion_income }}</span>
           <span>TRX</span>
         </div>
       </div>
     </section>
 
-    <section class="list">
-      <div class="item" v-for="item in data" :key="index">
-        <div class="info">
-          <span>{{ $t('date') }}</span>
-          <span>{{item.time}}</span>
+    <section class="search_bar">
+      <div class="calendar">
+        <img src="@/assets/tron/图层 7.png" alt="" />
+        <span class="value" @click="show = true">{{ date }}</span>
+        <div class="clear" @click="onClear">
+          <van-icon name="cross" />
         </div>
-        <div class="info">
-          <span>{{ $t('amount') }}</span>
-          <span style="color: rgba(138, 7, 231, 1);">+ {{item.money}}</span>
-        </div>
-        <span class="tip">{{ $t('interest_reward') }}</span>
       </div>
+
+      <img
+        class="icon"
+        src="@/assets/tron/iconfont-chazhao.png"
+        alt=""
+        @click="start"
+      />
     </section>
 
-    <van-calendar v-model="show" :show-title="false" :show-confirm="false" type="range" @confirm="onConfirm" />
+    <section class="contents">
+      <template v-if="data.length">
+        <div class="item" v-for="(item, index) in data" :key="index">
+          <img src="@/assets/tron/图层 11.png" alt="" />
+          <div class="info">
+            <div class="part">
+              <span>{{ $t('profit_list') }}</span>
+              <!-- <span>{{ item.time }}</span> -->
+            </div>  
+            <div class="part">
+              <span>{{ $t('date') }}</span>
+              <span>{{ item.time }}</span>
+            </div>
+            <div class="part">
+              <span>{{ $t('amount') }}</span>
+              <span>+ {{ item.money }} TRX</span>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <van-empty v-else description="no data" />
+    </section>
+
+    <van-calendar
+      v-model="show"
+      :show-title="false"
+      :show-confirm="false"
+      type="range"
+      @confirm="onConfirm"
+    />
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
 import moment from 'moment'
 
 export default {
   name: 'TradingList',
   data() {
     return {
+      data: [],
       show: false,
       date: this.$t('please_select_a_time'),
-	  basic_income:0,
-	  promotion_income:0,
+      basic_income: 0,
+      promotion_income: 0,
     }
   },
   computed: {},
@@ -66,25 +88,16 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-	  this.start();
-	  },
+    this.start()
+  },
   methods: {
-	start() {
-		Fetch("/user/proft_list").then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		});
-	},
-	search(){
-		Fetch('/user/proft_list', {
-		    date: this.date,
-		  }).then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		  })
-	},
+    start() {
+      Fetch('/user/proft_list').then((res) => {
+        this.data = res.data.list;
+        this.basic_income = res.data.basic_income
+        this.promotion_income = res.data.promotion_income
+      })
+    },
     onConfirm(date) {
       const [start, end] = date
       this.show = false
@@ -101,7 +114,6 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
   min-height: 100%;
   height: max-content;
@@ -111,7 +123,7 @@ export default {
 
   .search_bar {
     width: 100%;
-    height: 40px;
+    height: 43px;
     display: flex;
     align-items: center;
     margin-top: 16px;
@@ -119,16 +131,16 @@ export default {
     .calendar {
       flex: 1 0;
       height: 100%;
-      background: #ffffff;
+      background: #fafafa;
       border: 1px solid #cccccc;
-      border-radius: 4px;
-      padding: 0 10px;
+      border-radius: 21px;
+      padding: 0 15px;
       display: flex;
       align-items: center;
 
       img {
-        width: 13px;
-        height: 13px;
+        width: 17px;
+        height: 17px;
       }
 
       .value {
@@ -142,110 +154,123 @@ export default {
       }
 
       .clear {
-        font-size: 12px;
-        width: 16px;
-        height: 16px;
+        font-size: 14px;
+        width: 22px;
+        height: 22px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
       }
     }
 
     .icon {
-      width: 31px;
-      height: 31px;
-      margin-left: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(138, 7, 231, 1);
-      border-radius: 50%;
-      overflow: hidden;
+      width: 22px;
+      height: 22px;
+      margin-left: 15px;
     }
   }
 
   .btns {
     width: 100%;
+    height: 122px;
     display: flex;
     justify-content: space-between;
-    height: 119px;
+    background: url('~@/assets/tron/a6d8a0db03baa79955316da04c68c9f9f95966de7b6c-k6K16M_fw1200.png') no-repeat;
+    background-size: 100% 100%;
     margin-top: 16px;
+    padding: 29px 21px;
 
     .item {
       position: relative;
-      width: 167px;
+      flex: 1 0;
       height: 100%;
-      background: url('~@/assets/tron/Transfer to basic_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      font-size: 18px;
+      justify-content: center;
+      font-size: 16px;
       font-family: Arial;
       font-weight: bold;
-      color: #ffffff;
+      color: #FFFFFF;
 
       .value {
         width: 100%;
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
+        margin-top: 21px;
 
         span {
+          font-size: 34px;
+          font-family: Arial;
+          font-weight: bold;
+          color: #FFFFFF;
           &:last-child {
-            font-size: 13px;
+            width: 39px;
+            height: 16px;
+            background: #FFC618;
+            border-radius: 3px;
+            font-size: 11px;
             font-family: Arial;
-            font-weight: 400;
-            color: #ffffff;
+            font-weight: bold;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            margin-bottom: 5px;
           }
         }
       }
     }
   }
 
-  .list {
-    margin-top: 16px;
+  .contents {
     width: 100%;
+    margin-top: 24px;
+    padding: 0 12px 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     .item {
       width: 100%;
-      background: #fff;
-      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-      border-radius: 13px;
+      min-height: 70px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding: 16px;
-      margin-top: 16px;
+      margin-top: 14px;
+      overflow: hidden;
 
-      .info {
-        margin-top: 16px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 14px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        color: #000000;
-
-        &:first-child {
-          margin-top: 0;
-        }
+      img {
+        width: 41px;
+        height: 41px;
       }
 
-      .tip {
-        margin-top: 9px;
-        font-size: 11px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.4);
+      .info {
+        flex: 1 0;
+        height: 100%;
+        margin-left: 13px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgba(221, 221, 221, 1);
+        padding-top: 12px;
+
+        .part {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #575757;
+          margin-bottom: 16px;
+
+          span {
+            &:first-child {
+              font-size: 14px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #000001;
+            }
+          }
+        }
       }
     }
   }
