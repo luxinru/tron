@@ -34,56 +34,56 @@ const getErrorMsg = function (type = 1) {
   if (type === 1) {
     switch (lang) {
       case 'ar':
-        return '网络错误，请稍后重试！'
+        return ' خطأ في الشبكة ، يرجى المحاولة مرة أخرى في وقت لاحق !  '
       case 'de':
-        return '网络错误，请稍后重试！'
+        return 'Netzwerkfehler, bitte versuchen Sie es später erneut!'
       case 'es':
-        return '网络错误，请稍后重试！'
+        return '¡Error de red, por favor inténtelo de nuevo más tarde!'
       case 'fr':
-        return '网络错误，请稍后重试！'
+        return 'Erreur réseau, Veuillez réessayer plus tard!'
       case 'id':
-        return '网络错误，请稍后重试！'
+        return 'Galat jaringan, tolong coba lagi nanti!'
       case 'jp':
-        return '网络错误，请稍后重试！'
+        return 'ネットワークエラーです。後で再試行してください。'
       case 'kr':
-        return '网络错误，请稍后重试！'
+        return '네트워크 오류, 나중에 다시 시도하십시오!'
       case 'pt':
-        return '网络错误，请稍后重试！'
+        return 'Erro de rede, tente novamente mais tarde!'
       case 'tr':
-        return '网络错误，请稍后重试！'
+        return 'Ağ hatası, lütfen daha sonra tekrar deneyin!'
       case 'en':
-        return '网络错误，请稍后重试！'
+        return 'Network error, please try again later!'
       case 'ch':
         return '网络错误，请稍后重试！'
       case 'hk':
-        return '网络错误，请稍后重试！'
+        return '網絡錯誤，請稍後重試！'
     }
   } else {
     switch (lang) {
       case 'ar':
-        return '非法用户，请稍后重试！'
+        return ' المستخدمين غير الشرعيين ، يرجى المحاولة مرة أخرى في وقت لاحق !  '
       case 'de':
-        return '非法用户，请稍后重试！'
+        return 'Illegaler Benutzer, bitte versuchen Sie es später erneut!'
       case 'es':
-        return '非法用户，请稍后重试！'
+        return '¡Usuario ilegal, por favor inténtelo de nuevo más tarde!'
       case 'fr':
-        return '非法用户，请稍后重试！'
+        return 'Utilisateur illégal, Veuillez réessayer plus tard!'
       case 'id':
-        return '非法用户，请稍后重试！'
+        return 'Pengguna ilegal, tolong coba lagi nanti!'
       case 'jp':
-        return '非法用户，请稍后重试！'
+        return '不正なユーザーです。後で再試行してください。'
       case 'kr':
-        return '非法用户，请稍后重试！'
+        return '불법 사용자, 잠시 후 다시 시도하세요!'
       case 'pt':
-        return '非法用户，请稍后重试！'
+        return 'Usuário ilegal, tente novamente mais tarde!'
       case 'tr':
-        return '非法用户，请稍后重试！'
+        return 'Yasadışı kullanıcı, lütfen daha sonra tekrar deneyin!'
       case 'en':
-        return '非法用户，请稍后重试！'
+        return 'Illegal user, please try again later!'
       case 'ch':
         return '非法用户，请稍后重试！'
       case 'hk':
-        return '非法用户，请稍后重试！'
+        return '非法用戶，請稍後重試！'
     }
   }
 }
