@@ -29,7 +29,94 @@ export const hideLoading = () => {
   }
 }
 
-let ssid = localStorage.getItem('ssid')
+const getErrorMsg = function (type = 1) {
+  let lang = window.localStorage.getItem('lang') || 'en'
+  if (type === 1) {
+    switch (lang) {
+      case 'ar':
+        return '网络错误，请稍后重试！'
+      case 'de':
+        return '网络错误，请稍后重试！'
+      case 'es':
+        return '网络错误，请稍后重试！'
+      case 'fr':
+        return '网络错误，请稍后重试！'
+      case 'id':
+        return '网络错误，请稍后重试！'
+      case 'jp':
+        return '网络错误，请稍后重试！'
+      case 'kr':
+        return '网络错误，请稍后重试！'
+      case 'pt':
+        return '网络错误，请稍后重试！'
+      case 'tr':
+        return '网络错误，请稍后重试！'
+      case 'en':
+        return '网络错误，请稍后重试！'
+      case 'ch':
+        return '网络错误，请稍后重试！'
+      case 'hk':
+        return '网络错误，请稍后重试！'
+    }
+  } else {
+    switch (lang) {
+      case 'ar':
+        return '非法用户，请稍后重试！'
+      case 'de':
+        return '非法用户，请稍后重试！'
+      case 'es':
+        return '非法用户，请稍后重试！'
+      case 'fr':
+        return '非法用户，请稍后重试！'
+      case 'id':
+        return '非法用户，请稍后重试！'
+      case 'jp':
+        return '非法用户，请稍后重试！'
+      case 'kr':
+        return '非法用户，请稍后重试！'
+      case 'pt':
+        return '非法用户，请稍后重试！'
+      case 'tr':
+        return '非法用户，请稍后重试！'
+      case 'en':
+        return '非法用户，请稍后重试！'
+      case 'ch':
+        return '非法用户，请稍后重试！'
+      case 'hk':
+        return '非法用户，请稍后重试！'
+    }
+  }
+}
+
+const getConfirmLang = function () {
+  let lang = window.localStorage.getItem('lang') || 'en'
+  switch (lang) {
+    case 'ar':
+      return 'يتأكد'
+    case 'de':
+      return 'Bestätigen Sie'
+    case 'es':
+      return 'Confirmar'
+    case 'fr':
+      return 'Confirmer'
+    case 'id':
+      return 'Mengonfirmasi'
+    case 'jp':
+      return '確認'
+    case 'kr':
+      return '확인하다'
+    case 'pt':
+      return 'Confirmar'
+    case 'tr':
+      return 'Onaylamak'
+    case 'en':
+      return 'Confirm'
+    case 'ch':
+      return '网络错误，请稍后重试！'
+    case 'hk':
+      return '網絡錯誤，請稍後重試！'
+  }
+}
 
 export default async (url, data, opt, isLoad = true) => {
   data = {
@@ -41,41 +128,21 @@ export default async (url, data, opt, isLoad = true) => {
     showLoading()
   }
   // url = "/api"+url;
-  if (url.indexOf('http') != -1) {} else {
-    url = "http://www.test.com/api"+url;    //url = "https://ybqjy.com/api"+url;
+  if (url.indexOf('http') != -1) {
+    console.log('111 :>> ', 111);
+  } else {
+    url = "http://www.test.com/api" + url; //url = "https://ybqjy.com/api"+url;
     // url = "https://haoxlb.com/api"+url;
     // url = 'https://tron2269.com/api' + url;    // var host = 'https://' + window.location.host;
     // url = host+"/api"+url;
-	/* var host = 'https://' + window.location.host;
-	url = host+"/api"+url; */
+    /* var host = 'https://' + window.location.host;
+    url = host+"/api"+url; */
   }
 
   const set = {
     method: 'post',
     ...opt
   }
-  /**const nowTime = Date.parse(new Date()) / 1000;
-    var expireTime = parseInt(localStorage.getItem('expire_time'));
-    const resetTime = parseInt(localStorage.getItem('reset_time'));
-
-    if (!ssid || !expireTime || !resetTime || resetTime < nowTime) {
-        await fetch('/api/api/config').then(res => {
-            return res.json();
-        }).then(res => {
-
-            ssid = res.data.ssid;
-            localStorage.setItem('ssid', ssid);
-            localStorage.setItem('expire_time', parseInt(res.data.ssid_expire_time));
-            expireTime = parseInt(res.data.ssid_expire_time);
-
-        }).catch(() => {
-            Dialog.alert({
-                title: '提示',
-                message: '网络错误，请重新打开APP'
-            });
-        });
-    }
-    localStorage.setItem('reset_time', nowTime + expireTime);**/
   var token = localStorage.getItem('token')
   return (set.method === 'post' ?
       axios.post(url + `?lang=${window.localStorage.getItem('lang') ? window.localStorage.getItem('lang') : 'en'}`, {
@@ -106,7 +173,7 @@ export default async (url, data, opt, isLoad = true) => {
       }
 
       throw {
-        msg: '网络错误，请稍后重试'
+        msg: getErrorMsg(1)
       }
     })
     .then(r => {
@@ -121,7 +188,7 @@ export default async (url, data, opt, isLoad = true) => {
 
         if (!r.code) {
           throw {
-            msg: '网络错误，请稍后重试！'
+            msg: getErrorMsg(1)
           }
         }
 
@@ -138,7 +205,7 @@ export default async (url, data, opt, isLoad = true) => {
 
         if (r.code === 500) {
           throw {
-            msg: '非法用户，请稍后重试！'
+            msg: getErrorMsg(2)
           }
         }
 
@@ -169,7 +236,7 @@ export default async (url, data, opt, isLoad = true) => {
         hideLoading()
       }
 
-      var message = '网络错误，请稍后或更换网络重试！'
+      var message = getErrorMsg(1)
       if (r.info) {
         message = r.info
       }
@@ -178,28 +245,12 @@ export default async (url, data, opt, isLoad = true) => {
         message = r.msg
       }
 
-      if (r.msg == '还未添加收货地址') {
-        Dialog.alert({
-            title: '提示',
-            message: message,
-            showCancelButton: true,
-            confirmButtonText: '去添加'
-          })
-          .then(() => {
-            location.href = '#address'
-            location.reload()
-          })
-          .catch(() => {})
-        throw ''
-      }
-
       if (isLoad) {
         Dialog.alert({
-          title: '提示',
-          message: message
+          message: message,
+          confirmButtonText: getConfirmLang(),
         })
       }
-      //Notify(message);
 
       throw ''
     })
