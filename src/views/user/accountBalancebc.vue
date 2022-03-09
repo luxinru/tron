@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '@/assets/styles/common.less';
+
 .balance-container {
   .recharge-header {
     height: 160px;

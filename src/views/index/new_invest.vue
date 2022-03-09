@@ -14,51 +14,31 @@
       >
     </section> -->
 
-    <section class="header">
-      <HeaderBar></HeaderBar>
-      <span>{{ $t('invest') }}</span>
-    </section>
-
-    <template v-if="list.length">
-      <section
-        class="notice-list"
-        v-for="(v, k) in list"
-        :key="k"
-        @click="toDetail(v.id)"
-      >
-        <div class="icon-cont">
-          <img src="@/assets/tron/图层 11.png" class="icon" />
-
-          <div class="info">
-            <div class="notice-right">{{ v.day }}-day {{ v.title }}</div>
-            <p class="notice-msg">
-              <span>{{ $t('daily_rate') }} : {{ v.rate }}%</span>
-              <span>{{ $t('cycle') }} : {{ v.day }} Day</span>
-            </p>
+    <section class="list" >
+      <div class="item" v-for="(item, index) in list" :key="index" @click="toDetail(item.id)">
+        <img src="@/assets/tron/Home_slices/色相／饱和度 1.png" alt="" />
+        <div class="info">
+          <span class="title">{{item.day}}-day {{ item.title }}</span>
+          <div class="labels">
+            <span>{{ $t('daily_rate') }} : {{item.rate}}%</span>
+            <span>{{ $t('cycle') }} : {{item.day}} Day</span>
           </div>
         </div>
-      </section>
-    </template>
+      </div>
+    </section>
 
-    <van-empty v-else description="no data" />
   </div>
 </template>
 
 <script>
-import Fetch from '../../utils/fetch'
-import HeaderBar from '@/components/header-bar.vue'
+import Fetch from "../../utils/fetch";
 export default {
   name: 'NewInvest',
-
-  components: {
-    HeaderBar,
-  },
-
   data() {
     return {
-      data: {},
-      list: [],
-      active: 1,
+		data: {},
+		list: [],
+		active: 1,
     }
   },
   computed: {},
@@ -66,47 +46,43 @@ export default {
     this.$parent.footer(true, 'new_invest')
   },
   mounted() {
-    this.start()
+	  this.start();
   },
   methods: {
     toDetail(id) {
-      this.$router.push('/invest_product/' + id)
+      this.$router.push("/invest_product/" + id);
     },
-    start() {
-      Fetch('/index/item').then((res) => {
-        console.log(111)
-        console.log(this.list)
-        console.log(111)
-        this.list = res.data.list
-      })
-    },
+	start() {
+		Fetch("/index/item").then((res) => {
+			console.log(111);
+			console.log(this.list);
+			console.log(111);
+		  this.list = res.data.list;
+		});
+	},
   },
 }
 </script>
 
 <style lang="less" scoped>
 .page_root {
+  background-color: rgba(246, 245, 250, 1);
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 124px;
 
   .header {
     width: 100%;
-    height: max-content;
+    height: 50px;
     display: flex;
-    flex-direction: column;
-    padding: 0 22px 14px;
-
-    span {
-      width: 100%;
-      font-size: 28px;
-      font-family: PingFang SC;
-      font-weight: 600;
-      color: #000000;
-      margin-top: 8px;
-    }
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #1e253c;
+    background-color: #fff;
   }
 
   .bar {
@@ -134,22 +110,29 @@ export default {
     }
   }
 
-  .notice-list {
+  .list {
     width: 100%;
+    flex: 1 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 0 13px;
-    margin-top: 13px;
-    .icon-cont {
+
+    .item {
       width: 100%;
-      min-height: 70px;
-      height: max-content;
+      height: 110px;
       display: flex;
-      margin-top: 12px;
+      align-items: center;
+      background: #ffffff;
+      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+      border-radius: 13px;
+      padding: 13px 15px;
+      margin-top: 10px;
+
       img {
-        width: 41px;
-        height: 41px;
-        margin-right: 13px;
+        width: 85px;
+        // height: 85px;
+        margin-right: 17px;
       }
 
       .info {
@@ -157,30 +140,26 @@ export default {
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding-top: 12px;
-        border-bottom: 1px solid rgba(221, 221, 221, 1);
-        overflow: hidden;
+        justify-content: center;
 
-        .notice-right {
-          font-size: 17px;
-          font-family: Arial;
-          font-weight: bold;
-          color: #1e253c;
-          width: 100%;
-          line-height: 24px;
-          // overflow: hidden;
-          // white-space: nowrap;
-          // text-overflow: ellipsis;
-        }
-        .notice-msg {
-          font-size: 11px;
+        .title {
+          font-size: 15px;
           font-family: PingFang SC;
-          font-weight: 400;
-          color: rgba(0, 0, 0, 0.5);
-          margin: 12px 0;
+          font-weight: 600;
+          color: #323A45;
+        }
+
+        .labels {
+          margin-top: 14px;
           display: flex;
+          flex-direction: column;
+
           span {
-            flex: 1 0;
+            font-size: 11px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 4px;
           }
         }
       }

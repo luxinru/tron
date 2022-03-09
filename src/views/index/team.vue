@@ -1,51 +1,60 @@
 <template>
   <div class="page_root">
-    <section class="list">
-      <div class="item">
-        <span>{{ $t('lev') }} 1</span>
-        <span>{{ team.lev1 }}</span>
+    <div class="header">
+      <div class="head">
+        <van-icon
+          name="arrow-left"
+          size="23"
+          color="#000"
+          @click="$router.back()"
+        />
+        {{ $t('team') }}
       </div>
-      <div class="item">
-        <span>{{ $t('lev') }} 2</span>
-        <span>{{ team.lev2 }}</span>
-      </div>
-      <div class="item">
-        <span>{{ $t('lev') }} 3</span>
-        <span>{{ team.lev3 }}</span>
-      </div>
-    </section>
+    </div>
 
-    <section class="contents">
-      <template v-if="data.length">
-        <div class="item" v-for="(item, index) in data" :key="index">
-          <img src="@/assets/tron/图层 11.png" alt="" />
-          <div class="info">
-            <div class="part">
-              <span>{{ $t('date') }}</span>
-              <span>{{ item.time }}</span>
-            </div>
-            <div class="part">
-              <span>{{ $t('amount') }}</span>
-              <span>+ {{ item.money }} TRX</span>
-            </div>
-          </div>
+    <section class="level_box">
+      <img src="@/assets/tron/Team_slices/3d9037c087e41cb26e0e35c9b2af4e76438441fc9ec35-QfBCUP.png" alt="">
+      <div class="list">
+        <div class="item">
+          <span>{{ $t('lev') }} 1</span>
+          <span>{{team.lev1}}</span>
         </div>
-      </template>
-
-      <van-empty v-else description="no data" />
+        <div class="item">
+          <span>{{ $t('lev') }} 2</span>
+          <span>{{team.lev2}}</span>
+        </div>
+        <div class="item">
+          <span>{{ $t('lev') }} 3</span>
+          <span>{{team.lev3}}</span>
+        </div>
+      </div>
     </section>
+	<template v-for="item in data">
+		<section class="info">
+			  <div class="item">
+				<span>{{ $t('date') }}</span>
+				<span>{{item.time}}</span>
+			  </div>
+			  <div class="item">
+				<span>{{ $t('amount') }}</span>
+				<span>{{item.money}} TRX</span>
+			  </div>
+		</section>
+	</template>
   </div>
 </template>
 
 <script>
-import Fetch from '../../utils/fetch'
+import Fetch from "../../utils/fetch";
 export default {
   name: 'NewInvest',
   data() {
     return {
       active: 1,
-      data: [],
-      team: {},
+	  data: {
+		  
+	  },
+	  team:{}
     }
   },
   computed: {},
@@ -53,128 +62,111 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-    this.start()
+	  this.start();
   },
   methods: {
-    start() {
-      /* setTimeout(() => {
+	  start() {
+	      /* setTimeout(() => {
 	        var element = document.getElementById("app");
 	        element.scrollIntoView();
 	      }, 0); */
-      Fetch('/user/my_team').then((res) => {
-        this.team = res.data.team
-        this.data = res.data.data
-      })
-    },
+	      Fetch("/user/my_team").then((res) => {
+	  		this.team = res.data.team;
+			this.data = res.data.data;
+	      });
+	  },
   },
 }
 </script>
 
 <style lang="less" scoped>
 .page_root {
+  background: rgba(248, 248, 250, 1);
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .list {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 22px;
-    padding: 0 25px;
-
-    .item {
-      flex: 1 0;
-      display: flex;
-      flex-direction: column;
-      margin-left: 10px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      span {
-        font-size: 17px;
-        font-family: Arial;
-        font-weight: bold;
-        color: #1e253c;
-        display: flex;
-        justify-content: center;
-
-        &:first-child {
-          width: 100%;
-          height: 28px;
-          background-color: rgba(213, 10, 10, 1);
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          font-family: PingFang SC;
-          font-weight: 500;
-          color: #ffffff;
-          margin-bottom: 14px;
-        }
-      }
-    }
-  }
-
-  .contents {
-    width: 100%;
-    margin-top: 23px;
-    padding: 0 12px 24px;
+  .level_box {
+    width: 348px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+    border-radius: 13px;
+    padding: 24px 20px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    .item {
+    img {
+      width: 135px;
+      height: 145px;
+      margin-top: 20px;
+    }
+
+    .list {
       width: 100%;
-      height: 70px;
       display: flex;
-      margin-top: 14px;
-      overflow: hidden;
+      align-items: center;
+      margin-top: 22px;
 
-      img {
-        width: 41px;
-        height: 41px;
-      }
-
-      .info {
+      .item {
         flex: 1 0;
-        height: 100%;
-        margin-left: 13px;
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid rgba(221, 221, 221, 1);
-        padding-top: 12px;
 
-        .part {
-          width: 100%;
+        span {
+          font-size: 17px;
+          font-family: Arial;
+          font-weight: bold;
+          color: #1E253C;
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 14px;
-          font-family: PingFang SC;
-          font-weight: 400;
-          color: #575757;
+          justify-content: center;
 
           &:first-child {
+            width: 95px;
+            height: 36px;
+            background: rgba(97, 100, 232, 0.2);
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-family: Arial;
+            font-weight: bold;
+            color: #5E63E7;
             margin-bottom: 16px;
-          }
-
-          span {
-            &:first-child {
-              font-size: 14px;
-              font-family: PingFang SC;
-              font-weight: 400;
-              color: #000001;
-            }
           }
         }
       }
     }
   }
+
+  .info {
+      width: 348px;
+      height: 90px;
+      background: #FFFFFF;
+      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+      border-radius: 13px;
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-sizing: border-box;
+
+      .item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        font-size: 14px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #000000;
+      }
+    }
 }
 </style>

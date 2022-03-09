@@ -58,7 +58,6 @@
 
     <section class="form_item" style="z-index: 1">
       <input
-	    v-bind:disabled="diasabledInput"
         v-model="address"
         type="text"
         :placeholder="$t('please_enter_the_withdrawal_address')"
@@ -105,7 +104,6 @@
 
 <script>
 import Fetch from '../../utils/fetch'
-	import {Dialog} from 'vant';
 export default {
   name: 'TradingList',
   data() {
@@ -122,7 +120,6 @@ export default {
       mobile: '',
       active: 1,
       gift_status: 0,
-	  diasabledInput:false
     }
   },
   computed: {},
@@ -144,12 +141,6 @@ export default {
           res.data.withdrawal_limit_remaining_today
         this.autoCash = res.data.autoCash
         this.gift_status = res.data.gift_status
-		this.address = res.data.address
-		if(this.address){
-		   this.diasabledInput=true;
-		}else{
-		   this.diasabledInput=false;
-		}
         // alert()
       })
     },
@@ -188,7 +179,6 @@ export default {
             if (httpRequest.readyState == 4 && httpRequest.status == 200) {
               // 如果返回了非0数字，证明钱包系统已经成功发起转账
               let res = JSON.parse(httpRequest.responseText)
-              console.log(ret.info)
               if (res.result && res.txid) {
                 // 自动确认提现订单
                 Fetch('/user/auto_cost_apply', {

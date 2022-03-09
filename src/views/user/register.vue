@@ -1,10 +1,30 @@
 <template>
   <div class="register-container">
-    <span class="logo_title">{{ $t('sign_up') }}</span>
-
     <div class="register-box">
+      <!-- <div class="item" style="display:none;">
+					<div class="left">国家/地区</div>
+					<div class="right" @click="handleSelectArea">
+						<span>{{data.telAddress}}</span>
+						<van-icon name="arrow" size="18" color="#A8A8A8"/>
+					</div>
+				</div> -->
+      <!-- <img
+        class="back"
+        src="@/assets/xinguang/注册_slices/矢量智能对象@2x(1).png"
+        alt=""
+      />
+      <img
+        class="back2"
+        src="@/assets/xinguang/注册_slices/矢量智能对象@2x.png"
+        alt=""
+      /> -->
+      <!-- <div class="title">
+        <span @click="handleLogin">登陆</span>
+        <span>手机号注册</span>
+      </div> -->
       <span class="title">{{ $t('mobile_number') }}</span>
       <div class="item">
+        <!-- <img src="@/assets/xinguang/登录_slices/24gf-phoneBubble@2x.png" /> -->
         <input
           type="number"
           v-model="data.mobile"
@@ -14,6 +34,7 @@
 
       <span class="title">{{ $t('login_password') }}</span>
       <div class="item">
+        <!-- <img src="@/assets/xinguang/登录_slices/密码（开） (1)@2x.png" /> -->
         <input
           type="password"
           v-model="data.password"
@@ -23,6 +44,7 @@
 
       <span class="title">{{ $t('confrm_password') }}</span>
       <div class="item">
+        <!-- <img src="@/assets/xinguang/登录_slices/密码（开） (1)@2x.png" /> -->
         <input
           type="password"
           v-model="data.cpassword"
@@ -31,21 +53,40 @@
       </div>
       <span class="title">{{ $t('security_password') }}</span>
       <div class="item">
+        <!-- <img src="@/assets/xinguang/登录_slices/密码（开） (1)@2x.png" /> -->
         <input
           type="password"
           v-model="data.spassword"
           :placeholder="$t('please_enter_your_security_password')"
         />
       </div>
+      <!-- 			<span class="title">{{ $t('attach') }}</span>
+			<div class="item">
+				<img src="@/assets/xinguang/注册_slices/验证码 (1)@2x.png" />
+				<input v-model="data.code" :placeholder="$t('please_enter_attach')" />
+				<div class="code-btn" @click="sendcode()">
+					{{ timeData.seconds > 0 ? timeData.seconds : $t('send_code') }}
+				</div>
+			</div> -->
 
       <span class="title">{{ $t('invite_code') }}</span>
       <div class="item">
+        <!-- <img src="@/assets/xinguang/注册_slices/邀请码 (1)@2x.png" /> -->
         <input
           v-model="data.t_mobile"
           :placeholder="$t('please_enter_your_invite_code')"
         />
       </div>
+
+      <div class="register-btn" @click="handleSubmit">
+        <div class="kuai">
+          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
+        </div>
+        {{ $t('sign_up') }}
+      </div>
+      <div class="forget" @click="handleLogin">{{ $t('sign_in') }}</div>
     </div>
+    <div class="captcha" id="captcha" v-show="!showCaptcha"></div>
 
     <div class="login-footer">
       <div class="remember">
@@ -58,10 +99,14 @@
       </div>
     </div>
 
-    <div class="register-btn" @click="handleSubmit">
-      {{ $t('sign_up') }}
-    </div>
-    <div class="forget" @click="handleLogin">{{ $t('sign_in') }}</div>
+    <van-action-sheet
+      v-model="isShowAction"
+      :actions="actionsList"
+      cancel-text="取消"
+      close-on-click-action
+      @select="handleSelectAction"
+      @cancel="handleCancelAction"
+    />
   </div>
 </template>
 <script src="//g.alicdn.com/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
@@ -100,7 +145,30 @@ export default {
       timeData: {
         seconds: 0,
       },
+      isShowAction: false,
       formAreaLabel: '+86',
+      actionsList: [
+        {
+          name: '中国大陆（+86）',
+          labelName: '+86',
+          type: 1,
+        },
+        {
+          name: '中国澳门（+853）',
+          labelName: '+853',
+          type: 2,
+        },
+        {
+          name: '中国香港（+852）',
+          labelName: '+852',
+          type: 3,
+        },
+        {
+          name: '中国台湾（+886）',
+          labelName: '+886',
+          type: 4,
+        },
+      ],
     }
   },
   created() {
@@ -463,6 +531,19 @@ export default {
       this.$router.push({
         path: this.config.user_contract_link,
       })
+    },
+    // 选择地区
+    handleSelectArea() {
+      this.isShowAction = true
+    },
+    handleSelectAction(item) {
+      this.formAreaLabel = item.labelName
+      this.data = Object.assign({}, this.data, {
+        telAddress: item.name,
+      })
+    },
+    handleCancelAction() {
+      this.isShowAction = false
     },
     handleBack() {
       this.$router.push({

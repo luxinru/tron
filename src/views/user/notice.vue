@@ -1,5 +1,16 @@
 <template>
   <div class="notice-page">
+    <div class="header">
+      <div class="head">
+        <van-icon
+          name="arrow-left"
+          size="23"
+          color="#000"
+          @click="$router.back()"
+        />
+        Notifcation
+      </div>
+    </div>
     <div class="notice-cont">
       <template v-if="data.list.length">
         <div
@@ -10,19 +21,15 @@
         >
           <div class="icon-cont">
             <img
-              src="@/assets/tron/图层 12.png"
+              src="@/assets/tron/Notifcation_slices/5128d9072170e2b6d8df31c3e1bacfdc0872453d4efe-1LfzeQ_fw1200.png"
               class="icon"
             />
 
             <div class="info">
-              <div class="info_box">
-                <div class="notice-right">
-                  {{ v.title }}
-                </div>
-                <p class="notice-msg">{{ v.time | dateFormat }}</p>
+              <div class="notice-right">
+                {{ v.title }}
               </div>
-
-              <van-icon name="arrow" />
+              <p class="notice-msg">{{ v.time | dateFormat }}</p>
             </div>
           </div>
         </div>
@@ -30,6 +37,27 @@
 
       <van-empty v-else description="no data" />
     </div>
+    <!-- <div class="fund_wrap">
+            <table class="table">
+                <tbody>
+                <tr class="header">
+                    <th class="first">状态</th>
+                    <th>主题</th>
+                    <th>时间</th>
+                    <th class="last">操作</th>
+                </tr>
+                <tr v-for="(v,k) in data.list" :key="k">
+                    <td v-if="!v.is_read" style="color: #00C800">未读</td>
+                    <td v-if="v.is_read" style="color: #cccccc">已读</td>
+                    <td>{{v.title}}</td>
+                    <td>{{v.time|dateFormat}}</td>
+                    <td>
+                        <router-link class="button" :to="'/notice/' + v.id">查看</router-link>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div> -->
   </div>
 </template>
 
@@ -41,9 +69,7 @@ export default {
   name: 'login',
   data() {
     return {
-      data: {
-        list: [],
-      },
+      data: [],
       selectIndex: 0,
       footer: '',
     }
@@ -83,6 +109,7 @@ export default {
 
 <style lang="less" scoped>
 .notice-page {
+  background-color: rgba(248, 248, 250, 1);
   font-family: PingFang SC;
   // font-weight: 400;
   min-height: 100%;
@@ -125,48 +152,69 @@ export default {
       align-items: center;
       justify-content: center;
     }
+    // .select{
+    //     font-size: 15px;
+    //     font-weight: 500;
+    //     color: #000000;
+    //     position: relative;
+    //     &::before{
+    //         position: absolute;
+    //         content: ' ';
+    //         display: block;
+    //         width: 50px;
+    //         height: 2px;
+    //         background-color: #0F79FF;
+    //         border-radius: 1px;
+    //         left: 50%;
+    //         transform: translateX(-50%);
+    //         top: 27px;
+    //     }
+    // }
   }
   .notice-cont {
+    // width: 349px;
+    // background-color: #FFFFFF;
+    // border-radius: 7px;
+    // margin-left: 13px;
     .notice-list {
       width: 100%;
       display: flex;
       flex-direction: column;
       padding: 0 13px;
-      margin-top: 13px;
       .icon-cont {
         width: 100%;
-        height: 70px;
+        height: 96px;
+        background: #ffffff;
+        box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+        border-radius: 13px;
         display: flex;
+        align-items: center;
+        padding: 20px 25px;
         margin-top: 12px;
         img {
-          width: 41px;
-          height: 41px;
-          margin-right: 13px;
+          width: 66px;
+          height: 54px;
+          margin-right: 20px;
         }
 
         .info {
           flex: 1 0;
           height: 100%;
           display: flex;
-          padding-top: 12px;
-          border-bottom: 1px solid rgba(221, 221, 221, 1);
-
-          .info_box {
-            flex: 1 0;
-            
-            .notice-right {
-              font-size: 17px;
-              font-family: Arial;
-              font-weight: bold;
-              color: #1e253c;
-            }
-            .notice-msg {
-              font-size: 11px;
-              font-family: PingFang SC;
-              font-weight: 400;
-              color: rgba(0, 0, 0, 0.5);
-              margin-top: 12px;
-            }
+          flex-direction: column;
+          justify-content: center;
+          .notice-right {
+            font-size: 17px;
+            font-family: Arial;
+            font-weight: bold;
+            color: #1e253c;
+          }
+          .notice-msg {
+            font-size: 11px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 15px;
           }
         }
       }
