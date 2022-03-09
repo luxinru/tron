@@ -161,49 +161,6 @@ export default {
   data() {
     return {
       isShowModel: false,
-      showPopover: false,
-      actions: [
-        {
-          text: 'English',
-          value: 'en',
-        },
-        {
-          text: '한국어',
-          value: 'kr',
-        },
-        {
-          text: '日本語',
-          value: 'jp',
-        },
-        {
-          text: 'بالعربية',
-          value: 'ar',
-        },
-        {
-          text: 'Deutsch',
-          value: 'de',
-        },
-        {
-          text: 'Français',
-          value: 'fr',
-        },
-        {
-          text: 'português',
-          value: 'pt',
-        },
-        {
-          text: 'Türk',
-          value: 'tr',
-        },
-        {
-          text: 'Español',
-          value: 'es',
-        },
-        {
-          text: 'IndonesiaName',
-          value: 'id',
-        },
-      ],
       footer_type: 'n1',
       dataInfo: {},
       data: {

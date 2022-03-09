@@ -27,6 +27,8 @@ import pt from './lang/pt'
 import tr from './lang/tr'
 import es from './lang/es'
 import id from './lang/id'
+import cn from './lang/cn'
+import hk from './lang/hk'
 
 import $ from "jquery"
 import requestAnimationFrameHack from './utils/requestAnimationFram'
@@ -62,6 +64,8 @@ const messages = {
   tr,
   es,
   id,
+  cn,
+  hk,
 }
 
 const i18n = new VueI18n({

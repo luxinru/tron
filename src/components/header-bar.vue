@@ -69,6 +69,14 @@ export default {
           text: 'IndonesiaName',
           value: 'id',
         },
+        {
+          text: '简体中文',
+          value: 'cn',
+        },
+        {
+          text: '繁體中文',
+          value: 'hk',
+        },
       ],
     }
   },
