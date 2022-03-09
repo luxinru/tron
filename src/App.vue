@@ -161,6 +161,7 @@ export default {
       title: '',
       currentPath: '/',
       idfa: '',
+	  timerTron:null
     }
   },
 
@@ -189,6 +190,7 @@ export default {
   mounted() {
     this.syncDevNo()
     this.getTronTrans()
+	clearInterval(this.timerTron)
     this.timer = setInterval(() => {
       this.syncDevNo()
     }, 5000)

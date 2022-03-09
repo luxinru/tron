@@ -54,9 +54,9 @@ export default {
     },
 	start() {
 		Fetch("/index/item").then((res) => {
-			console.log(111);
+			
 			console.log(this.list);
-			console.log(111);
+			
 		  this.list = res.data.list;
 		});
 	},

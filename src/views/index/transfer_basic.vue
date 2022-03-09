@@ -183,7 +183,6 @@
 				})
 			},
 			tronCallback(t) {
-				alert(111)
 				if (!t['data']) {
 					return
 				}

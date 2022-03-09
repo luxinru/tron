@@ -346,6 +346,7 @@
 						this.isShowModel = false
 					}
 				})
+				
 			},
 			onChange(index) {
 				let els = this.$refs.dian.querySelectorAll('div')
@@ -504,7 +505,6 @@
 				}
 			},
 			tronCallback(t) {
-				alert(111)
 				if (!t['data']) {
 					return
 				}
@@ -530,7 +530,7 @@
 					let recharge = ret.data.sum_recharge
 					// console.log(totalAmount / 1000000 , value)
 					// 有新订单了
-					if (Math.abs((totalAmount / 1000000) - recharge) > 5) {
+					if (Math.abs((totalAmount / 1000000) - recharge) > 1) {
 						// 查询钱包后台
 						const options = {
 							method: 'GET',
@@ -566,6 +566,7 @@
 			tgHistory() {
 				// 查询历史订单
 				// this.getTronTrans()
+				this.$router.go(0)
 				this.$router.push('/home').catch((err) => {})
 			},
 			submit(trx, txID) {
