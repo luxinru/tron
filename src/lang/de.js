@@ -189,4 +189,6 @@ export default {
   please_fill_in_the_transfer_amount: 'Bitte füllen Sie den Transfer in Limit aus',
 
   activity: 'Aktivität',
+
+  not_yet_open: 'Noch nicht geöffnet',
 }

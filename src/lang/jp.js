@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: '転入額をご記入ください',
 
   activity: 'アクティブ',
+
+  not_yet_open: 'まだ開いていません',
 }

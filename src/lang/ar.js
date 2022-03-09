@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: ' يرجى ملء خط نقل',
 
   activity: 'النشاطات',
+
+  not_yet_open: 'لم تفتح بعد',
 }

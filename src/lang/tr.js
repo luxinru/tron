@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: 'Lütfen transfer tutarını doldurun',
 
   activity: 'Aktivite',
+
+  not_yet_open: 'henüz açık değil',
 }

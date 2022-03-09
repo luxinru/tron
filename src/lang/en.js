@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: 'Please fill in the transfer in limit',
   
   activity: 'Activity',
+
+  not_yet_open: 'Not yet open',
 }

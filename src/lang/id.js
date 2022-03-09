@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: 'Silakan isi transfer dalam batas',
 
   activity: 'aktivitas',
+
+  not_yet_open: 'Belum terbuka',
 }

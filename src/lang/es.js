@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: 'Por favor, rellene la cantidad transferida',
   
   activity: 'Actividades',
+
+  not_yet_open: 'aún no abierto',
 }

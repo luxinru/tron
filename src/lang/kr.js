@@ -190,4 +190,6 @@ export default {
   please_fill_in_the_transfer_amount: '전입 한도를 기입해 주십시오',
 
   activity: '활용단어참조',
+
+  not_yet_open: '미개방',
 }
