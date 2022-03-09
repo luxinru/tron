@@ -1,10 +1,12 @@
 <template>
   <div class="login-container">
+    <IHeader :isback="false" :title="$t('sign_in')"></IHeader>
+
     <div class="lang">
       <van-popover
         v-model="showPopover"
         trigger="click"
-        placement="bottom-start"
+        placement="bottom-end"
         :actions="actions"
         @select="onChangeLanguage"
       >
@@ -34,15 +36,12 @@
       </div>
 
       <div class="remember">
-        <van-checkbox v-model="checked" checked-color="rgba(138, 7, 231, 1)"
+        <van-checkbox v-model="checked" checked-color="rgba(5, 52, 100, 1)"
           >{{ $t('remember_the_password') }}
         </van-checkbox>
       </div>
 
       <div class="login-btn" @click="handleSubmit">
-        <div class="kuai">
-          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-        </div>
         {{ $t('sign_in') }}
       </div>
 
@@ -55,10 +54,13 @@
 <script src="//g.alicdn.com/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
 <script>
 import Fetch from '../../utils/fetch'
+import IHeader from "@/components/IHeader.vue";
 
 export default {
   name: 'index',
-  components: {},
+  components: {
+    IHeader
+  },
   data() {
     return {
       data: {

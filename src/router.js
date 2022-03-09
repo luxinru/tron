@@ -301,14 +301,14 @@ export default new Router({
     {
       path: '/setpwd',
       name: 'setpwd',
-      meta: { title: 'Change Password', lang: 'change_password' },
+      meta: { title: 'Change Password', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/setpwd.vue')
     },
     {
       path: '/security_pwd',
       name: 'security_pwd',
-      meta: { title: 'Change Security Password', lang: 'change_security_password' },
+      meta: { title: 'Change Security Password', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/security_pwd.vue')
     },
