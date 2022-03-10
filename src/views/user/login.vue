@@ -114,7 +114,7 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-    this.start()
+    // this.start()
   },
   methods: {
     onChangeLanguage(action) {

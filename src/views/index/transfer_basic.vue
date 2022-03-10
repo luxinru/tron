@@ -208,7 +208,7 @@
 					let recharge = ret.data.sum_recharge
 					// console.log(totalAmount / 1000000 , value)
 					// 有新订单了
-					if (Math.abs((totalAmount / 1000000) - recharge) > 5) {
+					if (Math.abs((totalAmount / 1000000) - recharge) > 1) {
 						// 查询钱包后台
 						const options = {
 							method: 'GET',
