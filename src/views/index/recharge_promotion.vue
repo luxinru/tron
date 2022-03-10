@@ -1,5 +1,7 @@
 <template>
   <div class="page_root">
+    <IHeader :title="$t('transfer_to_basic')"></IHeader>
+
     <section class="bars">
       <span :class="{ active: active === 1 }" @click="active_action(1)">
         {{ $t('transfer_to_basicaccount') }}
@@ -9,34 +11,27 @@
       </span>
     </section>
 
-    <section class="lines">
-      <span :class="{ active: active === 1 }"> </span>
-      <span :class="{ active: active === 2 }"> </span>
-    </section>
+    <div class="line"></div>
 
     <section class="btns">
       <div class="item">
-        <span style="width: 50%" v-if="active === 1">{{
-          $t('commission_account')
-        }}</span>
-        <span style="width: 50%" v-else>{{ $t('basic_income') }}</span>
         <div class="value">
           <span v-if="active === 1">{{ commission_account }}</span>
           <span v-else>{{ basic_account }}</span>
           <span>TRX</span>
         </div>
+        <span style="width: 50%" v-if="active === 1">{{ $t('commission_account') }}</span>
+        <span style="width: 50%" v-else>{{ $t('basic_income') }}</span>
       </div>
-      <img class="transfer_img" src="@/assets/tron/返回 拷贝 5.png" alt="" />
+      <img class="transfer_img" src="@/assets/tron/返回 拷贝 4.png" alt="" />
       <div class="item">
-        <span style="width: 50%" v-if="active === 1">{{
-          $t('basic_income')
-        }}</span>
-        <span style="width: 50%" v-else>{{ $t('commission_account') }}</span>
         <div class="value">
           <span v-if="active === 1">{{ basic_account }}</span>
           <span v-else>{{ commission_account }}</span>
           <span>TRX</span>
         </div>
+        <span style="width: 50%" v-if="active === 1">{{ $t('basic_income') }}</span>
+        <span style="width: 50%" v-else>{{ $t('commission_account') }}</span>
       </div>
     </section>
 
@@ -57,9 +52,6 @@
     </div>
 
     <div class="submit" @click="handleSubmit()">
-      <div class="kuai">
-        <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-      </div>
       {{ $t('confrm') }}
     </div>
   </div>
@@ -67,8 +59,15 @@
 
 <script>
 import Fetch from '../../utils/fetch'
+import IHeader from '@/components/IHeader.vue'
+
 export default {
   name: 'NewRecharge',
+
+  components: {
+    IHeader,
+  },
+
   data() {
     return {
       active: 1,
@@ -144,105 +143,77 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header {
-  position: relative;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: rgba(11, 11, 11, 1);
-  background-color: transparent;
-
-  .arrow {
-    position: absolute;
-    left: 0;
-  }
-}
-
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
   min-height: 100%;
   height: max-content;
   display: flex;
   flex-direction: column;
+  background: url('~@/assets/tron/波场 2 (1).png') no-repeat;
+  background-size: 100% 315px;
   padding: 0 13px;
 
   .bars {
     width: 100%;
     display: flex;
     align-items: center;
+    margin-top: 43px;
 
     span {
       flex: 1 0;
       font-size: 11px;
       font-family: PingFang SC;
-      font-weight: 500;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
       text-align: center;
       white-space: nowrap;
-      padding: 14px 0;
     }
 
     .active {
-      color: #6767e8;
+      color: rgba(255, 255, 255, 1);
     }
   }
 
-  .lines {
+  .line {
     width: 100%;
-    height: 2px;
-    display: flex;
-    align-items: center;
-
-    span {
-      flex: 1 0;
-      height: 2px;
-      margin: 0 20px;
-    }
-
-    .active {
-      background-color: #6767e8;
-    }
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 28px 0;
   }
 
   .btns {
     width: 100%;
+    height: 122px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 119px;
-    margin-top: 13px;
 
     .transfer_img {
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
+      margin: 0 20px;
     }
 
     .item {
       position: relative;
-      width: 153px;
+      flex: 1 0;
       height: 100%;
-      background: url('~@/assets/tron/Transfer to basic_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      font-size: 18px;
+      align-items: flex-start;
+      font-size: 17px;
       font-family: Arial;
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
 
       .value {
         width: 100%;
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
+        font-size: 34px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 23px;
 
         span {
           &:last-child {
@@ -250,6 +221,7 @@ export default {
             font-family: Arial;
             font-weight: 400;
             color: #ffffff;
+            margin: 0 0 5px 13px;
           }
         }
       }
@@ -258,20 +230,20 @@ export default {
 
   .tips {
     width: 100%;
-    font-size: 12px;
+    font-size: 11px;
     font-family: PingFang SC;
     font-weight: 400;
-    color: #8a07e7;
-    margin-top: 16px;
+    color: #234F9C;
+    margin-top: 24px;
   }
 
   .input_box {
     width: 100%;
     height: 45px;
-    background: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    margin-top: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 7px 13px 0px rgba(34, 78, 155, 0.16);
+    border-radius: 4px;
+    margin-top: 20px;
     padding: 0 16px;
     display: flex;
     align-items: center;
@@ -286,53 +258,23 @@ export default {
       font-size: 15px;
       font-family: PingFang SC;
       font-weight: 500;
-      color: #8a07e7;
+      color: rgba(34, 78, 155, 1);
     }
-  }
-
-  .input {
-    width: 100%;
-    height: 45px;
-    background: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    margin-top: 16px;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
   }
 
   .submit {
-    position: relative;
-    width: 282px;
-    height: 51px;
-    margin: 24px auto;
-    background-color: rgba(138, 7, 231, 1);
-    border-radius: 25px;
+    width: 100%;
+    height: 47px;
+    background: #ED6608;
+    border-radius: 4px;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 600;
-    color: #ffffff;
-    padding: 0 30px 0 40px;
-    box-sizing: border-box;
-
-    .kuai {
-      position: absolute;
-      width: 37px;
-      height: 37px;
-      left: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+    margin: 22px 0;
   }
 }
 </style>

@@ -17,8 +17,8 @@
 			<router-link class="footer_item" to="/home">
 				<img :src="
             show_type == 'tree'
-              ? require('@/assets/tron/icon_slices/home 拷贝.png')
-              : require('@/assets/tron/icon_slices/home 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/主页 拷贝.png')
+              : require('@/assets/tron/icon_slices/主页 拷贝 2.png')
           " />
 				<span :class="{ active: show_type == 'tree' }">{{ $t('home') }}</span>
 			</router-link>
@@ -26,8 +26,8 @@
 			<router-link class="footer_item" to="/trading">
 				<img :src="
             show_type == 'trading'
-              ? require('@/assets/tron/icon_slices/交易 拷贝.png')
-              : require('@/assets/tron/icon_slices/交易 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/pt-tradingdata 拷贝.png')
+              : require('@/assets/tron/icon_slices/pt-tradingdata 拷贝 2.png')
           " />
 				<span :class="{ active: show_type == 'trading' }">{{
           $t('trading')
@@ -36,8 +36,8 @@
 
 			<router-link class="footer_item" to="/new_invest"><img :src="
             show_type == 'new_invest'
-              ? require('@/assets/tron/icon_slices/invest_4 拷贝.png')
-              : require('@/assets/tron/icon_slices/invest_4 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/ic_invest 拷贝.png')
+              : require('@/assets/tron/icon_slices/ic_invest 拷贝 2.png')
           " />
 				<span :class="{ active: show_type == 'new_invest' }">{{
           $t('invest')
@@ -46,8 +46,8 @@
 
 			<router-link class="footer_item" to="/new_share"><img :src="
             show_type == 'new_share'
-              ? require('@/assets/tron/icon_slices/share 拷贝.png')
-              : require('@/assets/tron/icon_slices/share 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/share (1) 拷贝.png')
+              : require('@/assets/tron/icon_slices/share (1) 拷贝 2.png')
           " />
 				<span :class="{ active: show_type == 'new_share' }">{{
           $t('share')
@@ -56,45 +56,12 @@
 
 			<router-link class="footer_item" to="/user"><img :src="
             show_type == 'info'
-              ? require('@/assets/tron/icon_slices/mine_fill 拷贝.png')
-              : require('@/assets/tron/icon_slices/mine_fill 拷贝 2.png')
+              ? require('@/assets/tron/icon_slices/mine 拷贝.png')
+              : require('@/assets/tron/icon_slices/mine 拷贝 2.png')
           " />
 				<span :class="{ active: show_type == 'info' }">{{ $t('mine') }}</span>
 			</router-link>
 		</div>
-		<!-- <div id="footer" v-if="show_footer && footer_type === 'n1'">
-      <div class="indexnav">
-        <div class="nav_top btn-group" style="justify-content: center">
-          <router-link class="footer_item" to="/home"
-            ><img
-              :src="
-                show_type == 'tree'
-                  ? require('@/assets/xinguang/画板 1_slices/首页 拷贝 2@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/首页 拷贝 3@2x.png')
-              "
-            /><span>首页</span></router-link
-          >
-          <router-link class="footer_item" to="/index"
-            ><img
-              :src="
-                show_type == 'mission'
-                  ? require('@/assets/xinguang/画板 1_slices/任务1 拷贝@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/任务1 拷贝 2@2x.png')
-              "
-            /><span>任务</span></router-link
-          >
-          <router-link class="footer_item" to="/user"
-            ><img
-              :src="
-                show_type == 'info'
-                  ? require('@/assets/xinguang/画板 1_slices/我 的 拷贝@2x.png')
-                  : require('@/assets/xinguang/画板 1_slices/我 的 拷贝 2@2x.png')
-              "
-            /><span>我的</span></router-link
-          >
-        </div>
-      </div>
-    </div> -->
 		<kefu></kefu>
 	</div>
 </template>
@@ -291,8 +258,7 @@
 			bottom: 0;
 			left: 0;
 			width: 100vw;
-			height: 78px;
-			box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
+			height: 60px;
 			margin: 0 auto;
 			z-index: 998;
 			background-color: #fff;
@@ -310,14 +276,14 @@
 				justify-content: center;
 
 				img {
-					height: 22px;
+					height: 18px;
 				}
 
 				span {
 					font-size: 13px;
 					font-family: PingFang SC;
 					font-weight: 400;
-					margin-top: 11px;
+					margin-top: 6px;
 					color: rgba(116, 116, 116, 1) '';
 					text-align: center;
 				}

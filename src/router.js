@@ -138,7 +138,7 @@ export default new Router({
     {
       path: '/new_withdrawal',
       name: 'new_withdrawal',
-      meta: { title: 'Withdrawal', lang: 'withdrawal' },
+      meta: { title: 'Withdrawal', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/new_withdrawal.vue')
     },
@@ -154,7 +154,7 @@ export default new Router({
     {
       path: '/recharge_promotion',
       name: 'recharge_promotion',
-      meta: { title: 'Recharge Promotion', lang: 'transfer_to_basic' },
+      meta: { title: 'Recharge Promotion', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/recharge_promotion.vue')
     },
@@ -392,7 +392,7 @@ export default new Router({
     {
       path: '/trading_list',
       name: 'trading_list',
-      meta: { title: 'Trading list' },
+      meta: { title: 'Trading list', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/trading_list.vue')
     },

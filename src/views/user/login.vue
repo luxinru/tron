@@ -11,7 +11,7 @@
         @select="onChangeLanguage"
       >
         <template #reference>
-          <img src="@/assets/tron/Home_slices/组 101.png" />
+          <img src="@/assets/tron/组101拷贝1@2x.png" />
         </template>
       </van-popover>
     </div>

@@ -9,7 +9,7 @@
         size="18"
       />
     </div>
-    <span>{{ title }}</span>
+    <span :style="fontStyle">{{ title }}</span>
   </div>
 </template>
  
@@ -30,10 +30,22 @@ export default {
       type: String,
       default: 'rgba(255, 255, 255, 1)',
     },
+    fontColor: {
+      type: String,
+      default: 'rgba(255, 255, 255, 1)',
+    }
   },
 
   data() {
     return {}
+  },
+
+  computed: {
+    fontStyle () {
+      return {
+        color: this.fontColor
+      }
+    }
   },
 
   methods: {},
@@ -45,14 +57,12 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 16px;
 
   .back {
     width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
-    margin-top: 36px;
   }
 
   span {

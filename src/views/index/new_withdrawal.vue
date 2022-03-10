@@ -1,43 +1,41 @@
 <template>
   <div class="page_root">
+    <IHeader
+      :title="$t('withdrawal')"
+      color="rgba(0, 0, 0, 1)"
+      fontColor="rgba(0, 0, 0, 1)"
+    ></IHeader>
+
+    <section class="tabs">
+      <div class="item" :class="{ active: active === 1 }" @click="active = 1">
+        {{ $t('basic_account') }}
+        <span class="line"></span>
+      </div>
+      <div class="item" :class="{ active: active === 2 }" @click="active = 2">
+        {{ $t('commission_account') }}
+        <span class="line"></span>
+      </div>
+      <div class="item" :class="{ active: active === 3 }" @click="active = 3">
+        {{ $t('gift_account') }}
+        <span class="line"></span>
+      </div>
+    </section>
+
     <section class="header">
-      <div class="logo">
-        <img
-          src="@/assets/tron/Withdrawal_slices/7101cb2ba7da2874ae11574f81f49abd992d568a2bd447-A9yRVS.png"
-          alt=""
-        />
-      </div>
-
-      <div class="tabs">
-        <span :class="{ active: active === 1 }" @click="active = 1">
-          {{ $t('basic_account') }}
-        </span>
-        <div class="line"></div>
-        <span :class="{ active: active === 2 }" @click="active = 2">
-          {{ $t('commission_account') }}
-        </span>
-        <div class="line"></div>
-        <span :class="{ active: active === 3 }" @click="active = 3">
-          {{ $t('gift_account') }}
-        </span>
-      </div>
-
-      <span class="title">{{ getTitle() }}</span>
-
-      <span class="tip">24 {{ $t('hour_withdrawal') }}</span>
-
+      <span class="title">
+        {{ getTitle() }}
+      </span>
       <span class="price">{{ getPrice() }}</span>
-
-      <span class="limit" v-if="active === 1"
-        >{{ $t('daily_withdrawal_limit') }}: {{ daily_withdrawal_limit }}</span
-      >
-
+      <span class="tip">24 {{ $t('hour_withdrawal') }}</span>
       <template v-if="active === 1">
+        <span class="line"></span>
         <span class="limit">
+          {{ $t('daily_withdrawal_limit') }}: {{ daily_withdrawal_limit }}
+        </span>
+        <span class="limit limit2">
           <span>{{ withdrawal_limit_remaining_today }} trx</span>
           {{ $t('withdrawal_limit_remaining_today') }}
         </span>
-
         <span class="btn" @click="$router.push('recharge_promotion')">
           {{ $t('transfer_to_commission_account') }}
         </span>
@@ -78,9 +76,6 @@
       v-if="active !== 3"
       @click="handleSubmit()"
     >
-      <div class="kuai">
-        <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-      </div>
       {{ $t('confrm') }}
     </div>
     <div
@@ -90,13 +85,6 @@
       v-if="active === 3"
       @click="giftSubmit()"
     >
-      <div class="kuai">
-        <img
-          v-if="gift_status === 1"
-          src="@/assets/tron/长箭头2@2x.png"
-          alt=""
-        />
-      </div>
       {{ $t('confrm') }}
     </div>
   </div>
@@ -104,8 +92,15 @@
 
 <script>
 import Fetch from '../../utils/fetch'
+import IHeader from '@/components/IHeader.vue'
+
 export default {
   name: 'TradingList',
+
+  components: {
+    IHeader,
+  },
+
   data() {
     return {
       basic_account: '0.000000',
@@ -261,97 +256,83 @@ export default {
   flex-direction: column;
   padding: 0 13px;
 
-  .header {
-    position: relative;
-    margin-top: 60px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
+  .tabs {
     width: 100%;
-    height: max-content;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    font-size: 12px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(185, 185, 185, 1);
+    margin-top: 16px;
+    overflow: hidden;
 
-    .logo {
-      position: absolute;
-      width: 70px;
-      height: 70px;
+    .item {
+      position: relative;
+      flex: 1 0;
+      height: 100%;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      margin-top: -55px;
-      background-color: rgba(138, 7, 231, 1);
-
-      img {
-        width: 36px;
-        height: 37px;
+      .line {
+        position: absolute;
+        bottom: 0;
+        width: 26px;
+        height: 3px;
       }
     }
 
-    .tabs {
-      display: flex;
-      align-items: center;
-      height: 35px;
-      border: 1px solid rgba(138, 7, 231, 1);
-      border-radius: 4px;
-      font-size: 13px;
-      font-family: Arial;
-      font-weight: 400;
-      color: rgba(138, 7, 231, 1);
-      box-sizing: border-box;
-      margin-top: 36px;
-      overflow: hidden;
-      span {
-        flex: 1 0;
-        height: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-      }
+    .active {
+      color: rgba(34, 78, 155, 1);
 
       .line {
-        height: 100%;
-        width: 1px;
-        background-color: rgba(138, 7, 231, 1);
-      }
-
-      .active {
-        color: rgba(255, 255, 255, 1);
-        background-color: rgba(138, 7, 231, 1);
+        background-color: rgba(34, 78, 155, 1);
       }
     }
+  }
+
+  .header {
+    position: relative;
+    width: 100%;
+    min-height: 137px;
+    height: max-content;
+    margin-top: 16px;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    background: #224e9b;
+    box-shadow: 0px 4px 21px 0px rgba(34, 78, 155, 0.71);
+    border-radius: 4px;
 
     .title {
-      font-size: 16px;
+      width: 100%;
+      font-size: 15px;
+      font-family: Arial;
+      font-weight: 400;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+
+    .price {
+      width: 100%;
+      word-break: break-word;
+      font-size: 27px;
       font-family: Arial;
       font-weight: bold;
-      color: #4b4d59;
-      margin-top: 20px;
-      text-align: center;
+      color: #ffffff;
+      margin-top: 16px;
     }
 
     .tip {
       font-size: 13px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: #8a07e7;
-      margin-top: 10px;
-    }
-
-    .price {
-      font-size: 46px;
-      font-family: Arial;
-      font-weight: bold;
-      color: #4b4d59;
-      text-align: center;
-      width: 100%;
-      margin: 20px 0 10px 0;
-      word-break: break-word;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 16px;
     }
 
     input {
@@ -364,48 +345,64 @@ export default {
       margin-top: 24px;
     }
 
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.4);
+      margin: 16px 0;
+    }
+
     .limit {
-      margin-top: 10px;
       font-size: 13px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.5);
-      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .limit2 {
+      margin-top: 16px;
 
       span {
-        color: rgba(138, 7, 231, 1);
+        color: rgba(255, 140, 2, 0.7);
       }
     }
 
     .btn {
-      padding: 12px 16px;
-      background-color: #8a07e7;
-      border-radius: 17px;
-      font-size: 15px;
+      width: 100%;
+      height: 31px;
+      background: #ffffff;
+      border-radius: 16px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
       font-family: PingFang SC;
       font-weight: 400;
-      color: #ffffff;
-      margin-top: 16px;
+      color: #224e9b;
     }
   }
 
-  .account {
-    font-size: 17px;
-    font-family: Arial;
-    font-weight: bold;
-    color: #1e253c;
-    margin-top: 25px;
+  .tips {
+    width: 100%;
+    height: 34px;
+    font-size: 13px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #224E9B;
+    line-height: 22px;
+    margin: 28px 0;
   }
 
   .form_item {
     width: 100%;
     height: 45px;
     background: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
+    box-shadow: 0px 7px 13px 0px rgba(34, 78, 155, 0.16);
+    border-radius: 4px;
     display: flex;
     align-items: center;
-    margin-top: 16px;
+    margin-top: 12px;
     overflow: hidden;
 
     input {
@@ -413,70 +410,26 @@ export default {
       font-size: 13px;
       font-family: PingFang SC;
       font-weight: 400;
-      padding: 0 8.8px;
+      padding: 0 22px;
     }
-
-    .dropdown {
-      width: 100%;
-      // height: 100%;
-
-      /deep/ .van-dropdown-menu__item {
-        width: 100%;
-        height: 100%;
-
-        .van-dropdown-menu__title {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          &::after {
-            margin-right: 16px;
-          }
-        }
-      }
-    }
-  }
-
-  .tips {
-    font-size: 13px;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: #8a07e7;
-    margin-top: 15px;
   }
 
   .submit {
     position: relative;
-    width: 282px;
-    height: 51px;
-    margin: 24px auto;
-    background-color: rgba(138, 7, 231, 1);
-    border-radius: 25px;
+    width: 100%;
+    height: 47px;
+    background: #ED6608;
+    border-radius: 4px;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 600;
-    color: #ffffff;
-    padding: 0 30px 0 40px;
-    box-sizing: border-box;
-    .kuai {
-      position: absolute;
-      width: 37px;
-      height: 37px;
-      left: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
+    margin: 33px 0;
   }
+
   .submit_no {
     background-color: rgba(188, 190, 192, 1);
   }
