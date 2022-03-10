@@ -91,58 +91,7 @@ export default {
     },
     strat() {
       Fetch('/user/getTRXDetailAll').then((res) => {
-        this.data = {
-          list: [
-            {
-              id: 123123,
-              type: 1,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 2,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 1,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 2,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 1,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 2,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 1,
-              money: 123123123,
-              time: 123123123,
-            },
-            {
-              id: 123123,
-              type: 2,
-              money: 123123123,
-              time: 123123123,
-            },
-          ],
-        }
+        this.data = res.data
       })
     },
     receive(id) {

@@ -1,64 +1,82 @@
 <template>
   <div class="page_root">
-    <section class="search_bar">
-      <div class="calendar">
-        <img src="@/assets/tron/Trading list_slices/日历-内容页.png" alt="" />
-        <span class="value" @click="show = true">{{ date }}</span>
-        <div class="clear" @click="onClear">x</div>
-      </div>
-
-      <div class="icon">
-        <van-icon name="search" @click="search" color="#fff" size="16" />
-      </div>
-    </section>
+    <IHeader :title="$t('proft_list')"></IHeader>
 
     <section class="btns">
       <div class="item">
-        <span style="width: 50%">{{ $t('basic_income') }}</span>
         <div class="value">
-          <span>{{basic_income}}</span>
+          <span>{{ basic_income }}</span>
           <span>TRX</span>
         </div>
+        <span>{{ $t('basic_income') }}</span>
       </div>
       <div class="item">
-        {{ $t('promotion_income') }}
         <div class="value">
-          <span>{{promotion_income}}</span>
+          <span>{{ promotion_income }}</span>
           <span>TRX</span>
+        </div>
+        <span>{{ $t('promotion_income') }}</span>
+      </div>
+    </section>
+
+    <section class="search_bar">
+      <div class="calendar">
+        <img src="@/assets/tron/日历.png" alt="" />
+        <span class="value" @click="show = true">{{ date }}</span>
+        <div class="icon">
+          <van-icon name="search" @click="search" color="#fff" size="16" />
         </div>
       </div>
     </section>
 
-    <section class="list">
-      <div class="item" v-for="item in data" :key="index">
+    <section class="list" v-if="data.length">
+      <div class="item" v-for="(item, index) in data" :key="index">
+        <span class="title">
+          {{ $t('proft_list') }}
+        </span>
         <div class="info">
           <span>{{ $t('date') }}</span>
-          <span>{{item.time}}</span>
+          <span>{{ item.time }}</span>
         </div>
         <div class="info">
           <span>{{ $t('amount') }}</span>
-          <span style="color: rgba(138, 7, 231, 1);">+ {{item.money}}</span>
+          <span>+ {{ item.money }}</span>
         </div>
         <span class="tip">{{ $t('interest_reward') }}</span>
       </div>
     </section>
 
-    <van-calendar v-model="show" :show-title="false" :show-confirm="false" type="range" @confirm="onConfirm" />
+    <van-empty v-else class="empty" description="no data" />
+
+    <van-calendar
+      v-model="show"
+      :show-title="false"
+      :show-confirm="false"
+      type="range"
+      @confirm="onConfirm"
+    />
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
 import moment from 'moment'
+import IHeader from '@/components/IHeader.vue'
 
 export default {
   name: 'TradingList',
+
+  components: {
+    IHeader
+  },
+
   data() {
     return {
       show: false,
       date: this.$t('please_select_a_time'),
-	  basic_income:0,
-	  promotion_income:0,
+      basic_income: 0,
+      promotion_income: 0,
+      data: []
     }
   },
   computed: {},
@@ -66,25 +84,25 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-	  this.start();
-	  },
+    this.start()
+  },
   methods: {
-	start() {
-		Fetch("/user/proft_list").then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		});
-	},
-	search(){
-		Fetch('/user/proft_list', {
-		    date: this.date,
-		  }).then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		  })
-	},
+    start() {
+      Fetch('/user/proft_list').then((res) => {
+        this.data = res.data.list;
+        this.basic_income = res.data.basic_income
+        this.promotion_income = res.data.promotion_income
+      })
+    },
+    search() {
+      Fetch('/user/proft_list', {
+        date: this.date,
+      }).then((res) => {
+        this.data = res.data.list
+        this.basic_income = res.data.basic_income
+        this.promotion_income = res.data.promotion_income
+      })
+    },
     onConfirm(date) {
       const [start, end] = date
       this.show = false
@@ -101,34 +119,35 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   height: max-content;
   display: flex;
   flex-direction: column;
   padding: 0 13px;
+  background: url('~@/assets/tron/波场 2 (3).png') no-repeat;
+  background-size: 100% 264px;
 
   .search_bar {
     width: 100%;
-    height: 40px;
+    height: 55px;
     display: flex;
     align-items: center;
-    margin-top: 16px;
+    margin-top: 42px;
 
     .calendar {
-      flex: 1 0;
+      flex: 1 0;  
       height: 100%;
-      background: #ffffff;
-      border: 1px solid #cccccc;
+      background: #FFFFFF;
+      box-shadow: 0px 7px 13px 0px rgba(34, 78, 155, 0.16);
       border-radius: 4px;
       padding: 0 10px;
       display: flex;
       align-items: center;
 
       img {
-        width: 13px;
-        height: 13px;
+        width: 18px;
+        height: 18px;
       }
 
       .value {
@@ -153,13 +172,13 @@ export default {
     }
 
     .icon {
-      width: 31px;
-      height: 31px;
+      width: 25px;
+      height: 25px;
       margin-left: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: rgba(138, 7, 231, 1);
+      background-color: rgba(237, 102, 8, 1);
       border-radius: 50%;
       overflow: hidden;
     }
@@ -169,37 +188,36 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 119px;
-    margin-top: 16px;
+    margin-top: 39px;
 
     .item {
       position: relative;
-      width: 167px;
+      flex: 1 0;
       height: 100%;
-      background: url('~@/assets/tron/Transfer to basic_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      font-size: 18px;
+      font-size: 17px;
       font-family: Arial;
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
 
       .value {
         width: 100%;
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
+        font-size: 34px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-bottom: 23px;
 
         span {
           &:last-child {
             font-size: 13px;
             font-family: Arial;
             font-weight: 400;
-            color: #ffffff;
+            color: #FFFFFF;
+            margin: 0 0 3px 13px;
           }
         }
       }
@@ -207,22 +225,30 @@ export default {
   }
 
   .list {
-    margin-top: 16px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 24px;
 
     .item {
       width: 100%;
-      background: #fff;
-      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-      border-radius: 13px;
+      min-height: 151px;
+      background: #FFFFFF;
+      box-shadow: 0px 7px 13px 0px rgba(34, 78, 155, 0.16);
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      padding: 16px;
-      margin-top: 16px;
+      padding: 20px;
+      margin-top: 13px;
+
+      .title {
+        font-size: 15px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #053464;
+      }
 
       .info {
         margin-top: 16px;
@@ -233,19 +259,28 @@ export default {
         font-size: 14px;
         font-family: PingFang SC;
         font-weight: 400;
-        color: #000000;
+        color: #0A3867;
 
-        &:first-child {
-          margin-top: 0;
+        span {
+          :last-child {
+            font-size: 14px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #4E7091;
+          }
         }
       }
 
       .tip {
-        margin-top: 9px;
+        width: max-content;
+        margin-top: 16px;
+        padding: 7px 15px;
+        background: rgba(34, 78, 155, 0.6);
+        border-radius: 4px;
         font-size: 11px;
         font-family: PingFang SC;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.4);
+        font-weight: 500;
+        color: #224E9B;
       }
     }
   }
