@@ -121,7 +121,7 @@ export default {
           this.conversion_amount = 0
           this.$notify({
             background: '#07c160',
-            message: res.data.info,
+            message: res.info,
           })
           this.start()
         })
@@ -133,7 +133,7 @@ export default {
           this.conversion_amount = 0
           this.$notify({
             background: '#07c160',
-            message: res.data.info,
+            message: res.info,
           })
           this.start()
         })
