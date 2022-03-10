@@ -1,8 +1,8 @@
 <template>
   <div class="page_root">
-    <section class="header">
-      <div class="title">{{ $t('mine') }}</div>
+    <HeaderBar></HeaderBar>
 
+    <section class="header">
       <div class="user">
         <img src="../index/image/home8.png" alt="" />
         <span>{{ data.mobile }}</span>
@@ -10,88 +10,78 @@
 
       <div class="total">
         <span class="total_title">{{ $t('total_balance') }}</span>
-        <span class="total_value">{{ totalBalance }}<span>TRX</span></span>
-        <img
-          src="@/assets/tron/Mine_slices/3846744e538fec1a9e1f38da8c630831e30e2cf323a63-cWaYhC_fw1200.png"
-          alt=""
-        />
+        <span class="total_value">{{ totalBalance }}</span>
       </div>
     </section>
 
     <section class="funtion">
-      <div class="part">
-        <img
-          src="@/assets/tron/Mine_slices/组 98.png"
-          alt=""
-          @click="handleMyService('new_recharge')"
-        />
-        <span>{{ $t('recharge') }}</span>
+      <div class="part" @click="$router.push('/new_recharge')">
+        {{ $t('recharge') }}
       </div>
 
-      <div class="part">
-        <img
-          src="@/assets/tron/Mine_slices/组 98 拷贝.png"
-          alt=""
-          @click="handleMyService('new_withdrawal')"
-        />
-        <span>{{ $t('withdrawal') }}</span>
+      <div class="part" @click="$router.push('/new_withdrawal')">
+        {{ $t('withdrawal') }}
       </div>
     </section>
 
+    <span class="app_title">{{ $t('trx_deposit_quantity') }}:</span>
     <section class="quantity">
-      <span class="title">{{ $t('trx_deposit_quantity') }}:</span>
-      <div class="content">
-        <img
-          src="@/assets/tron/Mine_slices/image-removebg-preview (9).png"
-          alt=""
-        />
-        <div class="info">
-          <span class="value">{{data.money}}</span>
-          <span class="value">{{data.promotion}}</span>
-          <span class="tip">
-            {{ $t('recharge_text') }}
-          </span>
-        </div>
+      <span class="tip">
+        {{ $t('recharge_text') }}
+      </span>
+      <div class="info">
+        <span class="value">{{ data.money }}</span>
+        <span class="value">{{ data.promotion }}</span>
       </div>
     </section>
 
-    <span class="app_title">{{ $t('app_services') }}</span>
+    <span class="app_title">{{ $t('app_services') }}:</span>
+
     <section class="services">
       <div class="item" @click="handleMyService('team')">
-        <img src="@/assets/tron/Mine_slices/组 99.png" alt="" />
+        <img src="@/assets/tron/Mine_slices/团队 (1).png" alt="" />
         <span>{{ $t('team') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('proft_list')">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝.png" alt="" />
+        <img src="@/assets/tron/Mine_slices/项目 (1).png" alt="" />
         <span>{{ $t('proft_list') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('recharge_promotion')">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝 2.png" alt="" />
+        <img src="@/assets/tron/Mine_slices/项目分析.png" alt="" />
         <span>{{ $t('transfer_to_basic') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('setpwd')">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝 3.png" alt="" />
+        <img src="@/assets/tron/Mine_slices/3.1 密码.png" alt="" />
         <span>{{ $t('change_password') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('security_pwd')">
-        <img src="@/assets/tron/Mine_slices/组 99(1).png" alt="" />
+        <img src="@/assets/tron/Mine_slices/密码.png" alt="" />
         <span>{{ $t('security_password') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('new_share')">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝(1).png" alt="" />
+        <img src="@/assets/tron/Mine_slices/get.png" alt="" />
         <span>{{ $t('share') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="handleMyService('notice')">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝 2(1).png" alt="" />
+        <img src="@/assets/tron/Mine_slices/信息.png" alt="" />
         <span>{{ $t('notifcation') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item">
-        <img src="@/assets/tron/Mine_slices/组 99 拷贝 3(1).png" alt="" />
+        <img src="@/assets/tron/Mine_slices/app (2).png" alt="" />
         <span>{{ $t('app') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
       <div class="item" @click="logout">
-        <img src="@/assets/tron/Mine_slices/组 99(2).png" alt="" />
+        <img src="@/assets/tron/Mine_slices/ic_注销.png" alt="" />
         <span>{{ $t('logout') }}</span>
+        <van-icon name="arrow" size="12" />
       </div>
     </section>
   </div>
@@ -101,18 +91,24 @@
 import Fetch from '../../utils/fetch'
 import Vue from 'vue'
 import { NoticeBar } from 'vant'
+import HeaderBar from '@/components/header-bar.vue'
 
 Vue.use(NoticeBar)
 
 export default {
   name: 'user',
+
+  components: {
+    HeaderBar,
+  },
+
   data() {
     return {
       www: [],
       data: {
-		  money:0,
-		  promotion:0,
-	  },
+        money: 0,
+        promotion: 0,
+      },
       /* 待删除 */
       bg: '',
       footerType: 'n1',

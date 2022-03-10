@@ -162,7 +162,7 @@ export default new Router({
       name: 'new_recharge',
       meta: {
         title: 'recharge',
-        lang: 'recharge'
+        hiddenTitle: true,
       },
       component: () =>
         import( /* webpackChunkName: "home" */ './views/index/new_recharge.vue')
@@ -327,7 +327,8 @@ export default new Router({
       path: '/invest_product/:id',
       name: 'invest_product',
       meta: {
-        title: 'Invest products'
+        title: 'Invest products',
+        hiddenTitle: true
       },
       component: () =>
         import( /* webpackChunkName: "home" */ './views/index/invest_product.vue')

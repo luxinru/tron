@@ -1,7 +1,5 @@
 <template>
   <div class="page_root">
-    <section class="header">{{ $t('share') }}</section>
-
     <section class="content">
       <img
         class="logo"
@@ -60,13 +58,13 @@ export default {
     copy() {
       var clipboard = new Clipboard('.btn')
       clipboard.on('success', (e) => {
-        this.$notify({type: 'success', message: this.$t('copy_successfully')})
+        this.$notify({ type: 'success', message: this.$t('copy_successfully') })
         //  释放内存
         clipboard.destroy()
       })
       clipboard.on('error', (e) => {
         // 不支持复制
-        this.$notify({type: 'danger', message: this.$t('copy_failed')})
+        this.$notify({ type: 'danger', message: this.$t('copy_failed') })
         // 释放内存
         clipboard.destroy()
       })
@@ -88,19 +86,6 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 0 13px 16px;
-
-  .header {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 1);
-    background-color: transparent;
-  }
 
   .content {
     width: 100%;
