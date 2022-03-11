@@ -1,60 +1,55 @@
 <template>
   <div class="page_root">
     <div class="header">
-      <div class="head">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#000"
-          @click="$router.back()"
-        />
-        {{ $t('team') }}
-      </div>
+      <van-icon
+        name="arrow-left"
+        size="23"
+        color="#fff"
+        @click="$router.go(-1)"
+      />
+      <div>{{ $t('team') }}</div>
     </div>
 
     <section class="level_box">
-      <img src="@/assets/tron/Team_slices/3d9037c087e41cb26e0e35c9b2af4e76438441fc9ec35-QfBCUP.png" alt="">
       <div class="list">
-        <div class="item">
+        <div class="item" :class="{ active: active === 1 }" @click="active = 1">
           <span>{{ $t('lev') }} 1</span>
-          <span>{{team.lev1}}</span>
+          <span>{{ team.lev1 || 0 }}</span>
         </div>
-        <div class="item">
+        <div class="item" :class="{ active: active === 2 }" @click="active = 2">
           <span>{{ $t('lev') }} 2</span>
-          <span>{{team.lev2}}</span>
+          <span>{{ team.lev2 || 0 }}</span>
         </div>
-        <div class="item">
+        <div class="item" :class="{ active: active === 3 }" @click="active = 3">
           <span>{{ $t('lev') }} 3</span>
-          <span>{{team.lev3}}</span>
+          <span>{{ team.lev3 || 0 }}</span>
         </div>
       </div>
     </section>
-	<template v-for="item in data">
-		<section class="info">
-			  <div class="item">
-				<span>{{ $t('date') }}</span>
-				<span>{{item.time}}</span>
-			  </div>
-			  <div class="item">
-				<span>{{ $t('amount') }}</span>
-				<span>{{item.money}} TRX</span>
-			  </div>
-		</section>
-	</template>
+    <template v-for="(item, index) in data">
+      <section class="info" :key="index">
+        <div class="item">
+          <span>{{ $t('date') }}</span>
+          <span>{{ item.time }}</span>
+        </div>
+        <div class="item">
+          <span>{{ $t('amount') }}</span>
+          <span>{{ item.money }} TRX</span>
+        </div>
+      </section>
+    </template>
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
 export default {
   name: 'NewInvest',
   data() {
     return {
       active: 1,
-	  data: {
-		  
-	  },
-	  team:{}
+      data: {},
+      team: {},
     }
   },
   computed: {},
@@ -62,54 +57,90 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-	  this.start();
+    this.start()
   },
   methods: {
-	  start() {
-	      /* setTimeout(() => {
+    start() {
+      /* setTimeout(() => {
 	        var element = document.getElementById("app");
 	        element.scrollIntoView();
 	      }, 0); */
-	      Fetch("/user/my_team").then((res) => {
-	  		this.team = res.data.team;
-			this.data = res.data.data;
-	      });
-	  },
+      Fetch('/user/my_team').then((res) => {
+        this.team = res.data.team
+        this.data = [
+          { 
+            time: 'asdajhsdjkasd',
+            money: 'adjahsd'
+          },
+          { 
+            time: 'asdajhsdjkasd',
+            money: 'adjahsd'
+          },
+          { 
+            time: 'asdajhsdjkasd',
+            money: 'adjahsd'
+          },
+          { 
+            time: 'asdajhsdjkasd',
+            money: 'adjahsd'
+          },
+          { 
+            time: 'asdajhsdjkasd',
+            money: 'adjahsd'
+          }
+        ]
+      })
+    },
   },
 }
 </script>
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  background: url('~@/assets/tron/矢量智能对象 (1).png') no-repeat;
+  background-size: 100% 292px;
+  font-family: PingFang SC;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 13px;
+
+  .header {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #fff;
+
+    i {
+      position: absolute;
+      left: -3px;
+    }
+  }
 
   .level_box {
-    width: 348px;
-    background: #FFFFFF;
+    width: 100%;
+    background: #ffffff;
     box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
-    padding: 24px 20px;
-    margin-top: 16px;
+    border-radius: 7px 7px 0 0;
+    padding: 25px 18px;
+    margin-top: 182px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    img {
-      width: 135px;
-      height: 145px;
-      margin-top: 20px;
-    }
 
     .list {
       width: 100%;
       display: flex;
       align-items: center;
-      margin-top: 22px;
 
       .item {
         flex: 1 0;
@@ -120,23 +151,31 @@ export default {
           font-size: 17px;
           font-family: Arial;
           font-weight: bold;
-          color: #1E253C;
+          color: #4b95fe;
           display: flex;
           justify-content: center;
 
           &:first-child {
-            width: 95px;
-            height: 36px;
-            background: rgba(97, 100, 232, 0.2);
-            border-radius: 13px;
+            width: 100%;
+            height: 32px;
+            border: 1px solid rgba(75, 149, 254, 1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 13px;
             font-family: Arial;
-            font-weight: bold;
-            color: #5E63E7;
-            margin-bottom: 16px;
+            font-weight: 400;
+            color: #4b95fe;
+            margin-bottom: 18px;
+          }
+        }
+      }
+
+      .active {
+        span {
+          &:first-child {
+            background-color: rgba(75, 149, 254, 1);
+            color: #fff;
           }
         }
       }
@@ -144,29 +183,36 @@ export default {
   }
 
   .info {
-      width: 348px;
-      height: 90px;
-      background: #FFFFFF;
-      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-      border-radius: 13px;
-      margin-top: 15px;
+    width: 100%;
+    height: 76px;
+    background: #ffffff;
+    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    .item {
+      flex: 1 0;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      padding: 10px 0;
-      box-sizing: border-box;
 
-      .item {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 22px;
-        font-size: 14px;
+      span {
+        font-size: 11px;
         font-family: PingFang SC;
         font-weight: 400;
-        color: #000000;
+        color: #87888A;
+
+        &:first-child {
+          font-size: 13px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #C7C7C8;
+        }
       }
     }
+  }
 }
 </style>

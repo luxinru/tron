@@ -5,10 +5,10 @@
         <van-icon
           name="arrow-left"
           size="23"
-          color="#000"
+          :color="color"
           @click="handleBack"
         />
-        <div>{{ title }}</div>
+        <div :style="`color: ${color}`">{{ title }}</div>
       </div>
     </keep-alive>
     <div>
@@ -96,12 +96,13 @@ import Fetch from './utils/fetch'
 import kefu from './utils/kefu.vue'
 import router from './router'
 import CheckTrans from './utils/tron.js'
-var path, title, currentPath
+var path, title, currentPath, color
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
   path = from.path
   currentPath = to.meta.hiddenTitle ? false : true
   title = to.meta.title
+  color = to.meta.color
   setTimeout(() => {
     window.$('body').scrollTop(0)
   })
@@ -122,6 +123,7 @@ export default {
       show_type: 'index',
       path: '/',
       title: '',
+      color: '#1E253C',
       currentPath: '/',
       idfa: '',
       timerTron: null,
@@ -131,6 +133,7 @@ export default {
   beforeUpdate() {
     this.path = path
     this.title = title
+    this.color = color
     this.currentPath = currentPath
     console.log('this.$route :>> ', this.$route)
     const lang = this.$route.meta
