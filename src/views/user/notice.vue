@@ -1,16 +1,5 @@
 <template>
   <div class="notice-page">
-    <div class="header">
-      <div class="head">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#000"
-          @click="$router.back()"
-        />
-        Notifcation
-      </div>
-    </div>
     <div class="notice-cont">
       <template v-if="data.list.length">
         <div
@@ -37,27 +26,6 @@
 
       <van-empty v-else description="no data" />
     </div>
-    <!-- <div class="fund_wrap">
-            <table class="table">
-                <tbody>
-                <tr class="header">
-                    <th class="first">状态</th>
-                    <th>主题</th>
-                    <th>时间</th>
-                    <th class="last">操作</th>
-                </tr>
-                <tr v-for="(v,k) in data.list" :key="k">
-                    <td v-if="!v.is_read" style="color: #00C800">未读</td>
-                    <td v-if="v.is_read" style="color: #cccccc">已读</td>
-                    <td>{{v.title}}</td>
-                    <td>{{v.time|dateFormat}}</td>
-                    <td>
-                        <router-link class="button" :to="'/notice/' + v.id">查看</router-link>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div> -->
   </div>
 </template>
 

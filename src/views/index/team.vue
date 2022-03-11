@@ -67,28 +67,7 @@ export default {
 	      }, 0); */
       Fetch('/user/my_team').then((res) => {
         this.team = res.data.team
-        this.data = [
-          { 
-            time: 'asdajhsdjkasd',
-            money: 'adjahsd'
-          },
-          { 
-            time: 'asdajhsdjkasd',
-            money: 'adjahsd'
-          },
-          { 
-            time: 'asdajhsdjkasd',
-            money: 'adjahsd'
-          },
-          { 
-            time: 'asdajhsdjkasd',
-            money: 'adjahsd'
-          },
-          { 
-            time: 'asdajhsdjkasd',
-            money: 'adjahsd'
-          }
-        ]
+        this.data = res.data.data
       })
     },
   },
@@ -191,13 +170,15 @@ export default {
     align-items: center;
     padding: 0 18px;
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 
     .item {
       flex: 1 0;
       height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
 
       span {
         font-size: 11px;
