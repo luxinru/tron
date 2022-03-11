@@ -1,5 +1,9 @@
 <template>
   <div class="register-container">
+    <div class="header_title">
+      {{ $t('sign_up') }}
+    </div>
+
     <div class="register-box">
       <span class="title">{{ $t('mobile_number') }}</span>
       <div class="item">
@@ -44,26 +48,22 @@
         />
       </div>
 
-      <div class="register-btn" @click="handleSubmit">
-        <div class="kuai">
-          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
+      <div class="login-footer">
+        <div class="remember">
+          <van-checkbox v-model="checked" checked-color="rgba(138, 7, 231, 1)"
+            >{{ $t('encrypted_registration') }}
+          </van-checkbox>
         </div>
-        {{ $t('sign_up') }}
-      </div>
-      <div class="forget" @click="handleLogin">{{ $t('sign_in') }}</div>
-    </div>
-
-    <div class="login-footer">
-      <div class="remember">
-        <van-checkbox v-model="checked" checked-color="rgba(138, 7, 231, 1)"
-          >{{ $t('encrypted_registration') }}
-        </van-checkbox>
-      </div>
-      <div class="tips">
-        {{ $t('register_text') }}
+        <div class="tips">
+          {{ $t('register_text') }}
+        </div>
       </div>
     </div>
 
+    <div class="register-btn" @click="handleSubmit">
+      {{ $t('sign_up') }}
+    </div>
+    <div class="forget" @click="handleLogin">{{ $t('sign_in') }}</div>
   </div>
 </template>
 
@@ -84,7 +84,7 @@ export default {
         t_mobile: '',
       },
       checked: false,
-      config: {}
+      config: {},
     }
   },
   created() {
@@ -95,7 +95,6 @@ export default {
     this.start()
   },
   methods: {
-
     start() {
       Fetch('/index/webconfig', {
         type: 'bg',
@@ -185,7 +184,7 @@ export default {
     handleSelectArea() {
       this.isShowAction = true
     },
-    
+
     handleBack() {
       this.$router.push({
         name: 'login',

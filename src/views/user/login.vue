@@ -1,17 +1,21 @@
 <template>
   <div class="login-container">
-    <div class="lang">
-      <van-popover
-        v-model="showPopover"
-        trigger="click"
-        placement="bottom-start"
-        :actions="actions"
-        @select="onChangeLanguage"
-      >
-        <template #reference>
-          <img src="@/assets/tron/Home_slices/组 101.png" />
-        </template>
-      </van-popover>
+    <div class="header_title">
+      <div class="lang">
+        <van-popover
+          v-model="showPopover"
+          trigger="click"
+          placement="bottom-start"
+          :actions="actions"
+          @select="onChangeLanguage"
+        >
+          <template #reference>
+            <img src="@/assets/tron/Home_slices/组 101.png" />
+          </template>
+        </van-popover>
+      </div>
+
+      {{ $t('sign_in') }}
     </div>
 
     <div class="login-box">
@@ -34,20 +38,17 @@
       </div>
 
       <div class="remember">
-        <van-checkbox v-model="checked" checked-color="rgba(138, 7, 231, 1)"
+        <van-checkbox v-model="checked" checked-color="rgba(75, 149, 254, 1)"
           >{{ $t('remember_the_password') }}
         </van-checkbox>
       </div>
+    </div>
 
-      <div class="login-btn" @click="handleSubmit">
-        <div class="kuai">
-          <img src="@/assets/tron/长箭头2@2x.png" alt="" />
-        </div>
+    <div class="login-btn" @click="handleSubmit">
         {{ $t('sign_in') }}
       </div>
 
       <div class="forget" @click="handleGoRegister">{{ $t('sign_up') }}</div>
-    </div>
   </div>
 </template>
 
@@ -61,7 +62,7 @@ export default {
     return {
       data: {
         username: '',
-        password: ''
+        password: '',
       },
       config: {},
       showPopover: false,
@@ -179,7 +180,7 @@ export default {
       this.$router.push({
         name: 'register',
       })
-    }
+    },
   },
 }
 </script>

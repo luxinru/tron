@@ -1,59 +1,26 @@
 .register-container {
+  position: relative;
   width: 100%;
-  // height: 100vh;
-  min-height: 100%;
-  background: url('~@/assets/tron/Sign In_slices/椭圆 3 拷贝.png') no-repeat;
-  background-size: 100% 812px; 
+  min-height: 100vh;
+  background: url('~@/assets/tron/SIGN IN.png') no-repeat;
+  background-size: 100% 292px;
   font-family: PingFang SC;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  padding: 0 13px 24px;
 
-  .captcha {
-    margin: 15px;
-    width: 306px;
-    margin-left: 35px;
-
-    // height: 55px;
-    /deep/ .nc-container {
-      height: 40px;
-      line-height: 40px !important;
-    }
-
-    /deep/ .label {
-      height: 40px !important;
-      line-height: 40px !important;
-      font-size: 16px;
-    }
-
-    /deep/ .track {
-      height: 40px !important;
-      line-height: 40px !important;
-    }
-
-    /deep/ .button {
-      height: 40px !important;
-      line-height: 40px !important;
-      width: 52px;
-    }
-
-    /deep/ .slider {
-      height: 40px !important;
-      line-height: 40px !important;
-
-    }
-
-    /deep/ ._nc .stage1 .icon {
-      left: 10px;
-    }
-
-    /deep/ .bg-green {
-      height: 40px !important;
-      line-height: 40px !important;
-      font-size: 16px;
-    }
-
+  .header_title {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
   }
 
   .register-box {
@@ -63,316 +30,85 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
-    padding: 0 16px;
-
-    .back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .back2 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 212px;
-      height: 83px;
-    }
+    padding: 0 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+    border-radius: 7px;
+    margin-top: 182px;
 
     .title {
       width: 100%;
       font-size: 15px;
       font-family: PingFang SC;
       font-weight: 500;
-      color: #000000;
-      margin-top: 20px;
-
-      span {
-        &:last-child {
-          color: #000000;
-          margin-right: 34px;
-        }
-      }
-
+      color: #2C3136;
+      margin-top: 23px;
     }
 
     .item {
       width: 100%;
       height: 45px;
       background: #FFFFFF;
-      border: 1px solid #CCCCCC;
-      border-radius: 5px;
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-
-      img {
-        width: 21px;
-        height: 21px;
-        margin-right: 14px;
-      }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      margin-top: 8px;
 
       input {
-        flex: 1 0;
+        width: 100%;
         height: 100%;
-        font-size: 16px;
-        font-weight: 500;
-        color: #C4C5D1;
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: rgba(44, 49, 54, 0.5);
         background-color: transparent;
       }
-
-      .code-btn {
-        width: 80px;
-        font-size: 15px;
-        font-weight: 500;
-        text-decoration: underline;
-        color: rgba(138, 7, 231, 1);
-        margin-left: 16px;
-      }
     }
 
-    .register-btn {
-      position: relative;
-      width: calc(100% - 90px);
-      height: 51px;
-      margin: 24px auto 0;
-      background-color: rgba(138, 7, 231, 1);
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      font-family: PingFang SC;
-      font-weight: 600;
-      color: #FFFFFF;
-
-      .kuai {
-        position: absolute;
-        width: 37px;
-        height: 37px;
-        left: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-
-    .forget {
-      font-size: 17px;
-      font-family: PingFang SC;
-      font-weight: 600;
-      color: #8A07E7;
-      margin-top: 15px;
-    }
-  }
-
-  .login-btn {
-    font-size: 13px;
-    font-weight: 400;
-    color: #B5B7B9;
-    text-align: center;
-    margin-top: 20px;
-
-    span {
-      color: #023EFE;
-    }
-  }
-
-  .login-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 14px;
-    background-color: #fff;
-
-    .remember {
+    .login-footer {
       width: 100%;
       display: flex;
-      align-items: center;
-      margin-top: 18px;
-      font-size: 13px;
-    }
+      flex-direction: column;
 
-    .tips {
-      font-size: 11px;
-      font-family: PingFang SC;
-      font-weight: 400;
-      color: rgba(0, 0, 0, 0.5);
-      padding: 0 31px;
-      margin: 8px 0 32px;
+      .remember {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: 18px;
+        font-size: 13px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #053464;
+      }
+
+      .tips {
+        font-size: 13px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #4B95FE;
+        margin: 8px 0 23px;
+      }
     }
   }
 
-  // .slogan{
-  //     padding-top: 100px;
-  //     padding-left: 14px;
-  //     .welcome{
-  //         font-size: 19px;
-  //         font-weight: 500;
-  //         color: #BEBEBE;
-  //     }
-  //     .login-info{
-  //         font-size: 20px;
-  //         font-weight: bold;
-  //         color: #000000;
-  //         margin-top: 6px;
-  //     }
-  // }
-  // .register-header {
-  //     // height: 217px;
-  //     // background: linear-gradient(0deg, #2B8CFA 0%, #30A2FF 100%);
-  //     // border-bottom-left-radius: 40px;
-  //     // border-bottom-right-radius: 50px;
-  //     // margin-bottom: 10px;
-  //     padding: 0 14px;
-  //     font-size: 13px;
-  //     padding-top: 58px;
-  //     .login{
-  //         font-weight: 400;
-  //         color: #999999;
-  //     }
-  //     .regist{
-  //         margin-left: 43px;
-  //         color: #000000;
-  //         font-weight: bold;
-  //         position: relative;
-  //         &::after{
-  //             content: ' ';
-  //             width: 8px;
-  //             height: 4px;
-  //             position: absolute;
-  //             background: #EFC969;
-  //             border-radius: 2px;
-  //             left: 50%;
-  //             transform: translateX(-50%);
-  //             top: 22px;
-  //         }
-  //     }
-  // }
-  // .register-box{
-  //     padding-top: 50px;
-  //     .mobile{
-  //         display: flex;
-  //         padding-bottom: 14px;
-  //         border-bottom: 1px solid #F4F4F4;
-  //         background-color: white;
-  //         .left{
-  //             width: 140px;
-  //             font-size: 14px;
-  //             .icon{
-  //                 transform: rotate(90deg);
-  //                 padding-left: 5px;
-  //             }
-  //         }
-  //         .right{
-  //             font-size: 13px;
-  //             // color: #D2D2D2;
-  //         }
-  //     }
-  //     .pwd, .repwd, .code, .invite{
-  //         width: 100%;
-  //         padding-top: 33px;
-  //         padding-bottom: 14px;
-  //         border-bottom: 1px solid #F4F4F4;
-  //         font-size: 13px;
-  //         // color: #D2D2D2;
-  //     }
-  //     .code{
-  //         display: flex;
-  //         justify-content: space-between;
-  //         align-items: center;
-  //         .code-btn{
-  //            color: #EFC969;
-  //         }
-  //     }
-  // }
-  // .register-btn{
-  //     background-image: url('./images/register_btn.png');
-  //     background-size: 100%;
-  //     background-repeat: no-repeat;
-  //     width: 348px;
-  //     height: 43px;
-  //     line-height: 43px;
-  //     text-align: center;
-  //     font-size: 16px;
-  //     font-weight: 500;
-  //     color: #6A532C;
-  //     margin-top: 31px;
-  // }
-  // .login-footer{
-  //     // position: fixed;
-  //     margin-top: 132px;
-  //     display: flex;
-  //     left: 13px;
-  //     font-size: 13px;
-  //     font-weight: 400;
-  //     color: #050505;
-  //     .footer-link{
-  //         color: #EFC969;
-  //     }
-  // }
-  // .register-form-box {
-  //     width: 348px;
-  //     background: #FFF;
-  //     box-shadow: 0 0 13px 0 rgba(0, 4, 26, 0.05);
-  //     border-radius: 13px;
-  //     margin: 0 auto;
-  //     padding: 5px 20px 20px;
-  //     /deep/.van-cell::before {
-  //         border-bottom: 1px solid #E4E4E4;
-  //     }
-  //     .register-form-item {
-  //         display: flex;
-  //         justify-content: flex-end;
-  //         color: #30A2FF;
-  //         font-size: 14px;
-  //         font-weight: 500;
-  //         padding: 18px 16px 16px;
-  //     }
-  //     .code-btn {
-  //         height: 26px;
-  //         line-height: 10px;
-  //         padding: 8px 9px;
-  //         font-size: 12px;
-  //         color: #fff;
-  //         background: linear-gradient(90deg, #3D8BFF 1%, #52A9FF 100%);
-  //         border-radius: 22px;
-  //         box-sizing: border-box;
-  //     }
-  //     .register-form-btn {
-  //         font-size: 16px;
-  //         height: 43px;
-  //         line-height: 43px;
-  //         text-align: center;
-  //         background: linear-gradient(90deg, #3D8BFF 1%, #52A9FF 100%);
-  //         color: #fff;
-  //         margin-bottom: 20px;
-  //         border-radius: 25px;
-  //     }
-  //     .register-form-footer {
-  //         display: flex;
-  //         align-items: center;
-  //         font-size: 13px;
-  //         padding: 0 16px;
-  //         color: #999;
-  //         .footer-checkbox {
-  //             margin-right: 6px;
-  //             /deep/.van-icon {
-  //                 border-radius: 4px;
-  //             }
-  //         }
-  //         .footer-link {
-  //             color: #30A2FF;
-  //             text-decoration: underline;
-  //         }
-  //     }
-  // }
+  .register-btn {
+    width: 100%;
+    height: 47px;
+    background: #4B95FE;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-top: 21px;
+  }
+
+  .forget {
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #4B95FE;
+    margin-top: 16px;
+  }
 }
