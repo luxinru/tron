@@ -1,54 +1,72 @@
 <template>
   <div class="page_root">
-    <section class="search_bar">
-      <div class="calendar">
-        <img src="@/assets/tron/Trading list_slices/日历-内容页.png" alt="" />
-        <span class="value" @click="show = true">{{ date }}</span>
-        <div class="clear" @click="onClear">x</div>
-      </div>
-
-      <div class="icon">
-        <van-icon name="search" @click="search" color="#fff" size="16" />
-      </div>
-    </section>
+    <div class="header">
+      <van-icon
+        name="arrow-left"
+        size="23"
+        color="#fff"
+        @click="$router.go(-1)"
+      />
+      <div :style="`color: #fff`">{{ $t('proft_list') }}</div>
+    </div>
 
     <section class="btns">
       <div class="item">
         <span style="width: 50%">{{ $t('basic_income') }}</span>
         <div class="value">
-          <span>{{basic_income}}</span>
+          <span>{{ basic_income }}</span>
           <span>TRX</span>
         </div>
       </div>
       <div class="item">
         {{ $t('promotion_income') }}
         <div class="value">
-          <span>{{promotion_income}}</span>
+          <span>{{ promotion_income }}</span>
           <span>TRX</span>
         </div>
       </div>
     </section>
 
     <section class="list">
-      <div class="item" v-for="item in data" :key="index">
+      <section class="search_bar">
+        <div class="calendar">
+          <img src="@/assets/tron/Trading list_slices/日历-内容页.png" alt="" />
+          <span class="value" @click="show = true">{{ date }}</span>
+          <van-icon name="close" @click="onClear" size="14"/>
+        </div>
+
+        <div class="icon">
+          <van-icon name="search" @click="search" color="#fff" size="16" />
+        </div>
+      </section>
+      <div class="item" v-for="(item, index) in data" :key="index">
+        <div class="title">
+          <span>{{ $t('proft_list') }}</span>
+          <span>{{ $t('interest_reward') }}</span>
+        </div>
         <div class="info">
           <span>{{ $t('date') }}</span>
-          <span>{{item.time}}</span>
-        </div>
-        <div class="info">
           <span>{{ $t('amount') }}</span>
-          <span style="color: rgba(138, 7, 231, 1);">+ {{item.money}}</span>
         </div>
-        <span class="tip">{{ $t('interest_reward') }}</span>
+        <div class="info2">
+          <span>{{ item.time }}</span>
+          <span>+ {{ item.money }}</span>
+        </div>
       </div>
     </section>
 
-    <van-calendar v-model="show" :show-title="false" :show-confirm="false" type="range" @confirm="onConfirm" />
+    <van-calendar
+      v-model="show"
+      :show-title="false"
+      :show-confirm="false"
+      type="range"
+      @confirm="onConfirm"
+    />
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
 import moment from 'moment'
 
 export default {
@@ -57,8 +75,9 @@ export default {
     return {
       show: false,
       date: this.$t('please_select_a_time'),
-	  basic_income:0,
-	  promotion_income:0,
+      basic_income: 0,
+      promotion_income: 0,
+      data: [],
     }
   },
   computed: {},
@@ -66,25 +85,25 @@ export default {
     this.$parent.footer(false)
   },
   mounted() {
-	  this.start();
-	  },
+    this.start()
+  },
   methods: {
-	start() {
-		Fetch("/user/proft_list").then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		});
-	},
-	search(){
-		Fetch('/user/proft_list', {
-		    date: this.date,
-		  }).then((res) => {
-			this.data = res.data.list;
-			this.basic_income = res.data.basic_income;
-			this.promotion_income = res.data.promotion_income;
-		  })
-	},
+    start() {
+      Fetch('/user/proft_list').then((res) => {
+        this.data = res.data.list
+        this.basic_income = res.data.basic_income
+        this.promotion_income = res.data.promotion_income
+      })
+    },
+    search() {
+      Fetch('/user/proft_list', {
+        date: this.date,
+      }).then((res) => {
+        this.data = res.data.list
+        this.basic_income = res.data.basic_income
+        this.promotion_income = res.data.promotion_income
+      })
+    },
     onConfirm(date) {
       const [start, end] = date
       this.show = false
@@ -101,13 +120,34 @@ export default {
 
 <style lang="less" scoped>
 .page_root {
-  background: rgba(248, 248, 250, 1);
+  position: relative;
   width: 100%;
-  min-height: 100%;
-  height: max-content;
+  min-height: 100vh;
+  background: url('~@/assets/tron/波场 2 拷贝 3.png') no-repeat;
+  background-size: 100% 292px;
+  font-family: PingFang SC;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 0 13px;
+
+  .header {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #1e253c;
+
+    i {
+      position: absolute;
+      left: 0;
+    }
+  }
 
   .search_bar {
     width: 100%;
@@ -140,16 +180,6 @@ export default {
         font-weight: 400;
         color: #8d8b98;
       }
-
-      .clear {
-        font-size: 12px;
-        width: 16px;
-        height: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
     }
 
     .icon {
@@ -159,7 +189,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: rgba(138, 7, 231, 1);
+      background-color: #4B95FE;
       border-radius: 50%;
       overflow: hidden;
     }
@@ -168,38 +198,39 @@ export default {
   .btns {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    height: 119px;
+    flex-direction: column;
     margin-top: 16px;
 
     .item {
       position: relative;
-      width: 167px;
-      height: 100%;
-      background: url('~@/assets/tron/Transfer to basic_slices/椭圆 1 拷贝 5.png')
-        no-repeat;
-      background-size: 100% 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      font-size: 18px;
+      font-size: 17px;
       font-family: Arial;
       font-weight: bold;
       color: #ffffff;
+      margin-top: 27px;
 
       .value {
         width: 100%;
         display: flex;
         align-items: flex-end;
-        justify-content: space-between;
 
         span {
+          font-size: 27px;
+          font-family: Arial;
+          font-weight: bold;
+          color: #ffffff;
+          margin-top: 11px;
+
           &:last-child {
             font-size: 13px;
             font-family: Arial;
             font-weight: 400;
             color: #ffffff;
+            margin-bottom: 3px;
+            margin-left: 5px;
           }
         }
       }
@@ -209,43 +240,71 @@ export default {
   .list {
     margin-top: 16px;
     width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
+    border-radius: 7px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     .item {
       width: 100%;
-      background: #fff;
-      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-      border-radius: 13px;
+      min-height: 109px;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      padding: 16px;
-      margin-top: 16px;
+      padding: 20px;
 
-      .info {
-        margin-top: 16px;
+      .title {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 14px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        color: #000000;
+        font-size: 16px;
+        font-family: Alibaba PuHuiTi;
+        font-weight: 500;
+        color: #2C3136;
 
-        &:first-child {
-          margin-top: 0;
+        span {
+          &:last-child {
+            padding: 9px 16px;
+            background: #4B95FE;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: #FFFFFF;
+          }
         }
       }
 
-      .tip {
-        margin-top: 9px;
-        font-size: 11px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.4);
+      .info {
+        margin-top: 14px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        span {
+          flex: 1 0;
+          font-size: 13px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #C7C7C8;
+        }
+      }
+      .info2 {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        span {
+          flex: 1 0;
+          font-size: 11px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #87888A;
+        }
       }
     }
   }

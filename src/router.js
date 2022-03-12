@@ -136,7 +136,7 @@ export default new Router({
       name: 'notice_content',
       meta: {
         title: '消息中心',
-        hiddenTitle: true
+        lang: 'notifcation'
       },
       component: () =>
         import( /* webpackChunkName: "home" */ './views/user/notice_content.vue')
@@ -504,7 +504,7 @@ export default new Router({
       name: 'proft_list',
       meta: {
         title: 'Proft list',
-        lang: 'proft_list'
+        hiddenTitle: true,
       },
       component: () =>
         import( /* webpackChunkName: "home" */ './views/index/proft_list.vue')

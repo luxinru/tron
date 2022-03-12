@@ -1,32 +1,13 @@
 <template>
   <div class="page">
-    <div class="header">
-      <div class="head">
-        <van-icon
-          name="arrow-left"
-          size="23"
-          color="#000"
-          @click="$router.back()"
-        />
-        {{ $t('notifcation') }}
-      </div>
-    </div>
     <div class="main">
       <div class="info">
-        <div class="value">
-          <span>{{ data.title }}</span>
-          <span>{{ data.add_time }}</span>
-        </div>
-        <img
-          src="@/assets/tron/Notifcation2_slices/135c032a6d99ee8c3e7ada5c43a1ae0b6a71d50219afd-VqFSc3_fw1200.png"
-          alt=""
-        />
+        <span>{{ data.title }}</span>
+        <span>{{ data.add_time }}</span>
       </div>
       <div class="content">
         <span class="title">www.trxbbg.com</span>
         <div class="box" v-html="data.content"></div>
-
-        <img src="@/assets/tron/Notifcation2_slices/024ec4ef7ffa4e2fbc2ffc6fa56804acda1189461c7dd-tXq24N_fw1200.png" alt="">
       </div>
     </div>
   </div>
@@ -66,16 +47,20 @@ export default {
 
 <style lang="less" scoped>
 .page {
-  background-color: #f5f5f5;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   font-family: PingFang SC;
-  // font-weight: 500;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 13px;
   .main {
-    margin: 12px auto;
-    width: 348px;
+    margin: 16px auto;
+    width: 100%;
     background: #ffffff;
     box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-    border-radius: 13px;
+    border-radius: 7px;
     padding: 26px;
     display: flex;
     flex-direction: column;
@@ -83,36 +68,23 @@ export default {
 
     .info {
       width: 100%;
-      height: 78px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
 
-      .value {
-        flex: 1 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+      span {
+        font-size: 20px;
+        font-family: Arial;
+        font-weight: bold;
+        color: #2c3136;
 
-        span {
-          font-size: 16px;
-          font-family: Arial;
-          font-weight: bold;
-          color: #4b4d59;
-
-          &:last-child {
-            font-size: 13px;
-            font-family: PingFang SC;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
-            margin-top: 24px;
-          }
+        &:last-child {
+          margin-top: 23px;
+          font-size: 13px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.5);
         }
-      }
-
-      img {
-        width: 106px;
-        height: 78px;
-        margin-left: 16px;
       }
     }
 
@@ -122,24 +94,37 @@ export default {
         font-size: 18px;
         font-family: PingFang SC;
         font-weight: bold;
-        color: #8a07e7;
+        color: #4b95fe;
         display: flex;
         justify-content: center;
         margin-top: 16px;
       }
 
       .box {
-        font-size: 15px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.7);
-        line-height: 27px;
-        margin-top: 19px;
-      }
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 36px;
 
-      img {
-        width: 147px;
-        height: 118px;
-        margin-top: 16px;
+        /deep/ p {
+          font-size: 15px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #000000;
+          line-height: 19px;
+          &:first-child {
+            margin-top: 0;
+          }
+          margin-top: 8px;
+
+          img {
+            width: 100%;
+          }
+
+          a {
+            color: #4b95fe;
+          }
+        }
       }
     }
   }
