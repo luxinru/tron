@@ -8,16 +8,16 @@
       @select="onChangeLanguage"
     >
       <template #reference>
-        <img src="@/assets/tron/语言.png" alt="" />
+        <img src="@/assets/tron/Mine_slices/多语言@2x.png" alt="" />
       </template>
     </van-popover>
 
     <img
-      src="@/assets/tron/消息 (1).png"
+      src="@/assets/tron/Mine_slices/消息(1)@2x.png"
       alt=""
       @click="$router.push('/notice')"
     />
-    <img src="@/assets/tron/客服.png" alt="" @click="$router.push('/kefu')" />
+    <img src="@/assets/tron/Mine_slices/在线客服@2x.png" alt="" @click="$router.push('/kefu')" />
   </div>
 </template>
  
@@ -90,20 +90,11 @@ export default {
   align-items: center;
   justify-content: flex-end;
   img {
-    width: 18px;
+    height: 20px;
     margin-right: 16px;
-
-    &:nth-child(1) {
-      margin-top: -5px;
-    }
-
-    &:nth-child(2) {
-      width: 21px;
-    }
-
-    &:nth-child(3) {
-      width: 18px;
-      margin-right: 0;
+    
+    &:first-child {
+      margin-top: -4px;
     }
   }
 }

@@ -332,20 +332,20 @@ export default {
       justify-content: center;
 
       img {
-        height: 22px;
+        height: 20px;
       }
 
       span {
         font-size: 13px;
         font-family: PingFang SC;
         font-weight: 400;
-        margin-top: 11px;
-        color: rgba(116, 116, 116, 1) '';
+        color: #747474;
         text-align: center;
+        margin-top: 11px;
       }
 
       .active {
-        color: #5e63e7;
+        color: rgba(75, 149, 254, 1);
       }
     }
   }

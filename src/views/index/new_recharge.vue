@@ -80,12 +80,12 @@ export default {
       color: #ffffff;
 
       &:first-child {
-        background: url('~@/assets/tron/组 139.png') no-repeat;
+        background: url('~@/assets/tron/组139.png') no-repeat;
         background-size: 100% 100%;
       }
 
       &:last-child {
-        background: url('~@/assets/tron/组 139 拷贝.png') no-repeat;
+        background: url('~@/assets/tron/组139拷贝.png') no-repeat;
         background-size: 100% 100%;
       }
     }
