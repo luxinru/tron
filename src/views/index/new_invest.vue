@@ -1,8 +1,10 @@
 <template>
   <div class="page_root">
-    <!-- <section class="header">{{ $t('invest') }}</section>
+    <HeaderBar></HeaderBar>
 
-    <section class="bar">
+    <section class="header">{{ $t('invest') }}</section>
+
+    <!-- <section class="bar">
       <span :class="{ active: active === 1 }" @click="active = 1"
         >{{ $t('product_list') }}</span
       >
@@ -14,31 +16,47 @@
       >
     </section> -->
 
-    <section class="list" >
-      <div class="item" v-for="(item, index) in list" :key="index" @click="toDetail(item.id)">
-        <img src="@/assets/tron/Home_slices/色相／饱和度 1.png" alt="" />
+    <section class="list">
+      <div
+        class="item"
+        v-for="(item, index) in list"
+        :key="index"
+        @click="toDetail(item.id)"
+      >
         <div class="info">
-          <span class="title">{{item.day}}-day {{ item.title }}</span>
+          <span class="title">{{ item.day }}-day {{ item.title }}</span>
           <div class="labels">
-            <span>{{ $t('daily_rate') }} : {{item.rate}}%</span>
-            <span>{{ $t('cycle') }} : {{item.day}} Day</span>
+            <div>
+              <span>{{ $t('daily_rate') }}</span>
+              <span>{{ item.rate }}%</span>
+            </div>
+            <div>
+              <span>{{ $t('cycle') }}</span>
+              <span>{{ item.day }} Day</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
+import HeaderBar from '@/components/header-bar.vue'
+
 export default {
   name: 'NewInvest',
+
+  components: {
+    HeaderBar,
+  },
+
   data() {
     return {
-		data: {},
-		list: [],
-		active: 1,
+      data: {},
+      list: [],
+      active: 1,
     }
   },
   computed: {},
@@ -46,43 +64,42 @@ export default {
     this.$parent.footer(true, 'new_invest')
   },
   mounted() {
-	  this.start();
+    this.start()
   },
   methods: {
     toDetail(id) {
-      this.$router.push("/invest_product/" + id);
+      this.$router.push('/invest_product/' + id)
     },
-	start() {
-		Fetch("/index/item").then((res) => {
-			
-			console.log(this.list);
-			
-		  this.list = res.data.list;
-		});
-	},
+    start() {
+      Fetch('/index/item').then((res) => {
+        console.log(this.list)
+
+        this.list = res.data.list
+      })
+    },
   },
 }
 </script>
 
 <style lang="less" scoped>
 .page_root {
-  background-color: rgba(246, 245, 250, 1);
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 
   .header {
-    width: 100%;
+    position: absolute;
+    left: 24px;
+    top: 0;
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    font-family: PingFang SC;
-    font-weight: 500;
-    color: #1e253c;
-    background-color: #fff;
+    font-size: 26px;
+    font-family: Arial;
+    font-weight: bold;
+    color: #000000;
   }
 
   .bar {
@@ -120,20 +137,14 @@ export default {
 
     .item {
       width: 100%;
-      height: 110px;
+      min-height: 121px;
+      background: #ffffff;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       background: #ffffff;
-      box-shadow: 0px 6px 10px 0px rgba(19, 19, 20, 0.06);
-      border-radius: 13px;
-      padding: 13px 15px;
-      margin-top: 10px;
-
-      img {
-        width: 85px;
-        // height: 85px;
-        margin-right: 17px;
-      }
+      padding: 20px 25px;
+      margin-top: 12px;
 
       .info {
         flex: 1 0;
@@ -143,23 +154,38 @@ export default {
         justify-content: center;
 
         .title {
-          font-size: 15px;
-          font-family: PingFang SC;
-          font-weight: 600;
-          color: #323A45;
+          font-size: 13px;
+          font-family: Alibaba PuHuiTi;
+          font-weight: 500;
+          color: #2c3136;
+          border-bottom: 1px solid rgba(221, 221, 221, 1);
+          padding-bottom: 16px;
+          line-height: 16px;
         }
 
         .labels {
           margin-top: 14px;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 10px;
 
-          span {
-            font-size: 11px;
-            font-family: PingFang SC;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5);
-            margin-top: 4px;
+          div {
+            display: flex;
+            flex-direction: column;
+            span {
+              font-size: 15px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #87888A;
+
+              &:first-child {
+                margin-bottom: 10px;
+                font-size: 13px;
+                font-family: PingFang SC;
+                font-weight: 400;
+                color: #C7C7C8;
+              }
+            }
           }
         }
       }
